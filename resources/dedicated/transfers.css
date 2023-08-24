@@ -36,11 +36,6 @@ body {
   padding: 0;
 }
 
-a {
-  color: var(--main-color);
-  text-decoration: none;
-  font-weight: bold;
-}
 
 main {
   padding: 0;
