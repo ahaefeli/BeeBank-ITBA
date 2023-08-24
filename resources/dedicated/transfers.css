@@ -37,13 +37,14 @@ body {
 }
 
 a {
-  color: var(--light-color);
+  color: var(--main-color);
   text-decoration: none;
+  font-weight: bold;
 }
 
 main {
-  margin-left: 8rem;
-  padding: 1.6rem;
+  padding: 0;
+  margin: 0;
 }
 
 svg {
@@ -58,6 +59,7 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 2rem;
 }
 
 .bbank-logo {
@@ -75,6 +77,11 @@ svg {
   opacity: 1;
 }
 
+.bbank-logo {
+  width: 10rem;
+}
+
+/* Logo bbank */
 
 
 /* Barra */
@@ -119,6 +126,7 @@ svg {
 .link-text {
   display: none;
   margin-left: 1.6rem;
+  color: var(--light-color);
 }
 
 .nav-link svg {
@@ -128,8 +136,42 @@ svg {
 
 /* Barra */
 
+/* balance */
+
+.balance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.balance-ul {
+  list-style-type: none;
+  color: var(--main-color);
+}
+
+.balance-text {
+  position: relative;
+  right: 5rem;
+  font-size: 2rem;
+}
+
+.balance-amount {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
 
 /* Panel de busqueda */
+
+.contactos {
+  background-color: var(--light-color);
+  width: 100%;
+  border-bottom: 3px solid var(--light-hover-color);
+  border-radius: 0px 0px 20px 20px;
+
+}
 
 .contact-search {
   display: flex;
@@ -137,19 +179,18 @@ svg {
   align-items: center;
   gap: 10rem;
   list-style-type: none;
-  padding-right: 11rem;
-  margin-bottom: 5rem;
 }
 
-.contact-search-text {  
+.contact-search-text {
   position: relative;
   padding: 0 0.1rem;
+  margin-bottom: 2rem;
 }
 
 .contact-search-text::after {
   content: "";
   position: absolute;
-  background-color:var(--light-color);
+  background-color:var(--main-color);
   height: 3px;
   width: 0;
   left: 0;
@@ -187,7 +228,7 @@ svg {
 }
 
 .input-barra:focus {
-  border-bottom: 2px solid var(--light-color);
+  border-bottom: 2px solid var(--main-color);
 }
 
 .input-barra::placeholder {
@@ -206,11 +247,6 @@ abbr {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-right: 12rem;
-}
-
-.sector-transfer > p {
-  margin-left: 4rem;
 }
 
 .svg-x {
@@ -241,9 +277,15 @@ abbr {
 
 
 @media only screen and (max-width: 601px) {
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
  .navbar {
   bottom: 0;
-  width: 100vw;
+  width: 100%;
   height: 8rem;
  }
   
@@ -255,18 +297,24 @@ abbr {
   justify-content: center;
  }
 
-.contact-search-text {
-  width: 100vw;
-}
-
 .logo {
-  width: 100vw;
-  margin: auto;
+  padding-right: 3rem;
 }
 
+.input-barra, .input-label {
+  display: none;
+}
 
-.contacts .Transferencias {
-  width: 80vw;
+.contacts .Transferencias { 
+  padding-right: 5rem;
+}
+
+.balance {
+  padding-right: 5rem;
+}
+
+.contact-search-text {
+  margin-right: 1rem;
 }
 
 }
