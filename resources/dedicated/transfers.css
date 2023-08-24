@@ -1,0 +1,295 @@
+:root {
+  --main-color: #222831;
+  --back-color: #393e46;
+  --back-light-color: #a3a4a5;
+  --light-color: #f7c873;
+  --light-hover-color: #937234;
+  --button-hover-color: #d8aa56;
+  --white-color: #eeeeee;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  font-family: 'Raleway', sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--light-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--back-color);
+}
+
+/* Para personalizar el scrollbar */
+
+body {
+  color: white;
+  font-size: 16px;
+  background-color: var(--back-color);
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--light-color);
+  text-decoration: none;
+}
+
+main {
+  margin-left: 8rem;
+  padding: 1.6rem;
+}
+
+svg {
+  width: 3rem;
+  color: var(--light-color);
+}
+
+/* Logo bbank */
+
+.logo {
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bbank-logo {
+  padding-top: 10px;
+  width: 10rem;
+}
+
+.bbank-logo:hover {
+  transition: all 0.5s ease;
+  opacity: 0.8;
+}
+
+.bbank-logo:not(:hover) {
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+
+
+
+/* Barra */
+
+.navbar {
+  position: fixed;
+  background-color: var(--main-color);
+  transition: width 200ms ease;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.nav-item {
+  width: 100%;
+}
+
+.nav-item:last-child {
+  margin-top: auto;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 7rem;
+  filter: grayscale(100%) opacity(0.7);
+}
+
+.nav-link:hover {
+  filter: grayscale(0%) opacity(1);
+  color: var(--light-color);
+}
+
+
+.link-text {
+  display: none;
+  margin-left: 1.6rem;
+}
+
+.nav-link svg {
+  min-width: 3.2rem;
+  margin: 0 2.4rem;
+ }
+
+/* Barra */
+
+
+/* Panel de busqueda */
+
+.contact-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  list-style-type: none;
+  padding-right: 11rem;
+  margin-bottom: 5rem;
+}
+
+.contact-search-text {  
+  position: relative;
+  padding: 0 0.1rem;
+}
+
+.contact-search-text::after {
+  content: "";
+  position: absolute;
+  background-color:var(--light-color);
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+.contact-search-text:hover::after {
+  width: 100%;
+  transition: all 0.5s ease;
+}
+
+.contact-search-text:not(:hover)::after {
+  transition: all 0.5s ease;
+}
+
+.input-barra {
+  width: 40rem;
+  outline: 0;
+  border: 0;
+  border-bottom: 2px solid var(--white-color);
+  background: transparent;
+  font-size: 1.5rem;
+  color: var(--white-color);
+  transition: 0.3s ease;
+}
+
+.input-label {
+  display: block;
+  position: absolute;
+  margin-top: 3rem;
+  padding-right: 24rem;
+  padding-bottom: 7rem;
+  color: white;
+}
+
+.input-barra:focus {
+  border-bottom: 2px solid var(--light-color);
+}
+
+.input-barra::placeholder {
+  color: transparent;
+
+}
+
+/* Panel de transferencias */
+
+abbr {
+  text-decoration: none;
+}
+
+.sector-transfer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12rem;
+}
+
+.sector-transfer > p {
+  margin-left: 4rem;
+}
+
+.svg-x {
+  width: 2rem;
+  color: white;
+}
+
+.Transferencias {
+  list-style-type: none;
+  font-size: 1.8rem;
+  color: white;
+}
+
+.Transferencias-x:hover {
+  color: #ff2a2a;
+  transition: 0.3s all ease;
+}
+
+.Transferencias-y:hover {
+  color: #01ff38;
+  transition: 0.3s all ease;
+}
+
+
+.Transferencias-x:not(:hover), .Transferencias-y:not(hover) {
+  transition: 0.6s all ease;
+}
+
+
+@media only screen and (max-width: 601px) {
+ .navbar {
+  bottom: 0;
+  width: 100vw;
+  height: 8rem;
+ }
+  
+ .navbar-nav {
+  flex-direction: row;
+ }
+
+ .nav-link {
+  justify-content: center;
+ }
+
+.contact-search-text {
+  width: 100vw;
+}
+
+.logo {
+  width: 100vw;
+  margin: auto;
+}
+
+
+.contacts .Transferencias {
+  width: 80vw;
+}
+
+}
+
+@media only screen and (min-width: 602px) {
+  .navbar {
+    top: 0;
+    width: 8rem;
+    height: 100vh;
+  }
+
+  .navbar:hover {
+    width: 25.6rem;
+    transition: all 0.15s ease-out;
+  }
+
+  .navbar:not(:hover) {
+    transition: all 0.15s ease-in;
+  }
+
+  .navbar:hover .link-text {
+    display: block; 
+  }
+  
+}
+
