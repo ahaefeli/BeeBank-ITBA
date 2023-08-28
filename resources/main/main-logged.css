@@ -95,6 +95,7 @@ nav {
     margin: 0px;
     padding: 15px;
     width: 15%;
+    min-width: 200px;
     height: 100%;
 }
 
