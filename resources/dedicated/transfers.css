@@ -199,9 +199,7 @@
 
 
 @media only screen and (max-width: 768px) {
-  body {
-    overflow: hidden;
-  }
+
   .input-barra,
   .input-label {
     display: none;
