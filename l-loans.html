@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
   <!-- Metadata -->
@@ -7,188 +7,142 @@
   <meta name="description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <meta name="description" content="Descubre la comodidad y la seguridad de gestionar tus finanzas con BeeBank. Nuestra plataforma de banca digital te ofrece acceso rápido y sencillo a tus cuentas, pagos en línea y servicios bancarios desde cualquier lugar. Simplifica tu vida financiera con BeeBank">
+  <meta name="description"
+    content="Descubre la comodidad y la seguridad de gestionar tus finanzas con BeeBank. Nuestra plataforma de banca digital te ofrece acceso rápido y sencillo a tus cuentas, pagos en línea y servicios bancarios desde cualquier lugar. Simplifica tu vida financiera con BeeBank">
   <meta name="author" content="BeeBank Corporation">
-  <meta name="keywords" content="Banca Digital, Finanzas Personales, Gestión de Cuentas, Pagos en Línea, Transferencias Bancarias, Plataforma Bancaria, Servicios Financieros, Tecnología Bancaria, App Bancaria, Soluciones Financieras, Home Banking, Banca en Línea, BeeBank, Innovación Financiera, Seguridad Bancaria, Acceso a Cuentas, Ahorro Digital, Banco Virtual, Consultas de Saldo, Herramientas Financieras, Servicios Bancarios en Internet, Fondos de inversion, Gestión de Dinero, Banca Electrónica">
+  <meta name="keywords"
+    content="Banca Digital, Finanzas Personales, Gestión de Cuentas, Pagos en Línea, Transferencias Bancarias, Plataforma Bancaria, Servicios Financieros, Tecnología Bancaria, App Bancaria, Soluciones Financieras, Home Banking, Banca en Línea, BeeBank, Innovación Financiera, Seguridad Bancaria, Acceso a Cuentas, Ahorro Digital, Banco Virtual, Consultas de Saldo, Herramientas Financieras, Servicios Bancarios en Internet, Fondos de inversion, Gestión de Dinero, Banca Electrónica">
   <title>BeeBank</title>
-    
+
   <!-- Links -->
   <link rel="shortcut icon" href="resources/favicon.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="resources/dedicated/loans.css">
-  <link rel="stylesheet" href="resources/dedicated/transfers.css">
-  <script src="resources/dedicated/loans.js" defer></script>
+  
+  <!--Fin links de librerias-->
+  <link rel="stylesheet" href="resources/main/main-logged.css" />
+  <link rel="stylesheet" href="resources/dedicated/loans.css" />
+  <script src="resources/dedicated/loans.js"></script>
 </head>
 
 <body>
-    <section class="logo">
-      <a href="l-home.html"><img src="resources/beebank-logo-claro.png" class="bbank-logo" alt="Beebank logo" draggable="false"></a>
-    </section>
-  
-    <nav class="navbar">
-      <ul class="navbar-nav">
-
-        <li class="nav-item">
-          <a href="l-home.html" class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-              <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
-            </svg>
-
-            <span class="link-text">Incio</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="l-accounts.html" class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg"fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-            </svg>
-
-            <span class="link-text">Cuenta</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="l-transfers.html" class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-shuffle" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"/>
-              <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"/>
-            </svg>
-
-            <span class="link-text">Transferencias</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="l-loans.html" class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
-              <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"/>
-            </svg>
-
-            <span class="link-text">Prestamos</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="soporte.html" class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-shield-fill-check" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm2.146 5.146a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647z"/>
-            </svg>
-
-            <span class="link-text">Soporte</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="l-config.html" class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
-              <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
-              <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
-            </svg>
-
-            <span class="link-text">Configuracion</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
-              <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-            </svg>
-
-            <span class="link-text">Cerrar Sesion</span>
-          </a>
-        </li>
-
-      </ul>
-    </nav>
-  
-    <!--SECTION CONTENIDO DE LA PAGINA PRESTAMOS-->>
 
 
+  <div class="cont_main">
+    <!-- NAV BAR -->
 
+    <div class="navigation-container">
+      <nav>
+        <ul class="navegation">
+          <li class="li-nav"><a href="l-home.html" class="a-nav"><i class="bi bi-house"></i>Inicio</a></li>
+          <li class="li-nav"><a href="#" class="a-nav"><i class="bi bi-person"></i>Cuenta</a></li>
+          <li class="li-nav"><a href="l-transfers.html" class="a-nav"><i class="bi bi-shuffle"></i>Transferencias</a></li>
+          <li class="li-nav"><a href="l-loans.html" class="a-nav"><i class="bi bi-bank"></i>Préstamos</a></li>
+          <li class="li-nav"><a href="support.html" class="a-nav"><i class="bi bi-shield-check"></i>Soporte</a></li>
+          <li class="li-nav"><a href="#" class="a-nav"><i class="bi bi-gear"></i>Configuración</a></li>
+          <li class="li-nav"><a href="#" class="a-nav"><i class="bi bi-box-arrow-left"></i>Cerrar Sesión</a></li>
+        </ul>
+      </nav>
+    </div>
 
-  <section>
-
-    <div>
-        
-         <ul class="top-btns">
-             <li class="select">
+    <div class="content">
+      <div class="logo">
+        <section class="logo">
+          <a href="l-home.html"><img src="resources/beebank-logo-claro.png" class="bbank-logo" alt="Beebank"
+              draggable="false"></a>
+        </section>
+      </div>
+      <!-- CONTENIDO -->
+      <div class="page-content">
+        <section>
+          <div>
+            <ul class="top-btns">
+              <li class="select">
                 <select name="select">
                   <option value="1">PRESTAMO PERSONAL</option>
                   <option value="2">PRESTAMO SALUD</option>
                   <option value="3">PRESTAMO EDUCACIONAL</option>
                   <option value="4">PRESTAMO JUBILATORIO 50%</option>
                   <option value="5" selected>Seleccione la linea de prestamo</option>
-                </select></li>
+                </select>
+              </li>
 
-                <li class="select">
-                    <select name="select">
-                      <option value="1">$10.000</option>
-                      <option value="2">$50.000</option>
-                      <option value="3">$100.000</option>
-                      <option value="4">$500.000</option>
-                      <option value="5" selected>Seleccione entre los importes disponibles</option>
-                    </select></li>
+              <li class="select">
+                <select name="select">
+                  <option value="1">$10.000</option>
+                  <option value="2">$50.000</option>
+                  <option value="3">$100.000</option>
+                  <option value="4">$500.000</option>
+                  <option value="5" selected>Seleccione entre los importes disponibles</option>
+                </select>
+              </li>
 
-                 <li class="select">
-                     <select name="select">
-                          <option value="1">Pago de deudas</option>
-                          <option value="2">Educacion</option>
-                          <option value="3">Pago de alquiler</option>
-                          <option value="4">Pago de servicios</option>
-                          <option value="5" selected>Seleccione Destino</option>
-                        </select></li>
-                    
-                    <li class="select"> 
-                        <button class="acept-btn"> Aceptar</button> <span><button class="cancel-btn">Cancelar</button></span>
-                    </li>
+              <li class="select">
+                <select name="select">
+                  <option value="1">Pago de deudas</option>
+                  <option value="2">Educacion</option>
+                  <option value="3">Pago de alquiler</option>
+                  <option value="4">Pago de servicios</option>
+                  <option value="5" selected>Seleccione Destino</option>
+                </select>
+              </li>
 
-                </li>
+              <li class="select">
+                <div><button class="general-btn"> Aceptar</button></div>
+                <div><button class="general-btn"> Cancelar</button></div>
+              </li>
 
-         </ul>
-      </div>
-      
-      <section class="top-btns">
-        <table class="h-desing" id="desing">
-          <th class="th-1">Tus prestamos:</th>
-            <tr>
+              </li>
+
+            </ul>
+          </div>
+
+          <section class="top-btns">
+            <table class="h-desing" id="desing">
+              <th class="th-1">Tus prestamos:</th>
+              <tr>
                 <th>Fecha</th>
                 <th>ID</th>
                 <th>Linea</th>
                 <th>Importe</th>
                 <th>Motivo</th>
-            </tr>
-            <tr>
-                <td>21/08/2023 &nbsp;</td>
-                <td>Beebank ORG &nbsp;</td>
+              </tr>
+              <tr>
+                <td>21/08/2023</td>
+                <td>Beebank ORG</td>
                 <td>PERSONAL</td>
-                <td>$10.000 &nbsp;</td>
+                <td>$10.000</td>
                 <td>Educacion</td>
-            </tr>
-            <tr>
-                <td>01/09/2023 &nbsp;</td>
-                <td>Beebank ORG &nbsp;</td>
-                <td>JUBILATORIO &nbsp;</td>
-                <td>$50.000 &nbsp;</td>
+              </tr>
+              <tr>
+                <td>01/09/2023</td>
+                <td>Beebank ORG</td>
+                <td>JUBILATORIO</td>
+                <td>$50.000</td>
                 <td>Pago alquiler</td>
-            </tr>
-            <tr>
-                <td>10/09/2023 &nbsp;</td>
+              </tr>
+              <tr>
+                <td>10/09/2023</td>
                 <td>Beebank ORG &nbsp</td>
-                <td>EDUCACIONAL&nbsp;&nbsp;</td>
-                <td>$50.000 &nbsp;</td>
+                <td>EDUCACIONAL</td>
+                <td>$50.000</td>
                 <td>Pago deudas</td>
-            </tr>
-        </table>
-      </section>
+              </tr>
+            </table>
+          </section>
 
-    </section>
-  </body>
+        </section>
+      </div>
+    </div>
+
+  </div>
+
+</body>
 
 </html>

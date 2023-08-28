@@ -1,53 +1,9 @@
-:root {
-  --main-color: #222831;
-  --back-color: #393e46;
-  --back-light-color: #a3a4a5;
-  --light-color: #f7c873;
-  --light-hover-color: #937234;
-  --button-hover-color: #d8aa56;
-  --white-color: #eeeeee;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 10px;
-  font-family: 'Raleway', sans-serif;
-}
-
-body::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-body::-webkit-scrollbar-track {
-  background: var(--light-color);
-}
-
-body::-webkit-scrollbar-thumb {
-  background: var(--back-color);
-}
-
-/* Para personalizar el scrollbar */
-
-body {
-  color: white;
-  font-size: 16px;
-  background-color: var(--back-color);
-  margin: 0;
-  padding: 0;
-}
-
-
-main {
-  padding: 0;
-  margin: 0;
-}
-
-svg {
-  width: 3rem;
-  color: var(--light-color);
-}
-
 /* Logo bbank */
+
+.logo-mobile {
+  display: none;
+}
+
 
 .logo {
   height: 4rem;
@@ -76,60 +32,12 @@ svg {
   width: 10rem;
 }
 
-/* Logo bbank */
 
 
-/* Barra */
-
-.navbar {
-  position: fixed;
-  background-color: var(--main-color);
-  transition: width 200ms ease;
-}
-
-.navbar-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-}
-
-.nav-item {
+.page-content {
   width: 100%;
 }
 
-.nav-item:last-child {
-  margin-top: auto;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  height: 7rem;
-  filter: grayscale(100%) opacity(0.7);
-}
-
-.nav-link:hover {
-  filter: grayscale(0%) opacity(1);
-  color: var(--light-color);
-}
-
-
-.link-text {
-  display: none;
-  margin-left: 1.6rem;
-  color: var(--light-color);
-}
-
-.nav-link svg {
-  min-width: 3.2rem;
-  margin: 0 2.4rem;
- }
-
-/* Barra */
 
 /* balance */
 
@@ -165,7 +73,7 @@ svg {
   width: 100%;
   border-bottom: 3px solid var(--light-hover-color);
   border-radius: 0px 0px 20px 20px;
-
+  margin-bottom: 30px;
 }
 
 .contact-search {
@@ -182,10 +90,18 @@ svg {
   margin-bottom: 2rem;
 }
 
+.contact-search-text>a {
+  color: var(--main-color);
+}
+
+.sub-text {
+  font-size: 1.7rem;
+}
+
 .contact-search-text::after {
   content: "";
   position: absolute;
-  background-color:var(--main-color);
+  background-color: var(--main-color);
   height: 3px;
   width: 0;
   left: 0;
@@ -206,10 +122,10 @@ svg {
   width: 40rem;
   outline: 0;
   border: 0;
-  border-bottom: 2px solid var(--white-color);
+  border-bottom: 2px solid var(--main-color);
   background: transparent;
   font-size: 1.5rem;
-  color: var(--white-color);
+  color: var(--main-color);
   transition: 0.3s ease;
 }
 
@@ -220,6 +136,7 @@ svg {
   padding-right: 24rem;
   padding-bottom: 7rem;
   color: white;
+  color: var(--main-color);
 }
 
 .input-barra:focus {
@@ -233,10 +150,6 @@ svg {
 
 /* Panel de transferencias */
 
-abbr {
-  text-decoration: none;
-}
-
 .sector-transfer {
   display: flex;
   flex-direction: column;
@@ -249,9 +162,14 @@ abbr {
   color: white;
 }
 
+.Transferencias-x abbr,
+.Transferencias-y abbr {
+  text-decoration: none;
+}
+
 .Transferencias {
   list-style-type: none;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   color: white;
 }
 
@@ -260,79 +178,53 @@ abbr {
   transition: 0.3s all ease;
 }
 
+.Transferencias-x i {
+  color: #ff2a2a;
+}
+
+.Transferencias-y i {
+  color: #01ff38;
+}
+
 .Transferencias-y:hover {
   color: #01ff38;
   transition: 0.3s all ease;
 }
 
 
-.Transferencias-x:not(:hover), .Transferencias-y:not(hover) {
+.Transferencias-x:not(:hover),
+.Transferencias-y:not(hover) {
   transition: 0.6s all ease;
 }
 
 
-@media only screen and (max-width: 601px) {
-
-html {
-  padding: 0;
-  margin: 0;
-}
-
- .navbar {
-  bottom: 0;
-  width: 100%;
-  height: 8rem;
- }
-  
- .navbar-nav {
-  flex-direction: row;
- }
-
- .nav-link {
-  justify-content: center;
- }
-
-.logo {
-  padding-right: 3rem;
-}
-
-.input-barra, .input-label {
-  display: none;
-}
-
-.contacts .Transferencias { 
-  padding-right: 5rem;
-}
-
-.balance {
-  padding-right: 5rem;
-}
-
-.contact-search-text {
-  margin-right: 1rem;
-}
-
-}
-
-@media only screen and (min-width: 602px) {
-  .navbar {
-    top: 0;
-    width: 8rem;
-    height: 100vh;
+@media only screen and (max-width: 768px) {
+  body {
+    overflow: hidden;
+  }
+  .input-barra,
+  .input-label {
+    display: none;
   }
 
-  .navbar:hover {
-    width: 25.6rem;
-    transition: all 0.15s ease-out;
+  .contacts .Transferencias {
+    padding-right: 5rem;
   }
 
-  .navbar:not(:hover) {
-    transition: all 0.15s ease-in;
+
+  .logo {
+    display: none;
   }
 
-  .navbar:hover .link-text {
-    display: block; 
+  .logo-mobile {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    z-index: 99;
   }
-  
+
+
+
 }
-
