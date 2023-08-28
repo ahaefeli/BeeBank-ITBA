@@ -1,294 +1,134 @@
-:root {
-  --main-color: #222831;
-  --back-color: #393e46;
-  --back-light-color: #a3a4a5;
-  --light-color: #f7c873;
-  --light-hover-color: #937234;
-  --button-hover-color: #d8aa56;
-  --white-color: #eeeeee;
-  }
-  
-  html {
-  font-size: 10px;
-  }
-  
-  body::-webkit-scrollbar {
-  width: 0.5rem;
-  }
-  
-  body::-webkit-scrollbar-track {
-  background: var(--light-color);
-  }
-  
-  body::-webkit-scrollbar-thumb {
-  background: var(--back-color);
-  }
-  
-  /* Para personalizar el scrollbar */
-  
-  body {
-  color: var(--white-color);
-  font-size: 16px;
-  background-color: var(--back-color);
-  margin: 0;
-  padding: 0;
-  }
-  
-  a {
-  color: var(--light-color);
-  text-decoration: none;
-  }
-  
-  main {
-  margin-left: 8rem;
-  padding: 1.6rem;
-  }
-  
-  svg {
-  width: 3rem;
-  color: var(--light-color);
-  }
-  
-  .logo {
-      height: 4rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-  
-  .bbank-logo {
-  padding-top: 10px;
-  width: 10rem;
-  }
-  
-  .bbank-logo:hover {
-  transition: all 0.5s ease;
-  opacity: 0.8;
-  }
-  
-  .bbank-logo:not(:hover) {
-  transition: all 0.5s ease;
-  opacity: 1;
-  }
-  
-  .navbar {
-  position: fixed;
-  background-color: var(--main-color);
-  transition: width 200ms ease;
-  }
-  
-  .navbar-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  }
-  
-  .nav-item {
-  width: 100%;
-  }
-  
-  .nav-item:last-child {
-  margin-top: auto;
-  }
-  
-  .nav-link {
-  color: var(--white-color);
-  display: flex;
-  align-items: center;
-  height: 7rem;
-  filter: grayscale(100%) opacity(0.7);
-  }
-  
-  .nav-link:hover {
-  filter: grayscale(0%) opacity(1);
-  color: var(--light-color);
-  }
-  
-  .link-text {
-  display: none;
-  margin-left: 1.6rem;
-  }
-  
-  .nav-link svg {
-  min-width: 3.2rem;
-  margin: 0 2.4rem;
-  }
-  
-  
-  @media only screen and (max-width: 600px) {
-  .navbar {
-  bottom: 0;
-  width: 100vw;
-  height: 8rem;
-  }
-  
-  .navbar-nav {
-  flex-direction: row;
-  }
-  
-  .nav-link {
-  justify-content: center;
-  }
-  
-  main {
-  margin: 0;
-  }
-  }
-  
-  @media only screen and (min-width: 600px) {
-  .navbar {
-      top: 0;
-      width: 8rem;
-      height: 100vh;
-  }
-  
-  .navbar:hover {
-      width: 25.6rem;
-  }
-  
-  .navbar:hover .link-text {
-      display: block; 
-  
-  }
-  
-  }
-  
-  
   /*Parte principal*/
   
-  .cont_main{
-      width: 100%;
-      display: flex;
-      justify-content: center;
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin: 0px 0px 50px 0px;
   }
   
   .N_A{
-      margin-top: 50px;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      align-items: center;
-      border-top-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      border: 2px solid var(--light-color);
-      background-color: rgba(207, 194, 150, 0.6);
-      padding: 5px;
-      margin-bottom: 10px;
-  }
-  
-  .N_A h2{
-      width: 99%;
-      height: 99%;
-      border-top-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      background-color: var(--back-color);
-  }
-  
-  .cont_bank_data{
-      display: flex;
-      justify-content: center;
-      border-top-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      border: 2px solid var(--light-color);
-      background-color: rgba(207, 194, 150, 0.6);
-      padding: 5px;
-      margin-bottom: 10px;
-  }
-  
-  .cont_bank_data_bg{
-      width: 99%;
-      height: 99%;
-      border-top-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      background-color: var(--back-color);
-  }
-  
-  .cont_bank_card{
-      margin-left: 10px;
-  }
-  
-  .cont_balance{
-      display: flex;
-      margin-left: 10px;
-  }
-  
-  .cont_balance_int{
-      flex:2;
-  }
-  
-  .cont_balance a{
-      padding: 10px;
-      margin-right: 30px;
-      color: var(--white-color);
-      border: 2px solid var(--white-color);
-      background-color: var(--main-color);
-      border-top-right-radius: 20px;
-      border-bottom-left-radius: 20px;
-      transition: all 200ms ease;
-  }
-  
-  .cont_balance a:hover{
-      background-color: var(--light-color);
-      color: black;
-  }
-  
-  .cont_utilities{
-      border-top-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      border: 2px solid var(--light-color);
-      background-color: rgba(207, 194, 150, 0.6);
-      padding: 10px 5px 10px 5px;
-      margin-bottom: 10px;
-  }
-  
-  .cont_utilities table{
-      text-align: center;
-      width: 99%;
-      border-top-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      background-color: var(--back-color);
-  }
-  
-  .cont_utilities a{
-      padding: 1px 5px 1px 5px;
-      color: var(--white-color);
-      border: 2px solid var(--white-color);
-      background-color: var(--main-color);
-      border-top-right-radius: 20px;
-      border-bottom-left-radius: 20px;
-      transition: all 200ms ease;
-  }
-  
-  .cont_utilities a:hover{
-      background-color: var(--light-color);
-      color: black;
-  }
-  .cont_historial{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      border-top-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      border: 2px solid var(--light-color);
-      background-color: rgba(207, 194, 150, 0.6);
-      padding: 5px;
-      margin-bottom: 10px;
-  }
-  
-  .cont_historial_div1{
-      width: 99%;
-      height: 99%;
-      border-top-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      background-color: var(--back-color);
-  }
-  
-  .cont_historial table, .cont_historial td{
-      border: 2px solid var(--light-hover-color);
-  }
-  
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 2px solid var(--light-color);
+    background-color: rgba(207, 194, 150, 0.6);
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.N_A h2{
+    width: 99%;
+    height: 99%;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: var(--back-color);
+}
+
+.cont_bank_data{
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 2px solid var(--light-color);
+    background-color: rgba(207, 194, 150, 0.6);
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.cont_bank_data_bg{
+    width: 99%;
+    height: 99%;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: var(--back-color);
+}
+
+.cont_bank_card{
+    margin-left: 10px;
+}
+
+.cont_balance{
+    display: flex;
+    margin-left: 10px;
+}
+
+.cont_balance_int{
+    flex:2;
+}
+
+.cont_balance a{
+    padding: 10px;
+    margin-right: 30px;
+    color: var(--white-color);
+    border: 2px solid var(--white-color);
+    background-color: var(--main-color);
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    transition: all 200ms ease;
+}
+
+.cont_balance a:hover{
+    background-color: var(--light-color);
+    color: black;
+}
+
+.cont_utilities{
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 2px solid var(--light-color);
+    background-color: rgba(207, 194, 150, 0.6);
+    padding: 10px 5px 10px 5px;
+    margin-bottom: 10px;
+}
+
+.cont_utilities table{
+    text-align: center;
+    width: 99%;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: var(--back-color);
+}
+
+.cont_utilities a{
+    padding: 1px 5px 1px 5px;
+    color: var(--white-color);
+    border: 2px solid var(--white-color);
+    background-color: var(--main-color);
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    transition: all 200ms ease;
+}
+
+.cont_utilities a:hover{
+    background-color: var(--light-color);
+    color: black;
+}
+.cont_historial{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 2px solid var(--light-color);
+    background-color: rgba(207, 194, 150, 0.6);
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.cont_historial_div1{
+    width: 99%;
+    height: 99%;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: var(--back-color);
+}
+
+.cont_historial table, .cont_historial td{
+    border: 2px solid var(--light-hover-color);
+}

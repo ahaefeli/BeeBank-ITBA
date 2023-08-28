@@ -9,4 +9,3 @@ acpbtn.addEventListener("click", () => {
 cancel.addEventListener("click", () => {
     confirm("Esta seguro que quiere desechar este prestamo en BEEBANK")
 });
-

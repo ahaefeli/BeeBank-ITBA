@@ -13,6 +13,18 @@
   CSS Main | Para modificar el contenido hacerlo en otro CSS
 */
 
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--main-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--light-color);
+}
+
 body {
   display: flex;
   background-color: var(--back-color);
@@ -33,7 +45,8 @@ a {
   text-decoration: none;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   transition: color 0.2s;
   color: var(--light-hover-color);
   text-decoration: none;
@@ -43,12 +56,13 @@ a:hover, a:focus {
   width: 140px;
 }
 
-.logo:hover, .logo:focus {
+.logo:hover,
+.logo:focus {
   transition: all 0.3s ease;
   opacity: 0.8;
 }
 
-.logo:not(:hover){
+.logo:not(:hover) {
   transition: all 0.3s ease;
   opacity: 1;
 }
@@ -132,7 +146,8 @@ nav>ul>li {
   border-width: 2px;
 }
 
-.general-btn:hover, .general-btn:focus {
+.general-btn:hover,
+.general-btn:focus {
   transition: all 0.5s ease;
   background-color: var(--back-color);
   border-style: solid;
@@ -215,12 +230,12 @@ nav>ul>li {
     text-align: center;
   }
 
-  .responsive-footer > a {
+  .responsive-footer>a {
     padding: 0px;
     margin: 5px;
   }
 
-  .responsive-footer > p {
+  .responsive-footer>p {
     padding: 0px;
     margin: 5px;
   }

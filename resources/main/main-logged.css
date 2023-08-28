@@ -1,0 +1,232 @@
+/* Variables de colores */
+:root {
+    --main-color: #222831;
+    --back-color: #393E46;
+    --back-light-color: #a3a4a5;
+    --light-color: #F7C873;
+    --light-hover-color: #dbaf5c;
+    --button-hover-color: #d8aa56;
+    --white-color: #EEEEEE;
+}
+
+/*
+    CSS Main | Para modificar el contenido hacerlo en otro CSS
+  */
+  .content {
+    margin: 0px 0px 50px 0px;
+  }
+  
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+body::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--main-color);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--light-color);
+}
+
+
+body {
+    display: flex;
+    background-color: var(--back-color);
+    color: var(--white-color);
+    font-family: 'Raleway', sans-serif;
+    margin: 0px;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+i {
+    color: var(--back-light-color);
+    font-size: 25px;
+    padding-right: 20px;
+}
+
+
+a {
+    font-weight: 500;
+    color: var(--back-light-color);
+    text-decoration: none;
+}
+
+
+a:hover,
+a:hover i {
+    transition: color 0.2s;
+    color: var(--light-hover-color);
+}
+
+
+.cont_main {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    min-height: 100vh;
+}
+
+nav {
+    width: 100%;
+    height: 100%;
+}
+
+.navegation {
+    display: flex;
+    background-color: var(--main-color);
+    flex-direction: column;
+    margin: 0px;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+nav>ul {
+    display: flex;
+    align-items: center;
+}
+
+nav>ul>li {
+    display: block;
+    margin: 12% 0%;
+    width: 100%;
+}
+
+nav>ul>li:last-child {
+    margin-top: auto;
+}
+
+.a-nav {
+    display: block;
+}
+
+.general-btn {
+    position: relative;
+    background-color: var(--light-color);
+    border-radius: 30px;
+    padding: 0.7rem;
+    color: var(--main-color);
+    border-style: solid;
+    border-color: var(--light-color);
+    border-width: 2px;
+}
+
+.general-btn:hover {
+    background-color: var(--back-color);
+    transition: 0.5s;
+    border-style: solid;
+    border-color: var(--button-hover-color);
+    border-width: 2px;
+}
+
+/* Animacion */
+
+.li-nav {
+    position: relative;
+    padding: 0 0.1rem;
+}
+
+.li-nav::after {
+    content: "";
+    position: absolute;
+    background-color: var(--light-color);
+    height: 1px;
+    width: 0;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.li-nav:hover::after {
+    width: 100%;
+}
+
+
+/* LOGO */
+.logo {
+    display: inline-block;
+    right: 37%;
+    top: 0;
+    height: 4rem;
+    display: flex;
+    margin: 10px auto;
+    z-index: 99;
+}
+
+.bbank-logo {
+    padding-top: 10px;
+    width: 10rem;
+}
+
+.bbank-logo:hover {
+    transition: all 0.5s ease;
+    opacity: 0.8;
+}
+
+.bbank-logo:not(:hover) {
+    transition: all 0.5s ease;
+    opacity: 1;
+}
+
+/* ***************** */
+/* Responsive Design */
+/* ***************** */
+
+@media screen and (max-width: 700px) {
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .logo {
+        display: block;
+        width: 100%;
+        padding: 0% 40%;
+        background-color: var(--main-color);
+    }
+
+    .cont_main {
+        flex-direction: column;
+    }
+
+    .navegation {
+        display: block;
+        padding-top: 100px;
+    }
+
+    .navegation nav {
+        height: 100%;
+    }
+
+    nav>ul {
+        display: block;
+        align-items: center;
+    }
+
+    nav>ul>li {
+        display: block;
+        margin: 0;
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    nav>ul>li:last-child {
+        margin-top: 30px;
+    }
+
+    nav {
+        font-size: 22px;
+    }
+}
