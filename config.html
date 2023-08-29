@@ -19,13 +19,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
   <!--Fin links de librerias-->
   <link rel="stylesheet" href="resources/main/main-logged.css" />
-  <link rel="stylesheet" href="resources/dedicated/css/conversor.css" />
+  <link rel="stylesheet" href="resources/dedicated/css/config.css" />
 </head>
 
 <body>
+
+
+
   <div class="logo-mobile">
     <section class="logo-mobile">
       <a href="l-home.html"><img src="resources/beebank-logo-claro.png" class="bbank-logo" alt="Beebank"
@@ -44,7 +46,7 @@
           </li>
           <li class="li-nav"><a href="l-loans.html" class="a-nav"><i class="bi bi-bank"></i>Préstamos</a></li>
           <li class="li-nav"><a href="support.html" class="a-nav"><i class="bi bi-shield-check"></i>Soporte</a></li>
-          <li class="li-nav"><a href="config.html" class="a-nav"><i class="bi bi-gear"></i>Configuración</a></li>
+          <li class="li-nav"><a href="#" class="a-nav"><i class="bi bi-gear"></i>Configuración</a></li>
           <li class="li-nav"><a href="#" class="a-nav"><i class="bi bi-box-arrow-left"></i>Cerrar Sesión</a></li>
         </ul>
       </nav>
@@ -53,49 +55,56 @@
     <div class="content">
       <div class="logo">
         <section class="logo">
-          <a href="l-home.html"><img src="resources/beebank-logo-claro.png" class="bbank-logo" alt="Beebank"
+          <a href="#"><img src="resources/beebank-logo-claro.png" class="bbank-logo" alt="Beebank"
               draggable="false"></a>
         </section>
       </div>
-      <!-- CONTENIDO -->
+
       <div class="page-content">
-        <div class="form-container">
-          <select id="currency">
-            <option value="ARS">Peso Argentino</option>
-            <option value="USD">Dólar Oficial</option>
-            <option value="EUR">Euro Oficial</option>
-            <option value="UYU">Peso Uruguayo</option>
-          </select>
-          <input type="number" id="amount" class="amount" placeholder="Monto">
-          <button id="convert" class="general-btn">Convertir</button>
-        </div>
-
-        <div id="result">
-          <ul class="number-format">
-            <div>
-              <label><img src="resources/flags/ars.png" draggable="false" class="flag">Pesos Argentinos:</label>
-              <li id="ARS">$0.00</li>
+        <!-- CONTENIDO -->
+        <main>
+          <div class="container">
+            <h3>Configuración</h3>
+            <div class="accordion">
+              <label for="accordion1-button-personal-info">Información personal<i class="bi bi-chevron-down"></i></label>
+              <div class="accordion-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquam dolorem ut assumenda cum
+                  adipisci veniam ratione fugit, aspernatur vero, illo labore voluptas similique ipsum suscipit quas
+                  laborum nobis officiis.</p>
+              </div>
             </div>
-            <div>
-              <label><img src="resources/flags/usd.png" draggable="false" class="flag">Dólar Oficial:</label>
-              <li id="USD">$0.00</li>
+            <div class="accordion">
+              <label for="accordion1-button-account">Datos de tu cuenta<i class="bi bi-chevron-down"></i></label>
+              <div class="accordion-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquam dolorem ut assumenda
+                  cum adipisci veniam ratione fugit, aspernatur vero, illo labore voluptas similique ipsum suscipit
+                  quas laborum nobis officiis.</p>
+              </div>
             </div>
-            <div>
-              <label><img src="resources/flags/eur.png" draggable="false" class="flag">Euro Oficial:</label>
-              <li id="EUR">$0.00</li>
+            <div class="accordion">
+              <label for="accordion1-button-security">Seguridad<i class="bi bi-chevron-down"></i></label>
+              <div class="accordion-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquam dolorem ut assumenda
+                  cum adipisci veniam ratione fugit, aspernatur vero, illo labore voluptas similique ipsum suscipit
+                  quas laborum nobis officiis.</p>
+              </div>
             </div>
-            <div>
-              <label><img src="resources/flags/uyu.png" draggable="false" class="flag">Pesos Uruguayos:</label>
-              <li id="UYU">$0.00</li>
+            <div class="accordion">
+              <label for="accordion1-button-cards">Tarjetas<i class="bi bi-chevron-down"></i></label>
+              <div class="accordion-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquam dolorem ut
+                  assumenda cum adipisci veniam ratione fugit, aspernatur vero, illo labore voluptas similique
+                  ipsum suscipit quas laborum nobis officiis.</p>
+              </div>
             </div>
-          </ul>
-        </div>
+          </div>
       </div>
+      </main>
+      <!-- FIN CONTENIDO -->
+
     </div>
-
   </div>
-
-  <script src="resources/dedicated/js/conversor.js"></script>
+  </div>
 </body>
 
 </html>
