@@ -1,42 +1,7 @@
-/* Logo bbank */
-
-.logo-mobile {
-  display: none;
-}
-
-
-.logo {
-  height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.bbank-logo {
-  padding-top: 10px;
-  width: 10rem;
-}
-
-.bbank-logo:hover {
-  transition: all 0.5s ease;
-  opacity: 0.8;
-}
-
-.bbank-logo:not(:hover) {
-  transition: all 0.5s ease;
-  opacity: 1;
-}
-
-.bbank-logo {
-  width: 10rem;
-}
-
+/* balance */
 .page-content {
   width: 100%;
 }
-
-
-/* balance */
 
 .balance {
   display: flex;
@@ -205,21 +170,5 @@
   .contacts .Transferencias {
     padding-right: 5rem;
   }
-
-
-  .logo {
-    display: none;
-  }
-
-  .logo-mobile {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    height: 4rem;
-    z-index: 99;
-  }
-
-
 
 }

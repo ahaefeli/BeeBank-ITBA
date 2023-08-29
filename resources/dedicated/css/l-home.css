@@ -52,18 +52,9 @@
 }
 
 .cont_balance a{
-    padding: 10px;
     margin-right: 30px;
-    color: var(--white-color);
-    border: 2px solid var(--white-color);
-    background-color: var(--main-color);
-    transition: all 200ms ease;
 }
 
-.cont_balance a:hover{
-    background-color: var(--light-color);
-    color: black;
-}
 
 .cont_utilities{
     border: 2px solid var(--light-color);

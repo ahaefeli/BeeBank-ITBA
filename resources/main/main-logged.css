@@ -4,7 +4,7 @@
     --back-color: #393e46;
     --back-light-color: #a3a4a5;
     --light-color: #f7c873;
-    --light-hover-color: #937234;
+    --light-hover-color: #c09a53;
     --button-hover-color: #d8aa56;
     --white-color: #eeeeee;
     --bg-right-color: #626364;
@@ -25,7 +25,7 @@
     align-items: center;
     gap: 20px;
     flex: 1;
-    margin: 0px 0px 50px 0px;
+    margin: 0px;
 }
 
 body::-webkit-scrollbar {
@@ -118,7 +118,8 @@ nav>ul>li:last-child {
     display: block;
 }
 
-.general-btn {
+.general-btn:not(:hover) {
+    transition: all 0.5s ease;
     position: relative;
     background-color: var(--light-color);
     border-radius: 30px;
@@ -130,11 +131,14 @@ nav>ul>li:last-child {
 }
 
 .general-btn:hover {
+    transition: all 0.5s ease;
     background-color: var(--back-color);
-    transition: 0.5s;
     border-style: solid;
     border-color: var(--button-hover-color);
     border-width: 2px;
+    color: var(--light-color);
+    border-radius: 30px;
+    padding: 0.7rem;
 }
 
 /* Animacion */
@@ -161,15 +165,17 @@ nav>ul>li:last-child {
 
 
 /* LOGO */
-.logo {
-    display: inline-block;
-    right: 37%;
-    top: 0;
+.logo-mobile {
+    display: none;
+  }
+  
+  
+  .logo {
     height: 4rem;
     display: flex;
-    margin: 10px auto;
-    z-index: 99;
-}
+    justify-content: center;
+    align-items: center;
+  }
 
 .bbank-logo {
     padding-top: 10px;
@@ -191,6 +197,18 @@ nav>ul>li:last-child {
 /* ***************** */
 
 @media screen and (max-width: 768px) {
+    .logo {
+        display: none;
+      }
+    
+      .logo-mobile {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height: 4rem;
+        z-index: 99;
+      }
     body {
         overflow-x: hidden;
       }
@@ -198,13 +216,6 @@ nav>ul>li:last-child {
     * {
         margin: 0;
         padding: 0;
-    }
-
-    .logo {
-        display: block;
-        width: 100%;
-        padding: 0% 40%;
-        background-color: var(--main-color);
     }
 
     .cont_main {
