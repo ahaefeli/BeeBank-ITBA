@@ -19,18 +19,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  
   <!--Fin links de librerias-->
+  
   <link rel="stylesheet" href="resources/main/main-logged.css" />
-  <link rel="stylesheet" href="resources/dedicated/css/loans.css" />
+  <link rel="stylesheet" href="resources/dedicated/css/l-loans.css" />
+  
 </head>
 
 <body>
 
   <div class="logo-mobile">
     <section class="logo-mobile">
-      <a href="l-home.html"><img src="resources/beebank-logo-claro.png" class="bbank-logo" alt="Beebank"
-          draggable="false"></a>
+      <a href="l-home.html"><img src="resources/beebank-logo-claro.png" class="bbank-logo" alt="Beebank" draggable="false"></a>
     </section>
   </div>
   <div class="cont_main">
@@ -49,101 +49,85 @@
         </ul>
       </nav>
     </div>
+  
 
+    <!-- CONTENIDO -->
+  
     <div class="content hidden-block">
+
       <div class="logo">
         <section class="logo">
-          <a href="l-home.html"><img src="resources/beebank-logo-claro.png" class="bbank-logo" alt="Beebank"
-              draggable="false"></a>
+          <a href="l-home.html"><img src="resources/beebank-logo-claro.png" class="bbank-logo" alt="Beebank" draggable="false"></a>
         </section>
       </div>
-      <!-- CONTENIDO -->
-      <div class="page-content">
-        <section>
-          <div>
-            <ul class="top-btns">
-              <li class="select">
-                <select name="select">
-                  <option value="1">PRESTAMO PERSONAL</option>
-                  <option value="2">PRESTAMO SALUD</option>
-                  <option value="3">PRESTAMO EDUCACIONAL</option>
-                  <option value="4">PRESTAMO JUBILATORIO 50%</option>
-                  <option value="5" selected>Seleccione la linea de prestamo</option>
-                </select>
-              </li>
 
-              <li class="select">
-                <select name="select">
-                  <option value="1">$10.000</option>
-                  <option value="2">$50.000</option>
-                  <option value="3">$100.000</option>
-                  <option value="4">$500.000</option>
-                  <option value="5" selected>Seleccione entre los importes disponibles</option>
-                </select>
-              </li>
+      <ul class="top-btns">
+        <li class="select">
+           <select name="select">
+             <option value="1">PRESTAMO PERSONAL</option>
+             <option value="2">PRESTAMO SALUD</option>
+             <option value="3">PRESTAMO EDUCACIONAL</option>
+             <option value="4">PRESTAMO JUBILATORIO 50%</option>
+             <option value="5" selected>Seleccione la linea de prestamo</option>
+           </select>
+        </li>
 
-              <li class="select">
-                <select name="select">
-                  <option value="1">Pago de deudas</option>
-                  <option value="2">Educacion</option>
-                  <option value="3">Pago de alquiler</option>
-                  <option value="4">Pago de servicios</option>
-                  <option value="5" selected>Seleccione Destino</option>
-                </select>
-              </li>
+        <li class="select">
+          <select name="select">
+            <option value="1">$10.000</option>
+            <option value="2">$50.000</option>
+            <option value="3">$100.000</option>
+            <option value="4">$500.000</option>
+            <option value="5" selected>Seleccione entre los importes disponibles</option>
+          </select>
+        </li>
 
-              <li class="select">
-                <div><button class="general-btn" name="accept-btn" draggable="false"> Aceptar</button></div>
-                <div class="cancel-btn"><a class="li-nav" name="cancel-btn" draggable="false">Cancelar</a></div>
-              </li>
+        <li class="select">
+          <select name="select">
+            <option value="1">Pago de deudas</option>
+            <option value="2">Educacion</option>
+            <option value="3">Pago de alquiler</option>
+            <option value="4">Pago de servicios</option>
+            <option value="5" selected>Seleccione Destino</option>
+          </select>
+        </li>
+               
+        <li class="select"> 
+          <button class="acept-btn"> Aceptar</button> <span><button class="cancel-btn">Cancelar</button></span>
+        </li>
 
-              </li>
+      </ul>
+      <section class="loans-calculator">
 
-            </ul>
-          </div>
-
-          <section class="top-btns">
-            <table class="h-desing" id="desing">
-              <th class="th-1">Tus prestamos:</th>
-              <tr>
-                <th>Fecha</th>
-                <th>ID</th>
-                <th>Linea</th>
-                <th>Importe</th>
-                <th>Motivo</th>
-              </tr>
-              <tr>
-                <td>21/08/2023</td>
-                <td>Beebank ORG</td>
-                <td>PERSONAL</td>
-                <td>$10.000</td>
-                <td>Educacion</td>
-              </tr>
-              <tr>
-                <td>01/09/2023</td>
-                <td>Beebank ORG</td>
-                <td>JUBILATORIO</td>
-                <td>$50.000</td>
-                <td>Pago alquiler</td>
-              </tr>
-              <tr>
-                <td>10/09/2023</td>
-                <td>Beebank ORG &nbsp</td>
-                <td>EDUCACIONAL</td>
-                <td>$50.000</td>
-                <td>Pago deudas</td>
-              </tr>
-            </table>
-          </section>
-
-        </section>
-      </div>
+        <div class="calculator-c">
+          <ul class="input-boxes">
+              <label for="loan">Monto del prestamo</label>
+              <li class="loanamount"><input type="number" id="loanamount"></li>
+              <label for="anual">Interes(%)</label>
+              <li class="anualinterest"><input type="number" id="anualinterest"></li>
+              <label for="time">Meses de duracion</label>
+              <li class="timeinmonths"><input type="number" id="timeinmonths"></li>
+       
+              <button onclick="loancalculator()" class="accept-btn"> Calcular </button>
+       
+       
+              <li class="result1">Valor del prestamo:</li><span class="resultText number-format" id="valuep"></span>
+       
+              <li class="result2">Abono por mes:</li><span class="resultText number-format" id="monthlypay"></span>
+       
+              <li class="result3">Total a pagar:</li><span class="resultText number-format" id="totalpayment"></span>
+            
+          </ul>
+                
+        </div>
+       
+      </section>
     </div>
-
   </div>
+       <!--SECTION CONTENIDO DE LA PAGINA PRESTAMOS-->>
+     <script src="resources/dedicated/js/loans.js"></script>
+     <script src="resources/main/main-js-animation.js"></script>
 
-  <script src="resources/dedicated/js/loans.js"></script>
-<script src="resources/main/main-js-animation.js"></script>
 </body>
 
 </html>
