@@ -46,7 +46,14 @@ select {
   width: 100%;
 }
 
+.cancel-btn, .cancel-btn > .li-nav {
+  text-align: center;
+  color: var(--light-color);
+}
 
+.cancel-btn > a:hover{
+  cursor: pointer;
+}
   
 .th-1 {
   font-size: 1.2rem;

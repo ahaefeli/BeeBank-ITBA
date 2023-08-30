@@ -260,6 +260,10 @@ nav>ul>li {
     text-align: center;
   }
 
+.register-btn:not(:hover){
+  border-radius: 0px;
+}
+
   .register-btn:hover {
     transition: color 0.5s;
     color: var(--light-hover-color);
