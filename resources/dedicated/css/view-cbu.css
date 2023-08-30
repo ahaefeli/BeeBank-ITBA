@@ -61,6 +61,7 @@
     color: white;
     position: relative;
     transition: all 200ms ease;
+    z-index: 99;
 }
 
 .CBU_button:hover{

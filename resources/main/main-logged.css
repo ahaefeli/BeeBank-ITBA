@@ -15,19 +15,25 @@
 
 
 /* Loading Animation  */
-.hidden-div {
+.hidden-block, .hidden-flex {
     display: none;
     opacity: 0;
     height: 0;
     overflow: hidden;
-    transition: all 1s ease;
+    transition: all 0.8s ease;
   }
   
-  .visible {
+  .visible-flex {
     display: flex;
     opacity: 1;
     height: auto;
-    transition: all 1s ease;
+    z-index: 0;
+  }
+
+  .visible-block {
+    display: block;
+    opacity: 1;
+    height: auto;
   }
 
 
@@ -118,6 +124,7 @@ nav {
     width: 15%;
     min-width: 200px;
     height: 100%;
+    z-index: 1;
 }
 
 nav>ul {

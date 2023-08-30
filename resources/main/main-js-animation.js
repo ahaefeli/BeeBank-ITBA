@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const container = document.querySelector('.hidden-div');
-        container.classList.add('visible')
+    const containerFlex = document.querySelector('.hidden-flex');
+    if (containerFlex != null) {
+        containerFlex.classList.add('visible-flex')
+    } else {
+        const containerBlock = document.querySelector('.hidden-block');
+        containerBlock.classList.add('visible-block')
+    }
 });
 
