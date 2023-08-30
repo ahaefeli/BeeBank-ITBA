@@ -1,3 +1,6 @@
+.logo-mobile {
+  display: none;
+}
 
 /* LOANS*/
 
@@ -178,21 +181,29 @@
         margin: 0;
         padding: 0;
     }
-
     .logo {
-        display: block;
-        width: 100%;
-        padding: 0% 40%;
-        background-color: var(--main-color);
+      display: none;
+    }
+  
+    .logo-mobile {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      height: 4rem;
+      z-index: 99;
     }
 
     .cont_main {
         flex-direction: column;
     }
-
+    .top-btns {
+      width: 80%;
+    }
     .navegation {
         display: block;
-        padding-top: 100px;
+        padding-top: 50px;
+        margin-bottom: 30px;
     }
 
     .navegation nav {
