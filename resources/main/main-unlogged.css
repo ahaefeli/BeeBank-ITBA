@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&family=Roboto:wght@300;400&display=swap');
 
-/* Variables de colores */
+/* Colors */
 :root {
   --main-color: #222831;
   --back-color: #393e46;
@@ -13,8 +13,9 @@
   --bg-left-color: #393e46;
   }
 
+
 /*
-  CSS Main | Para modificar el contenido hacerlo en otro CSS
+  CSS Main
 */
 .number-format {
   font-family: 'Roboto', sans-serif;
@@ -141,7 +142,8 @@ nav>ul>li {
   align-items: flex-end;
 }
 
-.general-btn {
+.general-btn:not(:hover) {
+  transition: all 0.5s ease;
   position: relative;
   background-color: var(--light-color);
   border-radius: 30px;
@@ -152,22 +154,18 @@ nav>ul>li {
   border-width: 2px;
 }
 
-.general-btn:hover,
-.general-btn:focus {
+.general-btn:hover {
   transition: all 0.5s ease;
   background-color: var(--back-color);
   border-style: solid;
   border-color: var(--button-hover-color);
+  border-width: 2px;
+  color: var(--light-color);
+  border-radius: 30px;
+  padding: 0.7rem;
 }
 
-.general-btn:not(:hover) {
-  transition: all 0.3s ease;
-  background-color: var(--light-color);
-  color: var(--main-color);
-  border-color: var(--light-color);
-}
-
-/* Animacion */
+/* Animation */
 
 .a-nav {
   position: relative;
