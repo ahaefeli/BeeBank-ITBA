@@ -52,3 +52,9 @@
     height: 100px;
     width: 100%;
 }
+
+@media only screen and (max-width:786px){
+    .page-content{
+    padding: 30px 7%;
+    }
+} 
