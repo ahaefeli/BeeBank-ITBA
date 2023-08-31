@@ -45,7 +45,7 @@
 }
 
 
-.accordion:hover .accordion-content {
+.show-content .accordion-content {
     transition: all 300ms ease;
     scale: 1;
     overflow: visible;

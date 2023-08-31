@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("Por favor confirme la transferencia antes de proseguir")
         }
         else{
-            alert("Transferencia exitosa!!");
+            alert("¡Transferencia exitosa!");
         }
     });
 });

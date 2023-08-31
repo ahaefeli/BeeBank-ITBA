@@ -7,7 +7,7 @@
     border: 2px solid var(--light-color);
     background-color: rgba(207, 194, 150, 0.6);
     padding: 5px;
-    margin-bottom: 10px;
+    margin: 10px 0px;
 }
 
 .N_A h2{
@@ -116,7 +116,7 @@
     border: 2px solid var(--light-color);
     background-color: rgba(207, 194, 150, 0.6);
     padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .cont_historial_div1{
