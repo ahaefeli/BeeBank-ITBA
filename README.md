@@ -1,4 +1,3 @@
-# BeeBank-ITBA
 README.me
 
 Proyecto
