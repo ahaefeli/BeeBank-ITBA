@@ -11,6 +11,10 @@ import Register from './pages/register';
 import Error from './pages/error';
 
 import Home from './pages/logged/home';
+import Cuentas from './pages/logged/cuentas';
+import Transferencias from './pages/logged/transferencias';
+import Prestamos from './pages/logged/prestamos';
+import Configuracion from './pages/logged/configuracion';
 
 
 export default function App() {
@@ -26,10 +30,10 @@ export default function App() {
           <Route exact path='/registro' element={<Register />} />
   
           <Route exact path='/home' element={<Home />} />
-          <Route exact path='/cuentas' element={<Register />} />
-          <Route exact path='/transferencias' element={<Register />} />
-          <Route exact path='/prestamos' element={<Register />} />
-          <Route exact path='/configuracion' element={<Register />} />
+          <Route exact path='/cuentas' element={<Cuentas />} />
+          <Route exact path='/transferencias' element={<Transferencias />} />
+          <Route exact path='/prestamos' element={<Prestamos />} />
+          <Route exact path='/configuracion' element={<Configuracion />} />
 
   
           <Route path='*' element={<Error />} />
