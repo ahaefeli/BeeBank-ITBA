@@ -10,6 +10,9 @@ import Register from './pages/register';
 
 import Error from './pages/error';
 
+import Home from './pages/logged/home';
+
+
 export default function App() {
   return (
     <div className="App">
@@ -22,6 +25,12 @@ export default function App() {
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/registro' element={<Register />} />
   
+          <Route exact path='/home' element={<Home />} />
+          <Route exact path='/cuentas' element={<Register />} />
+          <Route exact path='/transferencias' element={<Register />} />
+          <Route exact path='/prestamos' element={<Register />} />
+          <Route exact path='/configuracion' element={<Register />} />
+
   
           <Route path='*' element={<Error />} />
         </Routes>

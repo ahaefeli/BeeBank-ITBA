@@ -1,6 +1,15 @@
 /* #################################################
             PUBLIC NAV BAR
 ################################################# */
+.logged-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+  margin: 0px;
+}
 
 .public-logo {
   width: 140px;

@@ -3,7 +3,7 @@ import ErrorPage from '../components/errorPage'
 
 export default function Error() {
   return (
-    <div classname="ReactContent">
+    <div className="ReactContent">
       <PublicNavBar/>
       <ErrorPage/>
     </div>
