@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-// Import Pages
+//## Import Pages ##
+// Unlogged pages
 import Index from './pages/home';
 import Support from './pages/support';
 import Faq from './pages/faq';
@@ -10,6 +11,7 @@ import Register from './pages/register';
 
 import Error from './pages/error';
 
+// Logged pages
 import Home from './pages/logged/home';
 import Cuentas from './pages/logged/cuentas';
 import Transferencias from './pages/logged/transferencias';

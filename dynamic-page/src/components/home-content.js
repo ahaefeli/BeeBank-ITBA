@@ -1,10 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import execSlider from '../js/home-functionality';
 
 export default function HomeContent(){
+
+    let [executeEffect, setExecutEffect] = useState(true);
     useEffect(() => {
-        execSlider()
-      });
+        if (executeEffect) {
+        execSlider();
+        setExecutEffect = false;  }
+    }, [executeEffect]);
+    
     return(
         <div>
         <div className="homeWelcome">
@@ -90,3 +95,8 @@ export default function HomeContent(){
     </div>    
     )
 }
+
+
+
+
+
