@@ -50,3 +50,20 @@ color: var(--light-color);
     width: 100%;
     margin-bottom: 20px;
 }
+
+
+@media only screen and (max-width:768px){
+    main{
+        width: 100%;
+    }
+
+    .separatorContainer{
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .utilities{
+        flex-direction: column;
+        gap: 20px;
+    }
+}

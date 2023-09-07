@@ -1,10 +1,10 @@
-  import { useEffect, useState } from 'react';
-  import LoggedNavBar from '../../components/loggedNavBar';
+import { useEffect, useState } from 'react';
+import LoggedNavBar from '../../components/loggedNavBar';
 import LoggedAccountsContent from '../../components/logged/accounts-content';
 import Logo from '../../components/logged/logo'
 import accountsFunctions from '../../js/accounts-functionality';
 
-import '../css/dedicated/accounts-content.css';
+import '../css/dedicated/accounts-content.css'
 
 export default function Cuentas() {
     let [executeEffect, setExecutEffect] = useState(true);
@@ -16,10 +16,10 @@ export default function Cuentas() {
     
   return (
     <div className='ReactContent'>
-      <Logo mobile={true}/>
+      <Logo mobile={true} darkLogo={false}/>
       <LoggedNavBar />
       <div className='logged-content'>
-      <Logo mobile={false}/>
+      <Logo mobile={false} darkLogo={false}/>
       <LoggedAccountsContent />
       </div>
     </div>

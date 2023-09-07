@@ -7,10 +7,10 @@ import '../css/dedicated/transfers-content.css';
 export default function Transferencias() {
   return (
     <div className='ReactContent'>
-      <Logo mobile={true}/>
+      <Logo mobile={true} darkLogo={false}/>
       <LoggedNavBar />
       <div className='logged-content'>
-      <Logo mobile={false}/>
+      <Logo mobile={false} darkLogo={true}/>
       <LoggedTransfersContent />
       </div>
     </div>

@@ -40,6 +40,14 @@ label {
     padding-left: 5px;
 }
 
+.passwordErrorMessage {
+    color: var(--back-light-color);
+    text-align: center;
+    text-decoration: underline;
+    font-size: 18px;
+    margin: 5px; /* Espacio entre el input y el mensaje de error */
+  }
+
 @media screen and (max-width: 900px) {
     
     .login {

@@ -7,10 +7,10 @@ import '../css/dedicated/loans-content.css';
 export default function Loans() {
   return (
     <div className='ReactContent'>
-      <Logo mobile={true}/>
+      <Logo mobile={true} darkLogo={false}/>
       <LoggedNavBar />
       <div className='logged-content'>
-      <Logo mobile={false}/>
+      <Logo mobile={false} darkLogo={false}/>
       <LoggedLoansContent />
       </div>
     </div>

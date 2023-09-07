@@ -1,8 +1,26 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import CbuPopUp from './cbu-popup';
+import TransferPopUp from './transfer-popup';
 
-export default function LoggedHomeContent() {
+export default function LoggedHomeContent(props) {
+
+  const [cbuPopUp, setcbuPopUp] = useState(false);
+  const [transferPopUp, settransferPopUp] = useState(false);
+  
+  function turnTransferPopUp(){
+    settransferPopUp(!transferPopUp);
+  }
+
+  function turnCBUPopUp(){
+    setcbuPopUp(!cbuPopUp);
+  };
   return (
     <main>
+      <CbuPopUp show={cbuPopUp}/>
+      <TransferPopUp show={transferPopUp}/>
+      <div className={cbuPopUp?"overlay":"overlay-hide"} onClick={turnCBUPopUp}/>
+      <div className={transferPopUp?"overlay":"overlay-hide"} onClick={turnTransferPopUp}/>
       <div className="separatorContainer">
         <div className="username">
           <h2>Juan Manuel Perez</h2>
@@ -21,8 +39,8 @@ export default function LoggedHomeContent() {
             </div>
           </div>
           <div className="bankData__buttons">
-            <Link className="button--general" to="/cbu" draggable="false">CBU</Link>
-            <Link className="button--general" to="/transferir" draggable="false">Transferencia</Link>
+            <button className="button--general" onClick={turnCBUPopUp} draggable="false">CBU</button>
+            <button className="button--general" onClick={turnTransferPopUp} draggable="false">Transferir</button>
           </div>
 
         </section>

@@ -7,10 +7,10 @@ import '../css/dedicated/config-content.css';
 export default function Home() {
   return (
     <div className='ReactContent'>
-      <Logo mobile={true}/>
+      <Logo mobile={true} darkLogo={false}/>
       <LoggedNavBar />
       <div className='logged-content'>
-      <Logo mobile={false}/>
+      <Logo mobile={false} darkLogo={false}/>
       <LoggedConfigContent />
       </div>
     </div>
