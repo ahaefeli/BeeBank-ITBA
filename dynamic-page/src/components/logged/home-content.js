@@ -2,11 +2,15 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import CbuPopUp from './cbu-popup';
 import TransferPopUp from './transfer-popup';
+import CurrencyConverter from './conversor-popup'
+import ContactsPopUp from './contacts-popup'
 
 export default function LoggedHomeContent(props) {
 
   const [cbuPopUp, setcbuPopUp] = useState(false);
   const [transferPopUp, settransferPopUp] = useState(false);
+  const [conversorPopUp, setconversorPopUp] = useState(false);
+  const [contactsPopUp, setcontactsPopUp] = useState(false);
   
   function turnTransferPopUp(){
     settransferPopUp(!transferPopUp);
@@ -15,12 +19,30 @@ export default function LoggedHomeContent(props) {
   function turnCBUPopUp(){
     setcbuPopUp(!cbuPopUp);
   };
+
+  function turnConversorPopUp(event){
+    event.preventDefault();
+    setconversorPopUp(!conversorPopUp);
+  };
+
+  function turnContactsPopUp(event){
+    event.preventDefault();
+    setcontactsPopUp(!contactsPopUp);
+  };
+
+
   return (
+    <div>
+    <CbuPopUp show={cbuPopUp}/>
+    <TransferPopUp show={transferPopUp}/>
+    <CurrencyConverter show={conversorPopUp}/>
+    <ContactsPopUp show={contactsPopUp}/>
     <main>
-      <CbuPopUp show={cbuPopUp}/>
-      <TransferPopUp show={transferPopUp}/>
+
       <div className={cbuPopUp?"overlay":"overlay-hide"} onClick={turnCBUPopUp}/>
       <div className={transferPopUp?"overlay":"overlay-hide"} onClick={turnTransferPopUp}/>
+      <div className={conversorPopUp?"overlay":"overlay-hide"} onClick={turnConversorPopUp}/>
+      <div className={contactsPopUp?"overlay":"overlay-hide"} onClick={turnContactsPopUp}/>
       <div className="separatorContainer">
         <div className="username">
           <h2>Juan Manuel Perez</h2>
@@ -48,8 +70,8 @@ export default function LoggedHomeContent(props) {
 
       <div className="separatorContainer">
       <section className="utilities">
-        <Link className="public-a-nav" to="/conversor" draggable="false">Conversor de divisas</Link>
-        <Link className="public-a-nav" to="/agenda" draggable="false">Agenda</Link>
+        <Link className="public-a-nav" onClick={turnConversorPopUp} draggable="false">Conversor de divisas</Link>
+        <Link className="public-a-nav" onClick={turnContactsPopUp} draggable="false">Agenda</Link>
         <Link className="public-a-nav" to="/tarjetas" draggable="false">Administrar tarjetas</Link>
       </section>
     </div>
@@ -101,5 +123,7 @@ export default function LoggedHomeContent(props) {
       </section>
 </div>
     </main >
+    </div>
+
   )
 }
