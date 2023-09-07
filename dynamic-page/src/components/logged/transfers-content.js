@@ -9,11 +9,11 @@ export default function LoggedTransfersContent() {
             <li className="balance-amount number-format">450.200,<span className="sub-text">50</span></li>
           </ul>
         </div>
-        <ul className="contact-search">
+        <ul className="transfer-contact-search">
           <li className="contact-search-text"><a href="#">Tiene Beebank</a></li>
           <li className="contact-search-text"><a href="#">No tiene Beebank</a></li>
         </ul>
-        <ul className="contact-search">
+        <ul className="transfer-contact-search">
           <li><input type="search" name="Busqueda" id="Busqueda" className="input-barra" autoComplete="off" /></li>
           <label htmlFor="Busqueda" className="input-label">Buscá su nombre acá</label>
         </ul>

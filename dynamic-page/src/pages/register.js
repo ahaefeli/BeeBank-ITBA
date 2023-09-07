@@ -5,7 +5,7 @@ import RegisterContent from '../components/register-content';
 export default function Register() {
   return (
     <div className='ReactContent'>
-      <PublicNavBar />
+      <PublicNavBar deactivateButton={true}/>
       <RegisterContent />
     </div>
   );

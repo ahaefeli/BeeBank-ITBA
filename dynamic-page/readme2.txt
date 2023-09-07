@@ -31,6 +31,7 @@ mediante react router. Tambien con este ultimo creamos las rutas y hicimos funci
 Se conservaron animaciones y diseños del sprint 1 que fueron propicios a esta nueva pagina en react.
 
 
-Para el próximo sprint tenemos pendiente eficientizar el código en su totalidad en cuando a componentes, dado que muchos actualmente están hardcodeados por falta de tiempo. Por ejemplo, en lugar de tener un JSON con los textos e implementarlos automáticamente en la sección de FAQ, están agregados manualmente como se haría en una página estática.
-Además, vamos a arreglar problemas de CSS (algunos componentes que no se adaptan correctamente)
-
+Para el próximo sprint tenemos pendiente:
+• Eficientizar el código en su totalidad en cuando a componentes, dado que muchos actualmente están hardcodeados por falta de tiempo. Por ejemplo, en lugar de tener un JSON con los textos e implementarlos automáticamente en la sección de FAQ, están agregados manualmente como se haría en una página estática.
+• Arreglar problemas de CSS (algunos componentes que no se adaptan correctamente)
+• Agregar botones para hacer los navs desplegables en mobile
