@@ -1,5 +1,5 @@
 
-import styleFooter from '../../src/css/footer.module.css'//RUTA
+import styleFooter from '../../src/css/main/footer.module.css'//RUTA
 import Link from 'next/link'
 
 export default function Footer() {

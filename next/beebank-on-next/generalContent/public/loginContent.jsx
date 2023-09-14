@@ -1,6 +1,6 @@
 import  Link  from 'next/link'
-import { useEffect, useState } from 'react';
-import style from //RUTA
+import { useEffect, useState, useNavigate } from 'react';
+import style from '' //RUTA
 import PasswordErrorPopUp from './passwordErrorMessage';
 
 export default function LoginContent() {
