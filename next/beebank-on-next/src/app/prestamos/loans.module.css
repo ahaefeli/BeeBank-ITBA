@@ -1,0 +1,117 @@
+.topBtns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.topBtns > .select {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 30px;
+    width: 100%;
+    background-color: var(--main-color);
+}
+
+.menuSelect:hover {
+    cursor: pointer;
+}
+
+.menuSelect {
+    height: 2rem;
+    border-radius: 10px;
+    padding: 7px;
+    width: 100%;
+    height: 100%;
+}
+
+.topBtns .acceptBtn {
+    background-color: #393e46;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.topBtns .acceptBtn:hover {
+    background-color: #f7c873;
+    transition: 0.3s;
+}
+
+.topBtns .cancelBtn {
+    background-color: #393e46;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.topBtns .cancelBtn:hover {
+    background-color: #f7c873;
+    transition: 0.3s;
+}
+
+
+/* LOANS CALCULATOR */
+
+.loansCalculator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputBoxes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.inputBoxes > label {
+    margin-top: 10px;
+}
+
+.calculatorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:var(--main-color);
+    text-decoration: none;
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 30px;
+    padding: 30px;
+}
+
+
+.result {
+    color: var(--white-color);
+    text-align: center;
+    margin: 30px 0px 0px 0px;
+}
+
+.inputBoxes {
+    color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.span {
+    color: var(--white-color);
+    position: absolute;
+}
+
+
+.resultText {
+    font-weight: 400;
+    font-size: 20px;
+}

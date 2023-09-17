@@ -1,6 +1,6 @@
 export function confirm() {
-  const acpbtn = document.querySelector(".accept-btn")
-  const cancel = document.querySelector(".cancel-btn")
+  const acpbtn = document.querySelector(".acceptBtn")
+  const cancel = document.querySelector(".cancelBtn")
 
   acpbtn.addEventListener("click", () => {
     confirm("Esta seguro que quiere confirmar este prestamo en BEEBANK")
