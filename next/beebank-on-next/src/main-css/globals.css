@@ -19,6 +19,7 @@
   --bg-left-color: #393e46;
   --border-color: #1b2029;
   --presentation-title-color: #ffffff;
+  --card-color: #c5c1c1;
 }
 
 /* Light Theme 
@@ -35,6 +36,16 @@
   --border-color: #d4bb85;
 }
 */
+
+
+.errorMessage{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 20%;
+}
+
+
 .errorPopUp{
   position: fixed;
   right: 0%;
@@ -217,7 +228,8 @@ a:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 98;
+  z-index: 101;
+  position: relative;
 }
 
 .bbank_logo {

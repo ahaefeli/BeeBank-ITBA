@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import CbuPopUp from './cbu-popup';
-import TransferPopUp from './transfer-popup';
-import CurrencyConverter from './conversor-popup';
-import ContactsPopUp from './contacts-popup';
+import CbuPopUp from './cbu/cbuPopUp';
+import TransferPopUp from './transfers/transferPopUp';
+import CurrencyConverter from './conversor/conversorPopUp';
+import ContactsPopUp from './contacts/contactsPopUp';
+import CardsPopUp from './cards/cardsAdminPopUp'
 
 import styleHome from './home.module.css';
 
@@ -15,9 +16,14 @@ export default function HomeContent(props) {
   const [transferPopUp, settransferPopUp] = useState(false);
   const [conversorPopUp, setconversorPopUp] = useState(false);
   const [contactsPopUp, setcontactsPopUp] = useState(false);
+  const [cardsPopUp, setcardsPopUp] = useState(false);
 
   function turnTransferPopUp() {
     settransferPopUp(!transferPopUp);
+  }
+
+  function turnCardsPopUp() {
+    setcardsPopUp(!cardsPopUp);
   }
 
   function turnCBUPopUp() {
@@ -39,9 +45,11 @@ export default function HomeContent(props) {
 
     <CbuPopUp show={cbuPopUp} />
     <TransferPopUp show={transferPopUp} />
+    <CardsPopUp show={cardsPopUp} />
     <CurrencyConverter show={conversorPopUp} />
     <ContactsPopUp show={contactsPopUp} />
 
+      <div className={cardsPopUp ? 'overlay' : 'overlay-hide'} onClick={turnCardsPopUp} />
       <div className={cbuPopUp ? 'overlay' : 'overlay-hide'} onClick={turnCBUPopUp} />
       <div className={transferPopUp ? 'overlay' : 'overlay-hide'} onClick={turnTransferPopUp} />
       <div className={conversorPopUp ? 'overlay' : 'overlay-hide'} onClick={turnConversorPopUp} />
@@ -76,7 +84,7 @@ export default function HomeContent(props) {
         <section className={styleHome.utilities}>
           <Link className={styleHome.public_a_nav} href='/home' onClick={turnConversorPopUp} draggable='false'>Conversor de divisas</Link>
           <Link className={styleHome.public_a_nav} href='/home' onClick={turnContactsPopUp} draggable='false'>Agenda</Link>
-          <Link className={styleHome.public_a_nav} href='/tarjetas' draggable='false'>Administrar tarjetas</Link>
+          <Link className={styleHome.public_a_nav} href='/home' onClick={turnCardsPopUp} draggable='false'>Administrar tarjetas</Link>
         </section>
       </div>
 
