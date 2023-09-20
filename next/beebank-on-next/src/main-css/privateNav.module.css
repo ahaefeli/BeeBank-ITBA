@@ -106,4 +106,8 @@
     .logged_navbar  {
         font-size: 20px;
     }
+
+    .navBar_Container{
+        z-index: 5;
+    }
 }

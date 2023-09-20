@@ -14,6 +14,7 @@
 .subTitle {
   font-size: 15px;
   margin-bottom: 5px;
+  text-align: center;
 }
 
 .card {
@@ -51,7 +52,7 @@
   background-repeat: no-repeat;
 }
 
-.beeCard {
+.beeCard, .beeCardBack {
   display: flex;
   align-items: start;
   justify-content: center;
@@ -62,9 +63,11 @@
 .beeCardBack {
   transform: rotateY(180deg);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
+  flex-direction: column;
+  gap: 12px;
+  align-items: start;
+  justify-content: end;
+  padding-bottom: 22px;
 }
 
 
@@ -91,7 +94,7 @@
 
 
 .name {
-  margin: 120px 0px 0px 20px;
+  margin: 80px 0px 0px 20px;
   font-size: 20px;
   color: var(--card-color);
 }
@@ -110,6 +113,26 @@
   margin: auto 0px 20px 20px;
 }
 
-.cvv {
-  margin-left: 40px;
+.cardInfo {
+  margin-left: 22px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.cardExpirationDate > label{
+  margin-left: 10px;
+}
+
+.cardName > label {
+  margin-left: 30px;
+}
+
+.cardNumber {
+  font-size: 21px;
+}
+
+@media only screen and (max-width:768px) {
+  .card {
+    scale: 0.9;
+  }  
 }
