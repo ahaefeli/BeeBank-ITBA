@@ -1,5 +1,5 @@
 import Link from "next/link"
-
+import "./logo.css";
 export default function Logo(props) {
   return (
     <div className={props.mobile ? "logo_mobile" : "logo"}>
