@@ -482,5 +482,27 @@
         "Ftransfnum": "01567890",
         "Fstate": "Approved",
         "Fid": 21
+      },
+      {
+        "FDnombre": "Javier Pablo",
+        "FDapellido": "Fercho",
+        "FDdni": 18456348,
+        "FDcbu": 11111111111111111,
+        "FDalias": "Javi.pab.fer",
+        "FDbank": "Beebank",
+        "FOnombre": "Manuel López",
+        "FOapellido": "Pérez",
+        "FOdni": 12312312,
+        "FOcbu": 9876987698769876,
+        "FOalias": "Manu.L",
+        "FObank": "Banco Columbia",
+        "Fmonto": 4100,
+        "Fmotivo": "Cartas",
+        "Fdescription": "Compra juego de cartas",
+        "Fttransferencia": "Inmediata",
+        "Ffecha": "21/09/2023",
+        "Ftransfnum": "01567890",
+        "Fstate": "Approved",
+        "Fid": 22
       }
 ]
