@@ -24,15 +24,15 @@ export default function CFactura(props){
         if (CFstate==="Approved"){
             setContText("APROBADO");
             setColorTxt("#49e33b");
-            setStateImg("https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/prestamos%20img/YES.png");
+            setStateImg("/YES.png");
         }
         else if(CFstate==="Rejected"){
             setContText("RECHAZADO");
             setColorTxt("red");
-            setStateImg("https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/prestamos%20img/X.png");
+            setStateImg("/X.png");
         }
         else{
-            setStateImg("https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/prestamos%20img/UND.png");
+            setStateImg("/UND.png");
         }
     });
 

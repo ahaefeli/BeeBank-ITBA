@@ -1,0 +1,93 @@
+[
+    {
+      "FDnombre": "Javier Francisco",
+      "FDapellido": "Cesna",
+      "FDdni": "00000000",
+      "FDcbu": "00001111000011110",
+      "FDalias": "italic.cars.corp",
+      "FDbanco": "Beebank",
+      "Fid":0
+    },
+    {
+      "FDnombre": "María",
+      "FDapellido": "González",
+      "FDdni": "11111111",
+      "FDcbu": "11112222000033331",
+      "FDalias": "marin.choza.bandera",
+      "FDbanco": "Santander",
+      "Fid":1
+    },
+    {
+      "FDnombre": "Carlos",
+      "FDapellido": "Rodríguez",
+      "FDdni": "22222222",
+      "FDcbu": "22223333000044442",
+      "FDalias": "monumento.impresora.laser",
+      "FDbanco": "Santander",
+      "Fid":2
+    },
+    {
+      "FDnombre": "Ana",
+      "FDapellido": "Pérez",
+      "FDdni": "33333333",
+      "FDcbu": "33334444000055553",
+      "FDalias": "coche.moto.barco",
+      "FDbanco": "Banco Galicia",
+      "Fid":3
+    },
+    {
+      "FDnombre": "Pedro",
+      "FDapellido": "López",
+      "FDdni": "44444444",
+      "FDcbu": "44445555000066664",
+      "FDalias": "mesa.banco.silla",
+      "FDbanco": "BBVA",
+      "Fid":4
+    },
+    {
+      "FDnombre": "Luisa",
+      "FDapellido": "Martínez",
+      "FDdni": "55555555",
+      "FDcbu": "55556666000077775",
+      "FDalias": "tierra.pasto.planeta",
+      "FDbanco": "BBVA",
+      "Fid":5
+    },
+    {
+      "FDnombre": "Juan",
+      "FDapellido": "Fernández",
+      "FDdni": "66666666",
+      "FDcbu": "66667777000088886",
+      "FDalias": "marte.luna.nasa",
+      "FDbanco": "Naranja",
+      "Fid":6
+    },
+    {
+      "FDnombre": "Laura",
+      "FDapellido": "Sánchez",
+      "FDdni": "77777777",
+      "FDcbu": "77778888000099997",
+      "FDalias": "pantalla.mouse.teclado",
+      "FDbanco": "Banco Nacion",
+      "Fid":7
+    },
+    {
+      "FDnombre": "Diego",
+      "FDapellido": "López",
+      "FDdni": "88888888",
+      "FDcbu": "88889999000100008",
+      "FDalias": "tecla.gato.avion",
+      "FDbanco": "Banco Central",
+      "Fid":8
+    },
+    {
+      "FDnombre": "Marta",
+      "FDapellido": "García",
+      "FDdni": "99999999",
+      "FDcbu": "99990000001111119",
+      "FDalias": "sandalia.zapato.remera",
+      "FDbanco": "Beebank",
+      "Fid":9
+    }
+  ]
+  
