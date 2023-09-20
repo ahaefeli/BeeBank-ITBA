@@ -12,14 +12,15 @@
         "FOcbu":10000000000000001,
         "FOalias":"mesa.campo.arboleda",
         "FObank":"Beebank",
-        "Fmonto":53700,
+        "Fmonto":53700.25,
         "Fmotivo":"Expensas",
         "Fdescription":"Transferencia para pagar la luz al arrendador",
         "Fttransferencia":"Programada a 2 dias",
         "Ffecha":"17/05/2021",
         "Ftransfnum":"00134655",
         "Fstate":"Approved",
-        "Fid":0
+        "Fid":0,
+        "Fio":"in"
     },
     {
         "FDnombre": "Ana María",
@@ -34,14 +35,15 @@
         "FOcbu": 1111222233334444,
         "FOalias": "C.Perez",
         "FObank": "Banco Popular",
-        "Fmonto": 89000,
+        "Fmonto": 8900,
         "Fmotivo": "Alquiler",
         "Fdescription": "Pago del alquiler mensual",
         "Fttransferencia": "Programada a 3 días",
         "Ffecha": "20/09/2023",
         "Ftransfnum": "00257892",
         "Fstate": "Approved",
-        "Fid": 1
+        "Fid": 1,
+        "Fio":"in"
     },
     {
         "FDnombre": "Luis",
@@ -63,7 +65,8 @@
         "Ffecha": "12/08/2023",
         "Ftransfnum": "00385621",
         "Fstate": "Rejected",
-        "Fid": 2
+        "Fid": 2,
+        "Fio":"out"
     },
     {
         "FDnombre": "Elena",
@@ -85,7 +88,8 @@
         "Ffecha": "04/10/2023",
         "Ftransfnum": "00471238",
         "Fstate": "Approved",
-        "Fid": 3
+        "Fid": 3,
+        "Fio":"out"
     },
     {
         "FDnombre": "Pedro",
@@ -107,7 +111,8 @@
         "Ffecha": "19/11/2023",
         "Ftransfnum": "00589674",
         "Fstate": "Approved",
-        "Fid": 4
+        "Fid": 4,
+        "Fio":"in"
     },
     {
         "FDnombre": "Isabel",
@@ -129,7 +134,8 @@
         "Ffecha": "08/07/2023",
         "Ftransfnum": "00673451",
         "Fstate": "Approved",
-        "Fid": 5
+        "Fid": 5,
+        "Fio":"out"
     },
     {
         "FDnombre": "Carlos",
@@ -151,7 +157,8 @@
         "Ffecha": "03/06/2023",
         "Ftransfnum": "00751234",
         "Fstate": "Rejected",
-        "Fid": 6
+        "Fid": 6,
+        "Fio":"in"
     },
     {
         "FDnombre": "Laura",
@@ -173,7 +180,8 @@
         "Ffecha": "24/09/2023",
         "Ftransfnum": "00845672",
         "Fstate": "Approved",
-        "Fid": 7
+        "Fid": 7,
+        "Fio":"out"
     },
     {
         "FDnombre": "Manuel",
@@ -195,7 +203,8 @@
         "Ffecha": "15/12/2023",
         "Ftransfnum": "00931257",
         "Fstate": "Approved",
-        "Fid": 8
+        "Fid": 8,
+        "Fio":"in"
     },
     {
         "FDnombre": "Sofía",
@@ -217,7 +226,8 @@
         "Ffecha": "02/11/2023",
         "Ftransfnum": "01025693",
         "Fstate": "Rejected",
-        "Fid": 9
+        "Fid": 9,
+        "Fio":"in"
     },
     {
         "FDnombre": "Juan Carlos",
@@ -239,7 +249,8 @@
         "Ffecha": "17/05/2021",
         "Ftransfnum": "00134655",
         "Fstate": "Approved",
-        "Fid": 10
+        "Fid": 10,
+        "Fio":"out"
       },
       {
         "FDnombre": "Sofía",
@@ -261,7 +272,8 @@
         "Ffecha": "02/11/2023",
         "Ftransfnum": "01025693",
         "Fstate": "Rejected",
-        "Fid": 11
+        "Fid": 11,
+        "Fio":"in"
       },
       {
         "FDnombre": "Luis",
@@ -283,7 +295,8 @@
         "Ffecha": "05/12/2023",
         "Ftransfnum": "01234567",
         "Fstate": "Approved",
-        "Fid": 12
+        "Fid": 12,
+        "Fio":"in"
       },
       {
         "FDnombre": "María",
@@ -305,7 +318,8 @@
         "Ffecha": "20/11/2023",
         "Ftransfnum": "03456789",
         "Fstate": "Approved",
-        "Fid": 13
+        "Fid": 13,
+        "Fio":"out"
       },
       {
         "FDnombre": "Carlos",
@@ -327,7 +341,8 @@
         "Ffecha": "15/10/2023",
         "Ftransfnum": "04567890",
         "Fstate": "Rejected",
-        "Fid": 14
+        "Fid": 14,
+        "Fio":"out"
       },
       {
         "FDnombre": "Diego",
@@ -349,7 +364,8 @@
         "Ffecha": "10/09/2023",
         "Ftransfnum": "02345678",
         "Fstate": "Approved",
-        "Fid": 15
+        "Fid": 15,
+        "Fio":"in"
       },
       {
         "FDnombre": "Laura",
@@ -371,7 +387,8 @@
         "Ffecha": "30/08/2023",
         "Ftransfnum": "06789012",
         "Fstate": "Rejected",
-        "Fid": 16
+        "Fid": 16,
+        "Fio":"in"
       },
       {
         "FDnombre": "Andrés",
@@ -393,7 +410,8 @@
         "Ffecha": "28/07/2023",
         "Ftransfnum": "07890123",
         "Fstate": "Approved",
-        "Fid": 17
+        "Fid": 17,
+        "Fio":"in"
       },
       {
         "FDnombre": "Lucas",
@@ -415,7 +433,8 @@
         "Ffecha": "25/06/2023",
         "Ftransfnum": "08901234",
         "Fstate": "Rejected",
-        "Fid": 18
+        "Fid": 18,
+        "Fio":"in"
       },
       {
         "FDnombre": "Isabella",
@@ -437,7 +456,8 @@
         "Ffecha": "15/05/2023",
         "Ftransfnum": "09876543",
         "Fstate": "Approved",
-        "Fid": 19
+        "Fid": 19,
+        "Fio":"out"
       },
       {
         "FDnombre": "Alejandro",
@@ -459,7 +479,8 @@
         "Ffecha": "10/04/2023",
         "Ftransfnum": "01098765",
         "Fstate": "Rejected",
-        "Fid": 20
+        "Fid": 20,
+        "Fio":"in"
       },
       {
         "FDnombre": "Martina",
@@ -481,7 +502,8 @@
         "Ffecha": "05/03/2023",
         "Ftransfnum": "01567890",
         "Fstate": "Approved",
-        "Fid": 21
+        "Fid": 21,
+        "Fio":"out"
       },
       {
         "FDnombre": "Javier Pablo",
@@ -496,13 +518,14 @@
         "FOcbu": 9876987698769876,
         "FOalias": "Manu.L",
         "FObank": "Banco Columbia",
-        "Fmonto": 4100,
+        "Fmonto": 3600,
         "Fmotivo": "Cartas",
         "Fdescription": "Compra juego de cartas",
         "Fttransferencia": "Inmediata",
         "Ffecha": "21/09/2023",
         "Ftransfnum": "01567890",
         "Fstate": "Approved",
-        "Fid": 22
+        "Fid": 22,
+        "Fio":"out"
       }
 ]

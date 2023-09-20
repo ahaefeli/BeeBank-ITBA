@@ -3,8 +3,9 @@ import {useEffect, useState} from "react";
 import styleTransfers from './transfers.module.css';
 import TransferContentLi from "./TransferContentLi";
 import TransferAPI from "../TransferAPI.json";
-
+import { BalanceEconomico } from "../BalanceCounter";
 export default function TransfersContent() {
+
 	const [apiData, setApiData] = useState([]);
 	const LiItem = [];
 	useEffect(()=>{
@@ -30,7 +31,7 @@ export default function TransfersContent() {
 					<div className={styleTransfers.balance}>
 						<ul className={styleTransfers.balanceUl}>
 							<li className={styleTransfers.balanceText}>Balance:</li>
-							<li className={`${styleTransfers.balanceAmount} number-format`}>450.200,<span className="subText">50</span></li>
+							<li className={`${styleTransfers.balanceAmount} number-format`}>{BalanceEconomico},<span className="subText">00</span></li>
 						</ul>
 					</div>
 					<ul className={styleTransfers.transferContactSearch}>

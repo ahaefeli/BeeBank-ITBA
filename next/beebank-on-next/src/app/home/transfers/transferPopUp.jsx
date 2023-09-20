@@ -1,11 +1,18 @@
 import styleTransfer from './transfer.module.css';
+import {useState} from "react";
 
 export default function TransferPopUp(props) {
+  const [selectValue, setSelectValue] = useState("Varios");
+
+  const handleSelection = (e)=>{
+    setSelectValue(e.target.value);
+  };
+
   return (
     <div className={props.show ? "popUp" : "popUp-hide"}>
       <section className={styleTransfer.main_section_transfer}>
         <div className={styleTransfer.title}>Transferencias</div>
-        <form className={styleTransfer.transfer_form} action>
+        <form className={styleTransfer.transfer_form}>
           
           <div className={styleTransfer.searchContent}>
             <label htmlFor={styleTransfer.inpt_cbu_search}>CBU/ALIAS</label>
@@ -30,13 +37,13 @@ export default function TransferPopUp(props) {
             <input className={styleTransfer.dataText} id="inpt_cuil" type="text" readOnly defaultValue="-" />
             <label>Concepto</label>
 
-            <select className={styleTransfer.inpt_concepto}>
+            <select className={styleTransfer.inpt_concepto} value={selectValue} onChange={handleSelection}>
               <option className={styleTransfer.opt_text} value="Factura">Factura</option>
               <option className={styleTransfer.opt_text} value="Comercio">Comercio</option>
               <option className={styleTransfer.opt_text} value="Expensas">Expensas</option>
               <option className={styleTransfer.opt_text} value="Cuota">Cuota</option>
               <option className={styleTransfer.opt_text} value="Honorarios">Honorarios</option>
-              <option className={styleTransfer.opt_text} value="Varios" selected>Varios</option>
+              <option className={styleTransfer.opt_text} value="Varios">Varios</option>
             </select>
 
           </div>
