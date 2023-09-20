@@ -1,57 +1,125 @@
 import styleTransfer from './transfer.module.css';
 import { useState, useEffect } from "react";
-import UsersAPI from "../../UsersAPI.json";
-
+import { BalanceEconomico } from '../../BalanceCounter';
 export default function TransferPopUp(props) {
   const [selectValue, setSelectValue] = useState("Varios");
   const [errorColor, setErrorColor] = useState("#222831");
   const [errorMessage, setErrorMessage] = useState("DefaultError");
-  const [transferState, setTransferState] = useState("iddle");
 
-  //states
-  const [showDestinatario, setShowDestinatario] = useState("-");
-  const [showMAlias, setShowMAlias] = useState("-");
-  const [showCBU, setShowCBU] = useState("-");
-  const [showAlias, setShowAlias] = useState("-");
-  const [showBanco, setShowBanco] = useState("-");
-  const [showDNI, setShowDNI] = useState("-");
+  //const autoactualizable
+  const [errorText, setErrorText] = useState("iddle");
+  const [confirmTransfer,setConfirmTransfer] = useState(false);
 
-  const [searchText, setSearchText] = useState("");
-  const [sSearchText, setSSearchText] = useState("");
-  const saveSearchText = (param) => {
-    setSearchText(param.target.value);
+  const [cbuSearchText,setCbuSearchText] = useState("");
+  const [montoSearchText,setMontoSearchText] = useState("");
+  const [descriptionSearchText,setDescriptionSearchText] = useState("");
+
+
+  //const evento
+  const [svCbuSearchText,setSvCbuSearchText] = useState("");
+  const [svMontoSearchText,setSvMontoSearchText] = useState("");
+  const [svDescriptionSearchText,setsvDescriptionSearchText] = useState("");
+  const [cbuState, setCbuState] = useState(false);
+  const [montoState,setMontoState] = useState(false);
+  const [descriptionState,setDescriptionState] = useState(false);
+
+  //actualizacion datos monto
+  const actMontoSearch=(param)=>{
+    setMontoSearchText(param.target.value);
+  };
+  //actualizacion datos cbu
+  const actCbuSearch=(param)=>{
+    setCbuSearchText(param.target.value);
+  };
+  //actualizacion datos descripcion
+  const actDescriptionSearch=(param)=>{
+    setDescriptionSearchText(param.target.value);
+  };
+  //eventos botones
+  const transferSearch=()=>{
+    setSvMontoSearchText(montoSearchText);
+    setsvDescriptionSearchText(descriptionSearchText);
+    setSvCbuSearchText(cbuSearchText);
+    setConfirmTransfer(true);
+  };
+  
+  const dataSearch=()=>{
+    setSvCbuSearchText(cbuSearchText);
+    setConfirmTransfer(false);
   };
 
-  useEffect(() => {
-    UsersAPI.forEach((elemento) => {
-      if (elemento.Fid == 0) {
-        setShowMAlias(elemento.FDalias);
-      }
-      else if (elemento.FDcbu == sSearchText || elemento.FDalias == sSearchText) {
-        setShowDestinatario(elemento.FDnombre + " " + elemento.FDapellido);
-        setShowCBU(elemento.FDcbu);
-        setShowAlias(elemento.FDalias);
-        setShowBanco(elemento.FDbanco);
-        setShowDNI(elemento.FDdni);
-      }
-    });
 
-  }, [sSearchText]);
+  //useEffect cbu y monto
+  useEffect(()=>{
+    let MontoToNumber = parseInt(svMontoSearchText);
+    if(svCbuSearchText===""){
+      setCbuState(false);
+      setMontoState(false);
+      setDescriptionState(false);
+      setErrorText("Err1");
+    }
+    else if(svDescriptionSearchText===""){
+      setCbuState(true);
+      setMontoState(false);
+      setDescriptionState(false);
+      setErrorText("Err4");
+    }
+    else if(svDescriptionSearchText.length >28){
+      setCbuState(true);
+      setMontoState(false);
+      setDescriptionState(false);
+      setErrorText("Err5");
+    }
+    else if(svMontoSearchText==="" || MontoToNumber<=0 || MontoToNumber>15000000){
+      setCbuState(true);
+      setMontoState(false);
+      setDescriptionState(true);
+      setErrorText("Err2");
+    }
+    else if(MontoToNumber>BalanceEconomico){
+      setCbuState(true);
+      setMontoState(false);
+      setDescriptionState(true);
+      setErrorText("Err3");
+    }
+    else{
+      setCbuState(true);
+      setMontoState(true);
+      setDescriptionState(true);
+      setErrorText("Yes1");
+    }
+  },[svCbuSearchText,svMontoSearchText,svDescriptionSearchText]);
 
   useEffect(() => {
-    if (transferState === "Err1") {
+    if (errorText === "Err1") {
       setErrorColor("red");
       setErrorMessage("*Introduzca CBU/Alias valido");
     }
-    else {
+    else if (errorText === "Err2") {
+      setErrorColor("red");
+      setErrorMessage("*Introduzca un monto valido");
+    }
+    else if (errorText === "Err3") {
+      setErrorColor("red");
+      setErrorMessage("*Fondos insuficientes");
+    }
+    else if (errorText === "Err4") {
+      setErrorColor("red");
+      setErrorMessage("*Ingrese una descripción válida");
+    }
+    else if (errorText === "Err5") {
+      setErrorColor("red");
+      setErrorMessage("*La descripcion debe tener menos de 28 letras");
+    }
+    else if (errorText === "Yes1") {
+      setErrorColor("#dedede");
+      setErrorMessage("TRANSFERENCIA EXITOSA");
+    }
+    else if(errorText==="iddle"){
       setErrorColor("#222831");
       setErrorMessage("*DefaultError");
     }
   });
-
-  function dataSearch() {
-    setSSearchText(searchText);
-  }
 
   const handleSelection = (e) => {
     setSelectValue(e.target.value);
@@ -65,30 +133,30 @@ export default function TransferPopUp(props) {
 
           <div className={styleTransfer.searchContent}>
             <label htmlFor={styleTransfer.inpt_cbu_search}>CBU/ALIAS</label>
-            <input type="text" className={`${styleTransfer.inpt_text} number_format`} id="inpt_cbu_search" onChange={saveSearchText} />
-            <input type="button" value="Buscar" className={`button--general ${styleTransfer.searchButton}`} id="inpt_buscar" onClick={dataSearch} />
+            <input type="text" className={`${styleTransfer.inpt_text} number_format`} id="inpt_cbu_search" defaultValue={cbuSearchText} onChange={actCbuSearch}/>
+            <input type="button" value="Buscar" className={`button--general ${styleTransfer.searchButton}`} id="inpt_buscar" onClick={dataSearch}/>
             <label>Monto</label>
-            <input className={`${styleTransfer.inpt_text} number_format`} id="inpt_monto" type="number" />
+            <input className={`${styleTransfer.inpt_text} number_format`} id="inpt_monto" type="number" onChange={actMontoSearch}/>
             <label className={styleTransfer.errorLabel} id="errorLabel" style={{ color: errorColor }}>{errorMessage}</label>
-            <input type="button" value="Transferir" className={`button--general ${styleTransfer.transferButton}`} id="inpt_transferir" />
+            <input type="button" value="Transferir" className={`button--general ${styleTransfer.transferButton}`} id="inpt_transferir" onClick={transferSearch}/>
           </div>
 
           <div className={styleTransfer.insideContent}>
             <label>Destinatario</label>
-            <input className={styleTransfer.dataText} id="inpt_destinatario" type="text" readOnly value={showDestinatario} />
+            <input className={styleTransfer.dataText} id="inpt_destinatario" type="text" readOnly/>
             <label>Origen</label>
-            <input className={styleTransfer.dataText} id="inpt_origen" type="text" readOnly value={showMAlias} />
+            <input className={styleTransfer.dataText} id="inpt_origen" type="text" readOnly/>
             <label>CBU</label>
-            <input className={styleTransfer.dataText} id="inpt_cbu" type="text" readOnly value={showCBU} />
+            <input className={styleTransfer.dataText} id="inpt_cbu" type="text" readOnly/>
             <label>Alias</label>
-            <input className={styleTransfer.dataText} id="inpt_alias" type="text" readOnly value={showAlias} />
+            <input className={styleTransfer.dataText} id="inpt_alias" type="text" readOnly/>
             <label>Banco</label>
-            <input className={styleTransfer.dataText} id="inpt_banco" type="text" readOnly value={showBanco} />
+            <input className={styleTransfer.dataText} id="inpt_banco" type="text" readOnly/>
             <label>DNI</label>
-            <input className={styleTransfer.dataText} id="inpt_dni" type="text" readOnly value={showDNI} />
+            <input className={styleTransfer.dataText} id="inpt_dni" type="text" readOnly/>
             <label>Concepto</label>
 
-            <select className={styleTransfer.inpt_concepto} value={selectValue} onChange={handleSelection}>
+            <select className={styleTransfer.inpt_concepto} value={selectValue} id="inpt_motivo" onChange={handleSelection}>
               <option className={styleTransfer.opt_text} value="Factura">Factura</option>
               <option className={styleTransfer.opt_text} value="Comercio">Comercio</option>
               <option className={styleTransfer.opt_text} value="Expensas">Expensas</option>
@@ -98,7 +166,7 @@ export default function TransferPopUp(props) {
             </select>
 
             <label>Descripcion</label>
-            <input className={styleTransfer.dataText} id="inpt_description" type="text" />
+            <input className={styleTransfer.dataText} id="inpt_description" type="text" onChange={actDescriptionSearch}/>
 
           </div>
         </form>

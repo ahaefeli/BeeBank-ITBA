@@ -573,5 +573,28 @@
         "Fstate": "Rejected",
         "Fid": 24,
         "Fio":"out"
+      },
+      {
+        "FDnombre": "Juan Pedro",
+        "FDapellido": "Gutierrez",
+        "FDdni": 56885791,
+        "FDcbu": 99998888777766665,
+        "FDalias": "juan.pe.dro",
+        "FDbank": "Frances",
+        "FOnombre": "Lucas Martin",
+        "FOapellido": "Coca-Cola",
+        "FOdni": 0,
+        "FOcbu": 1465446544646113,
+        "FOalias": "coca.cola.company",
+        "FObank": "Coca Bank",
+        "Fmonto": 50000,
+        "Fmotivo": "Deuda",
+        "Fdescription": "CocaCola@srl",
+        "Fttransferencia": "Inmediata",
+        "Ffecha": "21/09/2023",
+        "Ftransfnum": "01567791",
+        "Fstate": "Approved",
+        "Fid": 25,
+        "Fio":"out"
       }
 ]
