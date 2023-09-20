@@ -54,8 +54,8 @@
       margin-bottom: 2rem;
     }
     
-    .contactTearchText>a {
-      color: var(--main-color);
+    .contactSearchText>a {
+      color: black;
     }
     
     .subText {
