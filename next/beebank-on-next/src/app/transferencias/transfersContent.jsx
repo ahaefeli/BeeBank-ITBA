@@ -1,8 +1,9 @@
-"use client"
-import {useEffect, useState} from "react";
+'use client'
+import {useEffect, useState} from 'react';
 import styleTransfers from './transfers.module.css';
-import TransferContentLi from "./TransferContentLi";
-import TransferAPI from "../TransferAPI.json";
+import TransferContentLi from './TransferContentLi';
+import TransferAPI from '../TransferAPI.json';
+import Link from 'next/link';
 
 export default function TransfersContent() {
 	const [apiData, setApiData] = useState([]);
@@ -30,16 +31,16 @@ export default function TransfersContent() {
 					<div className={styleTransfers.balance}>
 						<ul className={styleTransfers.balanceUl}>
 							<li className={styleTransfers.balanceText}>Balance:</li>
-							<li className={`${styleTransfers.balanceAmount} number-format`}>450.200,<span className="subText">50</span></li>
+							<li className={`${styleTransfers.balanceAmount} number_format`}>450.200,<span className='number_format'>50</span></li>
 						</ul>
 					</div>
 					<ul className={styleTransfers.transferContactSearch}>
-						<li className={styleTransfers.contactSearchText}><a href="#">Tiene Beebank</a></li>
-						<li className={styleTransfers.contactSearchText}><a href="#">No tiene Beebank</a></li>
+						<li className={styleTransfers.contactSearchText}><Link href='/transferencias'>Tiene Beebank</Link></li>
+						<li className={styleTransfers.contactSearchText}><Link href='/transferencias'>No tiene Beebank</Link></li>
 					</ul>
 					<ul className={styleTransfers.transferContactSearch}>
-						<li><input type="search" name="Busqueda" id="Busqueda" className={styleTransfers.inputBarra} autoComplete="off" /></li>
-						<label htmlFor="Busqueda" className={styleTransfers.inputLabel}>Buscá el pago o transferencia</label>
+						<li><input type='search' name='Busqueda' id='Busqueda' className={styleTransfers.inputBarra} autoComplete='off' /></li>
+						<label htmlFor='Busqueda' className={styleTransfers.inputLabel}>Buscá el pago o transferencia</label>
 					</ul>
 				</div>
 

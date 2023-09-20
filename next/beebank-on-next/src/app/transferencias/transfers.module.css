@@ -124,6 +124,7 @@
     .transferDenied abbr,
     .transferApproved abbr {
       text-decoration: none;
+      cursor:pointer;
     }
     
     .transfersList{
@@ -139,10 +140,12 @@
     
     .transferDenied i {
       color: #ff2a2a;
+      margin-right: 10px;
     }
     
     .transferApproved i {
       color: #01ff38;
+      margin-right: 10px;
     }
     
     .transferApproved:hover {
