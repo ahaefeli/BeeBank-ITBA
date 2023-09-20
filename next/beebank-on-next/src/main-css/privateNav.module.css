@@ -70,7 +70,10 @@
     width: 100%;
 }
 
-
+.navBar_Container{
+    position: relative;
+    z-index: 101;
+}
 @media screen and (max-width: 768px) {
     .logged_navbar__list {
         display: block;
