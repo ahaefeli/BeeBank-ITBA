@@ -31,7 +31,7 @@ export default function TransfersContent() {
 					<div className={styleTransfers.balance}>
 						<ul className={styleTransfers.balanceUl}>
 							<li className={styleTransfers.balanceText}>Balance:</li>
-							<li className={`${styleTransfers.balanceAmount} number-format`}>{BalanceEconomico},<span className="subText">00</span></li>
+							<li className={`${styleTransfers.balanceAmount} number-format`}>{BalanceEconomico}</li>
 						</ul>
 					</div>
 					<ul className={styleTransfers.transferContactSearch}>
