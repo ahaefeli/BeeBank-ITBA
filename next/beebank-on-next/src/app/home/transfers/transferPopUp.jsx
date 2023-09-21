@@ -2,6 +2,7 @@ import styleTransfer from './transfer.module.css';
 import { useState, useEffect } from "react";
 import { BalanceEconomico } from '../../BalanceCounter';
 import UsersApi from "../../UsersAPI.json";
+
 export default function TransferPopUp(props) {
   let MainIndex = 0;
 
