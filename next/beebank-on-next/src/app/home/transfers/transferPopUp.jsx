@@ -3,6 +3,32 @@ import { useState, useEffect } from "react";
 import { BalanceEconomico } from '../../BalanceCounter';
 import UsersApi from "../../UsersAPI.json";
 export default function TransferPopUp(props) {
+  let MainIndex = 0;
+
+  //manejo del json API
+  const newObjectTransfer = {
+    "FDnombre": "-",
+    "FDapellido": "-",
+    "FDdni": "-",
+    "FDcbu": "-",
+    "FDalias": "-",
+    "FDbanco": "-",
+    "FOnombre": "-",
+    "FOapellido": "-",
+    "FOdni": "-",
+    "FOcbu": "-",
+    "FOalias": "-",
+    "FObanco": "-",
+    "Fmonto": 0,
+    "Fmotivo": "-",
+    "Fdescripcion": "-",
+    "Fttransferencia": "Inmediata",
+    "Ffecha": "-",
+    "Ftransfnum": "-",
+    "Fstate": "Approved",
+    "Fid": 0,
+    "Fio":"out"
+  };
 
   let foundState = false;
   let flag1 = false;
@@ -30,6 +56,7 @@ export default function TransferPopUp(props) {
   const [descriptionState,setDescriptionState] = useState(false);
 
   //seteo de Datos
+  //Destinatario
   const [newOriginText,setNewOriginText]=useState("-");
   const [newNameText,setNewNameText]=useState("-");
   const [newSurnameText,setNewSurnameText]=useState("-");
@@ -37,6 +64,15 @@ export default function TransferPopUp(props) {
   const [newCbuText,setNewCbuText]=useState("-");
   const [newAliasText,setNewAliasText]=useState("-");
   const [newBancoText,setNewBancoText]=useState("-");
+  //Origen
+  const [newONameText,setNewONameText]=useState("-");
+  const [newOSurnameText,setNewOSurnameText]=useState("-");
+  const [newODniText,setNewODniText]=useState("-");
+  const [newOCbuText,setNewOCbuText]=useState("-");
+  const [newOAliasText,setNewOAliasText]=useState("-");
+  const [newOBancoText,setNewOBancoText]=useState("-");
+  //select-data
+  const[svMotivoSearchText,setSvMotivoSearchText] = useState();
 
   //actualizacion datos monto
   const actMontoSearch=(param)=>{
@@ -55,6 +91,7 @@ export default function TransferPopUp(props) {
     setSvMontoSearchText(montoSearchText);
     setsvDescriptionSearchText(descriptionSearchText);
     setSvCbuSearchText(cbuSearchText);
+    setSvMotivoSearchText(selectValue);
     setConfirmTransfer(true);
   };
   
@@ -63,11 +100,15 @@ export default function TransferPopUp(props) {
     setConfirmTransfer(false);
   };
 
+  //useEffect select
+  const handleSelection = (e) => {
+    setSelectValue(e.target.value);
+  };
 
   //useEffect cbu y monto
   useEffect(()=>{
     let MontoToNumber = parseInt(svMontoSearchText);
-
+    MainIndex = UsersApi.length;
     UsersApi.forEach((elemento)=>{
       if(flag1==false){
         foundState=false;
@@ -75,6 +116,13 @@ export default function TransferPopUp(props) {
       }
       if(elemento.Fid==0){
         setNewOriginText(elemento.FDnombre+" "+elemento.FDapellido+"\n"+elemento.FDalias);
+
+        setNewONameText(elemento.FDnombre);
+        setNewOSurnameText(elemento.FDapellido);
+        setNewODniText(elemento.FDdni);
+        setNewOCbuText(elemento.FDcbu);
+        setNewOAliasText(elemento.FDalias);
+        setNewOBancoText(elemento.FDbanco);
       }
       else if(svCbuSearchText==elemento.FDalias || svCbuSearchText==elemento.FDcbu){
         foundState=true;
@@ -133,6 +181,25 @@ export default function TransferPopUp(props) {
     }
     if(cbuState==true && montoState==true && descriptionState && confirmTransfer==true){
       setErrorText("Yes1");
+
+      newObjectTransfer.FDnombre=newNameText;
+      newObjectTransfer.FDapellido=newSurnameText;
+      newObjectTransfer.FDdni=newDniText;
+      newObjectTransfer.FDcbu=newCbuText;
+      newObjectTransfer.FDalias=newAliasText;
+      newObjectTransfer.FDbanco=newBancoText;
+      newObjectTransfer.FOnombre=newONameText;
+      newObjectTransfer.FOapellido=newOSurnameText;
+      newObjectTransfer.FOdni=newODniText;
+      newObjectTransfer.FOcbu=newOCbuText;
+      newObjectTransfer.FOalias=newOAliasText;
+      newObjectTransfer.FObanco=newOBancoText;
+      newObjectTransfer.Fmonto=MontoToNumber;
+      newObjectTransfer.Fmotivo=svMotivoSearchText;
+      newObjectTransfer.Fdescripcion=svDescriptionSearchText;
+      newObjectTransfer.Fid=MainIndex;
+
+      console.log(newObjectTransfer);
     }
   },[svCbuSearchText,svMontoSearchText,svDescriptionSearchText,cbuState,montoState,descriptionState]);
 
@@ -166,10 +233,6 @@ export default function TransferPopUp(props) {
       setErrorMessage("*DefaultError");
     }
   });
-
-  const handleSelection = (e) => {
-    setSelectValue(e.target.value);
-  };
 
   return (
     <div className={props.show ? "popUp" : "popUp-hide"}>
