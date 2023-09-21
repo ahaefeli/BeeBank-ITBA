@@ -1,7 +1,13 @@
 import styleTransfer from './transfer.module.css';
 import { useState, useEffect } from "react";
 import { BalanceEconomico } from '../../BalanceCounter';
+import UsersApi from "../../UsersAPI.json";
 export default function TransferPopUp(props) {
+
+  let foundState = false;
+  let flag1 = false;
+  let elementId = 0;
+
   const [selectValue, setSelectValue] = useState("Varios");
   const [errorColor, setErrorColor] = useState("#222831");
   const [errorMessage, setErrorMessage] = useState("DefaultError");
@@ -22,6 +28,15 @@ export default function TransferPopUp(props) {
   const [cbuState, setCbuState] = useState(false);
   const [montoState,setMontoState] = useState(false);
   const [descriptionState,setDescriptionState] = useState(false);
+
+  //seteo de Datos
+  const [newOriginText,setNewOriginText]=useState("-");
+  const [newNameText,setNewNameText]=useState("-");
+  const [newSurnameText,setNewSurnameText]=useState("-");
+  const [newDniText,setNewDniText]=useState("-");
+  const [newCbuText,setNewCbuText]=useState("-");
+  const [newAliasText,setNewAliasText]=useState("-");
+  const [newBancoText,setNewBancoText]=useState("-");
 
   //actualizacion datos monto
   const actMontoSearch=(param)=>{
@@ -52,43 +67,74 @@ export default function TransferPopUp(props) {
   //useEffect cbu y monto
   useEffect(()=>{
     let MontoToNumber = parseInt(svMontoSearchText);
-    if(svCbuSearchText===""){
+
+    UsersApi.forEach((elemento)=>{
+      if(flag1==false){
+        foundState=false;
+        flag1=true;
+      }
+      if(elemento.Fid==0){
+        setNewOriginText(elemento.FDnombre+" "+elemento.FDapellido+"\n"+elemento.FDalias);
+      }
+      else if(svCbuSearchText==elemento.FDalias || svCbuSearchText==elemento.FDcbu){
+        foundState=true;
+        elementId=elemento.Fid;
+      }
+    });
+    flag1=false;
+    if(foundState==true){
+      setNewNameText(UsersApi[elementId].FDnombre);
+      setNewSurnameText(UsersApi[elementId].FDapellido);
+      setNewDniText(UsersApi[elementId].FDdni);
+      setNewCbuText(UsersApi[elementId].FDcbu);
+      setNewAliasText(UsersApi[elementId].FDalias);
+      setNewBancoText(UsersApi[elementId].FDbanco);
+
+      setCbuState(true);
+      setErrorText("iddle");
+    }
+    else if(foundState==false){
       setCbuState(false);
-      setMontoState(false);
-      setDescriptionState(false);
+      setNewNameText("-");
+      setNewSurnameText("-");
+      setNewDniText("-");
+      setNewCbuText("-");
+      setNewAliasText("-");
+      setNewBancoText("-");
       setErrorText("Err1");
     }
-    else if(svDescriptionSearchText===""){
-      setCbuState(true);
-      setMontoState(false);
+
+    if(svDescriptionSearchText==="" && cbuState==true){
       setDescriptionState(false);
       setErrorText("Err4");
     }
-    else if(svDescriptionSearchText.length >28){
-      setCbuState(true);
-      setMontoState(false);
+    else if(svDescriptionSearchText.length>28 && cbuState==true){
       setDescriptionState(false);
       setErrorText("Err5");
     }
-    else if(svMontoSearchText==="" || MontoToNumber<=0 || MontoToNumber>15000000){
-      setCbuState(true);
+    else{
+      if(cbuState==true){
+        setDescriptionState(true);
+      }
+    }
+
+    if((svMontoSearchText==="" || MontoToNumber<=0 || MontoToNumber>15000000) && descriptionState==true){
       setMontoState(false);
-      setDescriptionState(true);
       setErrorText("Err2");
     }
-    else if(MontoToNumber>BalanceEconomico){
-      setCbuState(true);
+    else if(MontoToNumber>BalanceEconomico && descriptionState==true){
       setMontoState(false);
-      setDescriptionState(true);
       setErrorText("Err3");
     }
     else{
-      setCbuState(true);
-      setMontoState(true);
-      setDescriptionState(true);
+      if(descriptionState==true){
+        setMontoState(true);
+      }
+    }
+    if(cbuState==true && montoState==true && descriptionState && confirmTransfer==true){
       setErrorText("Yes1");
     }
-  },[svCbuSearchText,svMontoSearchText,svDescriptionSearchText]);
+  },[svCbuSearchText,svMontoSearchText,svDescriptionSearchText,cbuState,montoState,descriptionState]);
 
   useEffect(() => {
     if (errorText === "Err1") {
@@ -143,17 +189,17 @@ export default function TransferPopUp(props) {
 
           <div className={styleTransfer.insideContent}>
             <label>Destinatario</label>
-            <input className={styleTransfer.dataText} id="inpt_destinatario" type="text" readOnly/>
+            <input className={styleTransfer.dataText} id="inpt_destinatario" type="text" readOnly value={newNameText+" "+newSurnameText}/>
             <label>Origen</label>
-            <input className={styleTransfer.dataText} id="inpt_origen" type="text" readOnly/>
+            <input className={styleTransfer.dataText} id="inpt_origen" type="text" readOnly value={newOriginText}/>
             <label>CBU</label>
-            <input className={styleTransfer.dataText} id="inpt_cbu" type="text" readOnly/>
+            <input className={styleTransfer.dataText} id="inpt_cbu" type="text" readOnly value={newCbuText}/>
             <label>Alias</label>
-            <input className={styleTransfer.dataText} id="inpt_alias" type="text" readOnly/>
+            <input className={styleTransfer.dataText} id="inpt_alias" type="text" readOnly value={newAliasText}/>
             <label>Banco</label>
-            <input className={styleTransfer.dataText} id="inpt_banco" type="text" readOnly/>
+            <input className={styleTransfer.dataText} id="inpt_banco" type="text" readOnly value={newBancoText}/>
             <label>DNI</label>
-            <input className={styleTransfer.dataText} id="inpt_dni" type="text" readOnly/>
+            <input className={styleTransfer.dataText} id="inpt_dni" type="text" readOnly value={newDniText}/>
             <label>Concepto</label>
 
             <select className={styleTransfer.inpt_concepto} value={selectValue} id="inpt_motivo" onChange={handleSelection}>
