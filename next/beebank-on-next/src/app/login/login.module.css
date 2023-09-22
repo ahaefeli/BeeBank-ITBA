@@ -25,6 +25,14 @@
 .login_btn {
     width: 60%;
     margin-bottom: 0px;
+    background-color: rgb(238, 182, 79);
+    border-color: rgb(238, 182, 79);
+    transition-duration: 0.5s;
+}
+
+.login_btn:hover
+{
+    color:white;
 }
 
 .loginText {

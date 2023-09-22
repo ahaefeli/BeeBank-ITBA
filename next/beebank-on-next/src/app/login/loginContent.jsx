@@ -11,7 +11,7 @@ export default function LoginContent() {
         <input type="text" className={styleLogin.mail} id="correo" placeholder="correo electrónico" required />
         <label className={styleLogin.loginText}>Contraseña:</label>
         <input type="password" className={styleLogin.password} id="password" placeholder="contraseña" required />
-        <Link href="/home" className={`button--general ${styleLogin.login_btn}`}>Ingresar</Link>
+        <Link href="/home" className={`button--general ${styleLogin.login_btn}`}>INGRESAR</Link>
         <Link href="/registro">Crear una cuenta</Link>
       </form>
     </div>
