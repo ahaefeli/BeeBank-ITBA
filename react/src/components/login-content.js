@@ -15,6 +15,14 @@ export default function LoginContent() {
     verifyLogin(newPassword);
   }, [newPassword]);
 
+  function PasswordErrorPopUp(props){
+    return(
+        <div className={props.show?"errorPopUp show":"errorPopUp hide"}>
+                <label>Contraseña incorrecta</label>
+        </div>
+    )
+}
+
   function clearErrorWithTimeout() {
     setShowError(true);
 

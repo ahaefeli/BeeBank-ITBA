@@ -1,4 +1,3 @@
-
 .allAccountsContainer {
     display: flex;
     flex-direction: column;
@@ -6,9 +5,9 @@
     width: 100%;
     justify-content: center;
     padding: 50px;
-}
-
-.account{
+  }
+  
+  .account {
     background-color: var(--main-color);
     display: flex;
     flex-direction: row;
@@ -18,9 +17,9 @@
     padding: 0;
     width: 55%;
     margin: auto;
-}
-
-.accountInfo {
+  }
+  
+  .accountInfo {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,9 +27,10 @@
     text-align: center;
     padding-left: 40px;
     gap: 10px;
-}
-
-.logOnContainer, .logOnContainer:not(:hover){
+  }
+  
+  .logOnContainer,
+  .logOnContainer:not(:hover) {
     transition: all 0.5s ease;
     display: flex;
     justify-content: center;
@@ -43,111 +43,125 @@
     border-radius: 0px 20px 20px 0px;
     margin-right: -1px;
     padding: 20px 0px;
-}
-
-.logOnContainer:hover{
+    padding: 30px 0px;
+  }
+  
+  .logOnContainer:hover {
     transition: all 0.5s ease;
     background-color: var(--back-hover-color);
     cursor: pointer;
-}
-
-.logOnContainer > i {
+    padding: 15px 0px;
+  }
+  
+  .logOn {
     padding: 30px 0px;
-}
-
-.logOn {
     margin: 0;
     font-size: 40px;
-}
-
-.cbuCopy {
+    color: var(--back-light-color);
+  }
+  
+  .cbuCopy {
     font-size: 18px;
     padding: 0;
     padding-right: 7px;
-}
-
-.accountTransferInfo{
+  }
+  
+  .accountTransferInfo {
     display: flex;
     flex-direction: column;
     flex: 1;
     gap: 20px;
     padding-left: 10%;
     align-items: start;
-    padding-left: 20%;    
-}
-
-.accountInfoIype, .accountInfoNumber {
+    padding-left: 20%;
+  }
+  
+  .accountInfoIype,
+  .accountInfoNumber {
     color: var(--back-light-color);
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
-}
-
-.accountInfoOwner{
+  }
+  
+  .accountInfoOwner {
     font-size: 17px;
     font-weight: 500;
-}
-
-.beebankTag {
+  }
+  
+  .beebankTag {
     display: inline;
     padding: 0;
     color: var(--light-color);
-}
-
-.accountCbu:hover, .accountCbu > label {
+  }
+  
+  .accountCbu:hover,
+  .accountCbu>label {
     cursor: pointer;
-}
-
-.accountCbu > i{
+  }
+  
+  .accountCbu>i {
     margin-right: 10px;
-}
-
-.createAccount{
+  }
+  
+  .createAccount {
     margin: auto;
     width: 20%;
-}
-
-@media only screen and (max-width:768px) {
+  }
+  
+  @media only screen and (max-width:768px) {
     .allAccountsContainer {
-        width: 90%;
-        margin: 30px 0px;
+      width: 100%;
+      margin: 30px 0px;
+      padding: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
-    
-    .account{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 40px 0px 0px 0px;
+  
+    .account {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      width: 85%;
+      margin: 0;
+      padding: 40px 0px 0px 0px;
     }
-    
-    .account > div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        padding: 0;
-    }  
-    .logOnContainer, .logOnContainer:not(:hover){
-        max-width: 100%;
-        width: 100%;
-        border-left-style: none;
-        border-top-style: solid;
-        border-radius: 0px 0px 20px 20px;
-        padding: 0px;
+  
+    .account>div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 0;
     }
-    .logOnContainer > i {
-        padding: 15px 0px;
+  
+    .logOnContainer,
+    .logOnContainer:not(:hover) {
+      max-width: 100%;
+      width: 100%;
+      border-left-style: none;
+      border-top-style: solid;
+      border-radius: 0px 0px 20px 20px;
+      padding: 15px 0px;
     }
-    
+  
     .logOn {
-        margin: 0;
-        font-size: 40px;
+      padding: 15px 0px;
+      margin: 0;
+      font-size: 40px;
     }
-.account-transfer-info{
-    justify-content: center;
-    text-align: center;    
-    margin: 30px 0px;
-}
-}
+  
+    .account-transfer-info {
+      justify-content: center;
+      text-align: center;
+      margin: 30px 0px;
+    }
+  
+    .createAccount {
+      width: 60%;
+    }
+  }

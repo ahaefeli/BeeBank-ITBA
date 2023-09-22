@@ -35,9 +35,9 @@
 
 .history {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .history__header {
@@ -47,30 +47,16 @@
     width: 100%;
     margin-bottom: 20px;
 }
-.history__table__header{
-    text-decoration: underline;
-}
+
 .username{
     color: var(--light-color);
 }
 
 @media only screen and (max-width:768px){
-    .history__table__content{
-        font-size: 10px;
-    }
-
-    .history__header {
-        display: flex;
-        flex-direction: column;
-        align-items: baseline;
-        font-size: 10px;
-    }
 
     .separatorContainer{
-        width: 100%;
+        width: 80%;
         margin: 20px auto;
-        padding-left:0px;
-        border-radius: 0px;
     }
 
     .utilities{

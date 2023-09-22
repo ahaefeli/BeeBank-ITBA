@@ -33,7 +33,7 @@ export default function TransfersContent() {
 						<div className={styleTransfers.balance}>
 							<ul className={styleTransfers.balanceUl}>
 								<li className={styleTransfers.balanceText}>Balance:</li>
-								<li className={`${styleTransfers.balanceAmount} number-format`}>{BalanceEconomico}</li>
+								<li className={`${styleTransfers.balanceAmount} number_format`}>{BalanceEconomico.toLocaleString()}</li>
 							</ul>
 						</div>
 						<ul className={styleTransfers.transferContactSearch}>
@@ -42,7 +42,7 @@ export default function TransfersContent() {
 						</ul>
 						<ul className={styleTransfers.transferContactSearch}>
 							<li><input type="search" name="Busqueda" id="Busqueda" className={styleTransfers.inputBarra} autoComplete="off" /></li>
-							<label htmlFor="Busqueda" className={styleTransfers.inputLabel}>Buscá el pago o transferencia</label>
+							<li className={styleTransfers.inputLabel}><label htmlFor="Busqueda" >Buscá el pago o transferencia:</label></li>
 						</ul>
 					</div>
 

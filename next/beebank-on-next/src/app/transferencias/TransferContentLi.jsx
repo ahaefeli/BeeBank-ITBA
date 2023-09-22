@@ -56,7 +56,7 @@ export default function TransferContentLi(props) {
         <>
             <li className={`${tState} number_format`} onClick={FactVisibility}>
                 <abbr title={TFdescription}>
-                    <i className="bi bi-card-list" />{TFDbank}*{TFDnombre} {TFDapellido} ${TFmonto}
+                    <i className="bi bi-card-list" />{TFDbank}: {TFDnombre} {TFDapellido} | ${TFmonto.toLocaleString()}
                     <hr />
                 </abbr>
             </li>

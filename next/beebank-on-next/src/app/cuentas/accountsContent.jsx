@@ -25,15 +25,15 @@ export default async function AccountsContent() {
             <label className={styleAccounts.accountInfoNumber}>{data[user].accountNumber}</label>
           </div>
           <div className={styleAccounts.accountTransferInfo}>
-            <label className={`${styleAccounts.accountCbu} number_format`}><i className="bi bi-clipboard cbu-copy" />{data[user].cbu}</label>
-            <label className={`${styleAccounts.accountCbu} number_format`}><i className="bi bi-clipboard cbu-copy" />{data[user].alias}<label className={styleAccounts.beebankTag}>{(data[user].bank === "Beebank") ? '$bee' : null}</label></label>
+            <label className={`${styleAccounts.accountCbu} number_format`}><i className='bi bi-clipboard cbu-copy' />{data[user].cbu}</label>
+            <label className={`${styleAccounts.accountCbu} number_format`}><i className='bi bi-clipboard cbu-copy' />{data[user].alias}<label className={styleAccounts.beebankTag}>{(data[user].bank === 'Beebank') ? '$bee' : null}</label></label>
           </div>
           <div className={styleAccounts.logOnContainer}>
-            <i className="bi bi-arrow-bar-right log-on" />
+            <Link href='/home'><i className={`bi bi-arrow-bar-right ${styleAccounts.logOn}`} /></Link>
           </div>
         </div>
       ))}
-      <Link href='/create-account' className={`${styleAccounts.createAccount} button--general`}>Crea una cuenta de empresa</Link>
+      <Link href='/cuentas' className={`${styleAccounts.createAccount} button--general`}>Crea una cuenta de empresa</Link>
     </div>
   )
 }

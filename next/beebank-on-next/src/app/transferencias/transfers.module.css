@@ -1,7 +1,3 @@
-.transferMainContainer {
-  position: relative;
-}
-
 .transfersContainer {
   width: 100%;
   position: absolute;
@@ -95,16 +91,15 @@
   font-size: 1.5rem;
   color: var(--main-color);
   transition: 0.3s ease;
+  z-index: 101;
 }
 
 .inputLabel {
   display: block;
   position: absolute;
-  margin-top: 3rem;
-  padding-right: 24rem;
-  padding-bottom: 7rem;
   color: white;
   color: var(--main-color);
+  margin: 0px 300px 50px 0px;
 }
 
 .inputBarra:focus {
@@ -128,9 +123,10 @@
 .transferDenied abbr,
 .transferApproved abbr {
   text-decoration: none;
+  cursor:pointer;
 }
 
-.transfersList {
+.transfersList{
   list-style-type: none;
   font-size: 1.3rem;
   color: white;
@@ -143,10 +139,12 @@
 
 .transferDenied i {
   color: #ff2a2a;
+  margin-right: 10px;
 }
 
 .transferApproved i {
   color: #01ff38;
+  margin-right: 10px;
 }
 
 .transferApproved:hover {

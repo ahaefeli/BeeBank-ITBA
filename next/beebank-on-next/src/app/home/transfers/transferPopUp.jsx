@@ -242,10 +242,10 @@ export default function TransferPopUp(props) {
         <form className={styleTransfer.transfer_form}>
 
           <div className={styleTransfer.searchContent}>
-            <label htmlFor={styleTransfer.inpt_cbu_search}>CBU/ALIAS</label>
+            <label htmlFor={`${styleTransfer.inpt_cbu_search} ${styleTransfer.marginLabel}`}>CBU/ALIAS</label>
             <input type="text" className={`${styleTransfer.inpt_text} number_format`} id="inpt_cbu_search" defaultValue={cbuSearchText} onChange={actCbuSearch}/>
             <input type="button" value="Buscar" className={`button--general ${styleTransfer.searchButton}`} id="inpt_buscar" onClick={dataSearch}/>
-            <label>Monto</label>
+            <label className={styleTransfer.marginLabel}>Monto</label>
             <input className={`${styleTransfer.inpt_text} number_format`} id="inpt_monto" type="number" onChange={actMontoSearch}/>
             <label className={styleTransfer.errorLabel} id="errorLabel" style={{ color: errorColor }}>{errorMessage}</label>
             <input type="button" value="Transferir" className={`button--general ${styleTransfer.transferButton}`} id="inpt_transferir" onClick={transferSearch}/>

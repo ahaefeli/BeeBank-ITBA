@@ -148,3 +148,20 @@
 .calculateBtn{
     margin: 20px auto;
 }
+
+@media only screen and (max-width:788px){
+
+    .mainContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .firstContainer, .secondContainer {
+        margin: 20px 0px;
+        position: static;
+        display: flex;
+        top: 0;
+        left: 0;
+        transform: translate(0%,0%);
+    }
+}
