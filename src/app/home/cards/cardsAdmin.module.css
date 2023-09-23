@@ -1,0 +1,138 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  gap: 10px;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.subTitle {
+  font-size: 15px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 308.5px;
+  height: 200px;
+
+  color: var(--card-color);
+
+  perspective: 1000px;
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.card.clicked>.cardInner {
+  transform: rotateY(180deg);
+}
+
+.beeCard,
+.beeCardBack {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.beeCard, .beeCardBack {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 24px;
+}
+
+.beeCardBack {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: start;
+  justify-content: end;
+  padding-bottom: 22px;
+}
+
+
+
+.beeCard {
+  background-image: url('https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/Cards/front-card.png');
+}
+
+.beeCardBack {
+  background-image: url('https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/Cards/back-card.png');
+}
+
+.visaCard {
+  background-image: url('https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/Cards/visa-blue.png');
+}
+
+.visaCardBack {
+  background-image: url('https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/Cards/visa-blue-back.png');
+}
+
+.addCard {
+  margin-top: 10px;
+}
+
+
+.name {
+  margin: 80px 0px 0px 20px;
+  font-size: 20px;
+  color: var(--card-color);
+}
+
+.cardData {
+  display: flex;
+  margin-top: auto;
+  font-weight: 300;
+  margin: auto 0px 20px 20px;
+  gap: 5px;
+}
+
+.lastNumber {
+  font-size: 17px;
+  font-weight: 300;
+  margin: auto 0px 20px 20px;
+}
+
+.cardInfo {
+  margin-left: 22px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.cardExpirationDate > label{
+  margin-left: 10px;
+}
+
+.cardName > label {
+  margin-left: 30px;
+}
+
+.cardNumber {
+  font-size: 21px;
+}
+
+@media only screen and (max-width:768px) {
+  .card {
+    scale: 0.9;
+  }  
+}

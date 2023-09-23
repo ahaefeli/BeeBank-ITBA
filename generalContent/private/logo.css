@@ -1,0 +1,31 @@
+@media screen and (min-width:1024px){
+    .logo_mobile{
+        width: fit-content;
+        position: relative;
+        left: 45%;
+    }
+    .logo{
+        width: fit-content;
+        position: relative;
+        left: 45%;
+    }
+}
+
+@media screen and (max-width:600){
+    .logo_mobile{
+        width: max-content;
+        position: relative;
+        left: 35%;
+        background-color: #222831;
+    }
+    .logo{
+        width: max-content;
+        position: relative;
+        left: 35%;
+        background-color: #222831;
+    }
+
+    .bbank_logo{
+        padding-left: 100px;
+    }
+}

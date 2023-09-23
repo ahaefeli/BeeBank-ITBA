@@ -1,0 +1,131 @@
+.logged_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    margin: 0px;
+  }
+  
+  .public_logo {
+    width: 140px;
+  }
+  
+  .public_logo:hover,
+  .public_logo:focus {
+    transition: all 0.3s ease;
+    opacity: 0.8;
+  }
+  
+  .public_logo:not(:hover) {
+    transition: all 0.3s ease;
+    opacity: 1;
+  }
+  
+  .public_navigation {
+    display: flex;
+    background-color: var(--main-color);
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 0px;
+    padding: 15px;
+  }
+  
+  .public_nav_bar {
+    z-index: 3;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .public_navigation {
+    display: flex;
+    align-items: center;
+  }
+  
+  .public_navigation>li {
+    display: inline-flex;
+  }
+  
+  /* Links Animation */
+  
+  .public_a_nav {
+    position: relative;
+    padding: 0 0.1rem;
+  }
+  
+  .public_a_nav::after {
+    content: "";
+    position: absolute;
+    background-color: var(--light-color);
+    height: 1px;
+    width: 0;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+  }
+  
+  .public_a_nav:hover::after {
+    width: 100%;
+  }
+  
+  
+  /* ***************** */
+  /* Responsive Design */
+  /* ***************** */
+  
+  @media only screen and (max-width: 768px) {
+
+    .public_navigation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0px 0px 0px;
+    }
+  
+    .public_navigation>li {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      text-align: center;
+      border-style: none;
+      border-bottom-style: solid;
+      border-width: 1px;
+      padding: 13px 0px;
+      border-color: var(--back-color);
+    }
+  
+  
+    .public_register_btn {
+      display: block;
+      width: 100%;
+      border-radius: 0px;
+      margin: 0;
+      color: var(--light-color);
+      text-decoration: none;
+      /*background-color: var(--main-color);*/
+      border-style: none;
+      color: var(--main-color);
+      text-align: center;
+    }
+  
+    .public_register_btn:not(:hover) {
+      border-radius: 0px;
+      padding: 15px 0px;
+    }
+  
+    .public_register_btn:hover {
+      transition: color 0.5s;
+      color: var(--light-hover-color);
+      text-decoration: none;
+      border-radius: 0px;
+    }
+  
+    .navButton:not(:hover){
+      border-radius: 0px !important;
+    }  
+    .navButton:hover{
+      border-radius: 0px !important;
+    }
+
+
+  }
