@@ -1,12 +1,26 @@
+'use client';
+
 import styleNav from '../../src/main-css/privateNav.module.css'//RUTA
 import Link from 'next/link'
-
+import { useState, useEffect } from 'react';
 
 export default function LoggedNavBar () {
-    return (
-        <div className={styleNav.navBar_Container}>
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen);
+    };
+
+    useEffect(() => {
+        console.log(isMenuOpen)
+    }, [isMenuOpen]);
+
+    return (<>
+            <span><i className={`bi bi-chevron-down ${isMenuOpen?styleNav.iconOpen:styleNav.iconClosed} ${styleNav.toggleMenu}`} onClick={toggleMenu}></i></span>
+
+            <div className={`${styleNav.navBar_Container} ${isMenuOpen?styleNav.showMenu:styleNav.hideMenu}`}>
             <nav className={styleNav.logged_navbar}>
-                <ul className={styleNav.logged_navbar__list}>
+                <ul className={`${styleNav.logged_navbar__list} ${isMenuOpen?styleNav.showMenu:styleNav.hideMenu}`}>
                     <li className={styleNav.logged_navbar__list__li_nav}><Link href="/home" className={styleNav.li__a_nav} draggable="false"><i className="bi bi-house" />Inicio</Link></li>
                     <li className={styleNav.logged_navbar__list__li_nav}><Link href="/cuentas" className={styleNav.li__a_nav} draggable="false"><i className="bi bi-person" />Cuenta</Link></li>
                     <li className={styleNav.logged_navbar__list__li_nav}><Link href="/transferencias" className={styleNav.li__a_nav} draggable="false"><i className="bi bi-shuffle" />Transferencias</Link></li>
@@ -18,5 +32,5 @@ export default function LoggedNavBar () {
             </nav>
         </div>
 
-    )
+        </>)
 }

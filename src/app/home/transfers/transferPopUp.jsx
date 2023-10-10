@@ -236,7 +236,7 @@ export default function TransferPopUp(props) {
   });
 
   return (
-    <div className={props.show ? "popUp" : "popUp-hide"}>
+    <div className={`${props.show ? "popUp" : "popUp-hide"} downScale`}>
       <section className={styleTransfer.main_section_transfer}>
         <div className={styleTransfer.title}>Transferencias</div>
         <form className={styleTransfer.transfer_form}>

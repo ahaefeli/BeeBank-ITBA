@@ -114,6 +114,11 @@
   z-index: 100; /* Asegura que la capa esté encima de otros elementos */
 }
 
+.downScale{
+  scale: 0.9;
+  transform: translate(-50%, -62%);
+}
+
 .number_format {
   font-family: 'Roboto', sans-serif !important;
 }
@@ -154,11 +159,14 @@ a {
   text-decoration: none;
   font-weight: 500;
 }
-a:hover,
-a:focus {
+a:hover {
   transition: color 0.2s;
   color: var(--light-hover-color);
   text-decoration: none;
+}
+
+a:focus {
+  outline: none;
 }
 
 .ReactContent{
@@ -218,6 +226,7 @@ a:focus {
   justify-content: center;
   align-items: center;
   flex: 1;
+  margin-top: 70px;
 }
 
 .logo_mobile {
@@ -259,14 +268,14 @@ a:focus {
 
   .logo_mobile {
       display: flex;
-      position: relative;
+      position: fixed;
       width: 100%;
       border-bottom-style: solid;
       border-bottom-color: var(--main-color);
       justify-content: center;
       align-items: center;
       height: 64px;
-      z-index: 99;
+      z-index: 103;
       background-color: var(--main-color);
   }
 }

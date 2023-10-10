@@ -59,7 +59,7 @@ export default function LoginContent() {
     <ErrorPopUp show={accessDenied}/>
     <div className={stylesLogin.login}>
       <form>
-        <h4>Ingresa a tu cuenta</h4>
+        <div className={stylesLogin.title}>Ingresa a tu cuenta</div>
 
         <label>Correo electrónico:</label>
         <input type="text" className={stylesLogin.mail} id="correo" placeholder="correo electrónico" required />

@@ -23,7 +23,7 @@ export default function CardsPopUp(props) {
             </div>
             <div className={styleCards.beeCard}>
               <div className={styleCards.name}>Juan Manuel Perez</div>
-              <div className={styleCards.lastNumber}>Terminado en <label className='number_format'>2357</label></div>
+              <div className={styleCards.lastNumber}>Terminada en <label className='number_format'>2357</label></div>
             </div>
           </div>
         </div>

@@ -110,3 +110,56 @@
   .InfoState {
     font-weight: 500;
   }
+
+  @media screen and (max-width: 768px) {
+    .ContMain {
+      position: absolute;
+      top: auto;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 101;
+    }
+    
+    .shadow {
+      position: fixed;
+      right: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(27, 27, 27, 0.8);
+      z-index: 99;
+    }
+    
+    .hide {
+      transition: all 0.5s;
+      right: 0;
+      top: 100%;
+    }
+    
+    .show {
+      transition: all 0.5s;
+      right: 0;
+      top: 40%;
+    }
+    
+    .ContFact {
+      position: fixed;
+      min-height: 400px;
+      max-height: none;
+      min-width: 0px;
+      max-width: none;
+      width: 95%;
+      border-radius: 0px;
+      height: 100vh;
+      transform: translate(0px,-100px);
+    }
+    
+    .internalContent {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }

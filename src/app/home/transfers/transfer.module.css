@@ -6,7 +6,7 @@
   width: 100%;
   gap: 10px;
   align-items: stretch;
-  height: 100%;
+  height: 90%;
 }
 
 .title{
@@ -23,7 +23,7 @@
   border-radius: 30px;
   padding: 25px 50px;
   width: 100%;
-  height: 100%;
+  height: 90%;
 }
 
 .inpt_text, .dataText {

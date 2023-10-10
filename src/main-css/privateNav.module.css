@@ -1,4 +1,8 @@
  /* Nav Bar */
+ .toggleMenu{
+    position: absolute;
+    display: none;
+}
 
 .logged_navbar__list {
     position: fixed;
@@ -70,12 +74,20 @@
     width: 100%;
 }
 
+.opened {
+    width: 100%;
+    min-width: 0;
+    z-index: 115;
+  }
+
+
 
 @media screen and (max-width: 768px) {
+
     .logged_navbar__list {
         display: block;
-        position: static;
         width: 100%;
+        margin-top: 50px;
     }
 
     .logged_navbar__list nav {
@@ -100,7 +112,54 @@
         margin: 20px 0px;
     }
 
+    .iconClosed {
+        transform: rotate(0deg);
+        transition: transform 0.5s ease;
+    }
+    
+    .iconOpen {
+        transform: rotate(180deg);
+        transition: transform 0.5s ease;
+    }
+    
+
     .logged_navbar  {
         font-size: 20px;
+    }
+
+    .toggleMenu{
+        display: flex;
+        z-index: 103;
+        position: fixed;
+        left: 87%;
+        top: 30px;
+        scale: 2;
+        color: var(--light-color);
+        outline: none;
+    }
+
+    .toggleMenu:focus {
+        outline: none;
+      }
+      
+    
+    .toggleMenu:hover{
+        cursor: pointer;
+    }
+    
+    .showMenu {
+        height: 100vh;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        position: fixed;
+        z-index: 101;
+    }
+    
+    .hideMenu {
+        height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        position: fixed;
+        z-index: 101;
     }
 }

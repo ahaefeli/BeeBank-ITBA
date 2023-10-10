@@ -10,6 +10,10 @@
     padding: 30px;
 }
 
+.title{
+    font-size: 20px;
+    text-align: center;
+}
 .topBtns > .select {
     display: flex;
     flex-direction: column;
@@ -154,14 +158,21 @@
     .mainContainer{
         display: flex;
         flex-direction: column;
+        margin-top: 70px;
+        align-items: stretch;
     }
 
     .firstContainer, .secondContainer {
-        margin: 20px 0px;
+        margin: 5px 0px;
         position: static;
-        display: flex;
+        display: block;
         top: 0;
         left: 0;
         transform: translate(0%,0%);
+        padding: 0px;
     }
+    
+.inputBoxes {
+    align-items: center;
+}
 }

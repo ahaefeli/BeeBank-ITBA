@@ -37,12 +37,7 @@ export default function TransfersContent() {
 							</ul>
 						</div>
 						<ul className={styleTransfers.transferContactSearch}>
-							<li className={styleTransfers.contactSearchText}><a href='#'>Tiene Beebank</a></li>
-							<li className={styleTransfers.contactSearchText}><a href='#'>No tiene Beebank</a></li>
-						</ul>
-						<ul className={styleTransfers.transferContactSearch}>
-							<li><input type='search' name='Busqueda' id='Busqueda' className={styleTransfers.inputBarra} autoComplete='off' /></li>
-							<li className={styleTransfers.inputLabel}><label htmlFor='Busqueda' >Buscá el pago o transferencia:</label></li>
+							<li><input type='search' name='Busqueda' id='Busqueda' className={styleTransfers.inputBarra} autoComplete='off' placeholder='Buscá el pago o transferencia:'/></li>
 						</ul>
 					</div>
 

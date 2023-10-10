@@ -52,6 +52,7 @@ export default function LoansContent() {
       <div className={styleLoans.mainContainer}>
         <div className={styleLoans.firstContainer}>
           <ul className={styleLoans.topBtns}>
+           <div className={styleLoans.title}>Pedí tu préstamo</div>
             <li className={styleLoans.select}>
               <select name='select' className={styleLoans.menuSelect}>
                 <option value={1}>PRESTAMO PERSONAL</option>
@@ -80,8 +81,7 @@ export default function LoansContent() {
               </select>
             </li>
             <li className={styleLoans.select}>
-              <button className={`${styleLoans.acceptBtn} button--general`}> Aceptar</button>
-              <button className={`${styleLoans.cancelBtn} button--general`}>Cancelar</button>
+              <button className={`${styleLoans.acceptBtn} button--general`}>Solicitar</button>
             </li>
           </ul>
         </div>
@@ -90,6 +90,7 @@ export default function LoansContent() {
           <section className={styleLoans.loansCalculator}>
             <div className={styleLoans.calculatorContainer}>
               <ul className={styleLoans.inputBoxes}>
+               <div className={styleLoans.title}>Calculá intereses</div>
                 <label htmlFor={styleLoans.loan}>Monto del prestamo</label>
                 <li ><input className={styleLoans.inputBox} type="number" id="loanamount" /></li>
                 <label htmlFor={styleLoans.anual}>Interes(%)</label>

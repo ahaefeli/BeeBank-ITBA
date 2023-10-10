@@ -10,9 +10,9 @@ export default function Home() {
   return (
     <div className='ReactContent'>
       <BalanceCounter/>
-      <Logo mobile={true} darkLogo={true}/>
+      <Logo mobile={true} darkLogo={false}/>
       <PrivateNavBar/>
-      <Logo mobile={false} darkLogo={true}/>
+      <Logo mobile={false} darkLogo={false}/>
       <TransfersContent/>
     </div>
   );
