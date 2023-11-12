@@ -1,0 +1,11 @@
+{% extends "myapp/base.html"   %}
+
+
+{% block content %}
+Esto esta en home 
+<h2>listado de proyecto</h2>
+{% for projects in projects:
+   {{projects}} %}
+
+    {%endfor%}
+{%endblock %}
