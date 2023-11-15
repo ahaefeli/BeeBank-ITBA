@@ -1,0 +1,178 @@
+.topBtns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 30px;
+    background-color: var(--main-color);
+    color: var(--white-color);
+    padding: 30px;
+}
+
+.title{
+    font-size: 20px;
+    text-align: center;
+}
+.topBtns > .select {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.menuSelect:hover {
+    cursor: pointer;
+}
+
+.menuSelect {
+    height: 2rem;
+    border-radius: 10px;
+    padding: 7px;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+
+}
+
+.topBtns .acceptBtn {
+    padding: 15px 32px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.topBtns .acceptBtn:hover {
+    transition: 0.3s;
+}
+
+.topBtns .cancelBtn {
+    border-radius: 10px;
+    padding: 15px 32px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.topBtns .cancelBtn:hover {
+    background-color: #f7c873;
+    transition: 0.3s;
+}
+
+
+/* LOANS CALCULATOR */
+
+.loansCalculator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputBoxes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.inputBoxes > label {
+    margin-top: 10px;
+}
+
+.calculatorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:var(--main-color);
+    text-decoration: none;
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 30px;
+    padding: 30px;
+}
+
+
+.result {
+    color: var(--white-color);
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.inputBoxes {
+    color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.span {
+    color: var(--white-color);
+    position: absolute;
+}
+
+
+.resultText {
+    font-weight: 400;
+    font-size: 17px;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstContainer {
+    margin-left: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.secondContainer {
+    margin-left: auto;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%,-50%);
+}
+
+.inputBox {
+    border-radius: 10px;
+    padding: 5px;
+    border-style: none;
+}
+
+.calculateBtn{
+    margin: 20px auto;
+}
+
+@media only screen and (max-width:788px){
+
+    .mainContainer{
+        display: flex;
+        flex-direction: column;
+        margin-top: 70px;
+        align-items: stretch;
+    }
+
+    .firstContainer, .secondContainer {
+        margin: 5px 0px;
+        position: static;
+        display: block;
+        top: 0;
+        left: 0;
+        transform: translate(0%,0%);
+        padding: 0px;
+    }
+    
+.inputBoxes {
+    align-items: center;
+}
+}

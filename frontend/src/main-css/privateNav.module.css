@@ -1,0 +1,165 @@
+ /* Nav Bar */
+ .toggleMenu{
+    position: absolute;
+    display: none;
+}
+
+.logged_navbar__list {
+    position: fixed;
+    display: flex;
+    background-color: var(--main-color);
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px 0px 15px 0px;
+    width: 15%;
+    min-width: 200px;
+    height: 100%;
+    z-index: 102;
+}
+
+.logged_navbar >ul {
+    display: flex;
+    align-items: center;
+}
+
+.logged_navbar__list__li_nav {
+    display: block;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.logged_navbar >ul>li:last-child {
+    margin-top: auto;
+}
+
+.li__a_nav {
+    display: block;
+    color: var(--back-light-color);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 5px 15px 5px 15px;
+}
+
+.li__a_nav > i {
+    font-size: 25px;
+    padding-right: 20px;
+}
+
+.li__a_nav:hover,
+.li__a_nav:hover i {
+    transition: color 0.2s;
+    color: var(--light-color);
+}
+
+
+/* Animation */
+
+.logged_navbar__list__li_nav {
+    position: relative;
+    padding: 0 0.1rem;
+}
+
+.logged_navbar__list__li_nav::after {
+    content: "";
+    position: absolute;
+    background-color: var(--light-color);
+    height: 1px;
+    width: 0;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.logged_navbar__list__li_nav:hover::after {
+    width: 100%;
+}
+
+.opened {
+    width: 100%;
+    min-width: 0;
+    z-index: 115;
+  }
+
+
+
+@media screen and (max-width: 768px) {
+
+    .logged_navbar__list {
+        display: block;
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .logged_navbar__list nav {
+        height: 100%;
+    }
+
+    .logged_navbar__list {
+        display: block;
+        align-items: center;
+    }
+
+    .logged_navbar__list > li,
+    .logged_navbar__list > li:last-child {
+        display: block;
+        margin: 0;
+        padding: 10px 0px !important;
+        margin: 5px 0px !important;
+        width: 100%;
+    }
+
+    .logged_navbar__list__li_nav{
+        margin: 20px 0px;
+    }
+
+    .iconClosed {
+        transform: rotate(0deg);
+        transition: transform 0.5s ease;
+    }
+    
+    .iconOpen {
+        transform: rotate(180deg);
+        transition: transform 0.5s ease;
+    }
+    
+
+    .logged_navbar  {
+        font-size: 20px;
+    }
+
+    .toggleMenu{
+        display: flex;
+        z-index: 103;
+        position: fixed;
+        left: 87%;
+        top: 30px;
+        scale: 2;
+        color: var(--light-color);
+        outline: none;
+    }
+
+    .toggleMenu:focus {
+        outline: none;
+      }
+      
+    
+    .toggleMenu:hover{
+        cursor: pointer;
+    }
+    
+    .showMenu {
+        height: 100vh;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        position: fixed;
+        z-index: 101;
+    }
+    
+    .hideMenu {
+        height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        position: fixed;
+        z-index: 101;
+    }
+}
