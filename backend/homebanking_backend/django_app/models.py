@@ -60,6 +60,7 @@ class Cliente(models.Model):
     dob = models.TextField(blank=True, null=True)
     branch_id = models.IntegerField()
     address_id = models.IntegerField(blank=True, null=True)
+    customer_password = models.TextField()
 
     class Meta:
         managed = False

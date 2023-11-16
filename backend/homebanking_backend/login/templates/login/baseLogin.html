@@ -40,14 +40,14 @@
     <section class="content">
         <!-- Contenido de la Página-->
         <div class="login-form">
-            <form action="">
-                <h4>Ingresa a tu cuenta</h4>
 
-                {% block loginForm %}
-                {% endblock %}
+            <h4>Ingresa a tu cuenta</h4>
 
-                <a href="{% url 'Register' %}">Crear una cuenta</a>
-            </form>
+            {% block loginForm %}
+            {% endblock %}
+
+            <a href="{% url 'Register' %}">Crear una cuenta</a>
+
         </div>
     </section>
 

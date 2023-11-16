@@ -6,4 +6,10 @@
     {{formaLogin}}
     <input type="submit" value="Ingresar" class="general-btn">
 </form>
+{% if "usrnf" in request.GET %}
+    <p class="ErrorMsg">Usuario o contraseña incorrecto</p>
+{% endif %}
+{% if "usrf" in request.GET %}
+    <p class="CorrectMsg">Usuario encontrado</p>
+{% endif %}
 {% endblock %}
