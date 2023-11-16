@@ -21,8 +21,8 @@
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!--Fin links de librerias-->
-  <link rel="stylesheet" href="resources/main/main-logged.css" />
-  <link rel="stylesheet" href="resources/dedicated/css/transfers.css" />
+  <link rel="stylesheet" href="{% static 'transfers/logged.css' %}" />
+  <link rel="stylesheet" href="{% static 'transfers/dedicatedTransfers.css' %}" />
 </head>
 
 <body>
@@ -40,13 +40,13 @@
     <div class="navigation-container">
       <nav>
         <ul class="navegation">
-          <li class="li-nav"><a href="l-home.html" class="a-nav" draggable="false"><i class="bi bi-house"></i>Inicio</a></li>
-          <li class="li-nav"><a href="l-accounts.html" class="a-nav" draggable="false"><i class="bi bi-person"></i>Cuenta</a></li>
-          <li class="li-nav"><a href="l-transfers.html" class="a-nav" draggable="false"><i class="bi bi-shuffle"></i>Transferencias</a></li>
-          <li class="li-nav"><a href="l-loans.html" class="a-nav" draggable="false"><i class="bi bi-bank"></i>Préstamos</a></li>
-          <li class="li-nav"><a href="support.html" class="a-nav" draggable="false"><i class="bi bi-shield-check"></i>Soporte</a></li>
+          <li class="li-nav"><a href="{% url 'Home' %}" class="a-nav" draggable="false"><i class="bi bi-house"></i>Inicio</a></li>
+          <li class="li-nav"><a href="{% url 'Accounts' %}" class="a-nav" draggable="false"><i class="bi bi-person"></i>Cuenta</a></li>
+          <li class="li-nav"><a href="{% url 'Transfers' %}" class="a-nav" draggable="false"><i class="bi bi-shuffle"></i>Transferencias</a></li>
+          <li class="li-nav"><a href="{% url 'Loans' %}" class="a-nav" draggable="false"><i class="bi bi-bank"></i>Préstamos</a></li>
+          <li class="li-nav"><a href="{% url 'Support' %}" class="a-nav" draggable="false"><i class="bi bi-shield-check"></i>Soporte</a></li>
           <li class="li-nav"><a href="l-config.html" class="a-nav" draggable="false"><i class="bi bi-gear"></i>Configuración</a></li>
-          <li class="li-nav"><a href="index.html" class="a-nav" draggable="false"><i class="bi bi-box-arrow-left"></i>Cerrar Sesión</a></li>
+          <li class="li-nav"><a href="{% url 'Inicio' %}" class="a-nav" draggable="false"><i class="bi bi-box-arrow-left"></i>Cerrar Sesión</a></li>
         </ul>
       </nav>
     </div>
@@ -60,7 +60,7 @@
 
               <div class="logo">
                 <section class="logo">
-                  <a href="l-home.html"><img src="resources/beebank-logo-oscuro.png" class="bbank-logo" alt="Beebank" draggable="false"></a>
+                  <a href="{% url 'Home' %}"><img src="resources/beebank-logo-oscuro.png" class="bbank-logo" alt="Beebank" draggable="false"></a>
                 </section>
               </div>
 
@@ -135,7 +135,7 @@
 
   </div>
 
-<script src="resources/main/main-js-animation.js"></script>
+<script src="{% static 'transfers/main-js-animation.js' %}"></script>
 </body>
 
 </html>

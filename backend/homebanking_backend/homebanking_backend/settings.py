@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'home',
     'support',
     'transfers',
+    'initPage',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,7 @@ STATICFILES_DIRS = [
     Path(BASE_DIR).joinpath("home", "static"),
     Path(BASE_DIR).joinpath("support", "static"),
     Path(BASE_DIR).joinpath("transfers", "static"),
+    Path(BASE_DIR).joinpath("initPage", "static"),
 ]
 
 CORS_ALLOWED_ORIGINS = [

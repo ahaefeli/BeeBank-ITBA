@@ -27,9 +27,9 @@
   <!-- Nav -->
   <nav>
     <ul class="navegation">
-      <li><a href="index.html"><img class="logo" src="./resources/beebank-logo-claro.png" alt="Logo" draggable="false"></a></li>
-      <li><a href="index.html" class="a-nav" draggable="false">Inicio</a></li>
-      <li><a href="support.html" class="a-nav" draggable="false">Soporte</a></li>
+      <li><a href="{% url 'Inicio' %}"><img class="logo" src="./resources/beebank-logo-claro.png" alt="Logo" draggable="false"></a></li>
+      <li><a href="{% url 'Inicio' %}" class="a-nav" draggable="false">Inicio</a></li>
+      <li><a href="{% url 'Support' %}" class="a-nav" draggable="false">Soporte</a></li>
       <li><a href="faq.html" class="a-nav" draggable="false">Preguntas Frecuentes</a></li>
     </ul>
   </nav>
@@ -52,7 +52,7 @@
   </section>
 
 
-  <script src="resources/dedicated/js/login.js"></script>
+  <script src="{% static 'register/loginjs.js' %}"></script>
 </body>
 
 </html>
