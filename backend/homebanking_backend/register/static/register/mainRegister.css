@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&family=Roboto:wght@300;400&display=swap');
+
+/* Colors */
+:root {
+  --main-color: #222831;
+  --back-color: #393e46;
+  --back-light-color: #a3a4a5;
+  --light-color: #f7c873;
+  --light-hover-color: #937234;
+  --button-hover-color: #d8aa56;
+  --white-color: #eeeeee;
+  --bg-right-color: #626364;
+  --bg-left-color: #393e46;
+  }
+
+
+/*
+  CSS Main
+*/
+.number-format {
+  font-family: 'Roboto', sans-serif;
+}
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--main-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--light-color);
+}
+
+body {
+  display: flex;
+  background-color: var(--back-color);
+  color: var(--white-color);
+  font-family: 'Raleway', sans-serif;
+  margin: 0px;
+  flex-direction: column;
+  min-height: 100vh;
+
+}
+
+p {
+  font-weight: 300;
+}
+
+a {
+  color: var(--light-color);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  transition: color 0.2s;
+  color: var(--light-hover-color);
+  text-decoration: none;
+}
+
+.logo {
+  width: 140px;
+}
+
+.logo:hover,
+.logo:focus {
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.logo:not(:hover) {
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+.navegation {
+  display: flex;
+  background-color: var(--main-color);
+  justify-content: space-around;
+  flex-direction: row;
+  margin: 0px;
+  padding: 15px;
+}
+
+.nav-bar {
+  z-index: 3;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+nav>ul {
+  display: flex;
+  align-items: center;
+}
+
+nav>ul>li {
+  display: inline-flex;
+}
+
+
+.content {
+  min-height: 50vh;
+  padding: 20px;
+  flex: 1;
+}
+
+
+.footer {
+  background-color: var(--main-color);
+  margin: 0px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  margin: 0px;
+  margin-top: auto;
+  padding: 15px 0px 15px 0px;
+}
+
+.footer a {
+  display: block;
+  margin: 10px;
+}
+
+.footer>div>a>i {
+  padding-left: 10px;
+}
+
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--back-light-color);
+  font-size: 0.9rem;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.general-btn:not(:hover) {
+  transition: all 0.5s ease;
+  position: relative;
+  background-color: var(--light-color);
+  border-radius: 30px;
+  padding: 0.7rem;
+  color: var(--main-color);
+  border-style: solid;
+  border-color: var(--light-color);
+  border-width: 2px;
+}
+
+.general-btn:hover {
+  transition: all 0.5s ease;
+  background-color: var(--back-color);
+  border-style: solid;
+  border-color: var(--button-hover-color);
+  border-width: 2px;
+  color: var(--light-color);
+  border-radius: 30px;
+  padding: 0.7rem;
+}
+
+/* Animation */
+
+.a-nav {
+  position: relative;
+  padding: 0 0.1rem;
+}
+
+.a-nav::after {
+  content: "";
+  position: absolute;
+  background-color: var(--light-color);
+  height: 1px;
+  width: 0;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+.a-nav:hover::after {
+  width: 100%;
+}
+
+
+/* ***************** */
+/* Responsive Design */
+/* ***************** */
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .logo {
+    width: 200px;
+  }
+
+  .navegation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0px 0px 0px;
+  }
+
+  .navegation>li {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-style: none;
+    border-bottom-style: solid;
+    border-width: 1px;
+    padding: 10px;
+    border-color: var(--back-color);
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .responsive-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+  }
+
+  .responsive-footer>a {
+    padding: 0px;
+    margin: 5px;
+  }
+
+  .responsive-footer>p {
+    padding: 0px;
+    margin: 5px;
+  }
+
+  .register-btn {
+    display: block;
+    width: 100%;
+    border-radius: 0px;
+    margin: 0;
+    color: var(--light-color);
+    text-decoration: none;
+    /*background-color: var(--main-color);*/
+    border-style: none;
+    color: var(--main-color);
+    text-align: center;
+  }
+
+.register-btn:not(:hover){
+  border-radius: 0px;
+}
+
+  .register-btn:hover {
+    transition: color 0.5s;
+    color: var(--light-hover-color);
+    text-decoration: none;
+  }
+
+}

@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&family=Roboto:wght@300;400&display=swap');
+
+/* Colors */
+:root {
+    --main-color: #222831;
+    --back-color: #393e46;
+    --back-light-color: #a3a4a5;
+    --light-color: #f7c873;
+    --light-hover-color: #c09a53;
+    --button-hover-color: #d8aa56;
+    --white-color: #eeeeee;
+    --bg-right-color: #626364;
+    --bg-left-color: #393e46;
+    --back-hover-color: #2a313b;
+}
+
+
+/* Loading Animation  */
+.hidden-block, .hidden-flex {
+    display: none;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.8s ease;
+  }
+  
+  .visible-flex {
+    display: flex;
+    opacity: 1;
+    height: auto;
+    z-index: 0;
+  }
+
+  .visible-block {
+    display: block;
+    opacity: 1;
+    height: auto;
+  }
+
+
+/*
+    CSS Main
+  */
+
+.number-format {
+    font-family: 'Roboto', sans-serif;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    margin: 0px;
+}
+
+body::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--main-color);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--light-color);
+}
+
+
+body {
+    display: flex;
+    background-color: var(--back-color);
+    color: var(--white-color);
+    font-family: 'Raleway', sans-serif;
+    margin: 0px;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+i {
+    color: var(--back-light-color);
+    font-size: 25px;
+    padding-right: 20px;
+}
+
+
+a {
+    font-weight: 500;
+    color: var(--back-light-color);
+    text-decoration: none;
+}
+
+
+a:hover,
+a:hover i {
+    transition: color 0.2s;
+    color: var(--light-hover-color);
+}
+
+
+.cont_main {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+nav {
+    width: 100%;
+    height: 100%;
+}
+
+.navegation {
+    position: fixed;
+    display: flex;
+    background-color: var(--main-color);
+    flex-direction: column;
+    margin: 0px;
+    padding: 15px;
+    width: 15%;
+    min-width: 200px;
+    height: 100%;
+    z-index: 1;
+}
+
+nav>ul {
+    display: flex;
+    align-items: center;
+}
+
+nav>ul>li {
+    display: block;
+    margin: 12% 0%;
+    width: 100%;
+}
+
+nav>ul>li:last-child {
+    margin-top: auto;
+}
+
+.a-nav {
+    display: block;
+}
+
+.general-btn:not(:hover) {
+    transition: all 0.5s ease;
+    position: relative;
+    background-color: var(--light-color);
+    border-radius: 30px;
+    padding: 0.7rem;
+    color: var(--main-color);
+    border-style: solid;
+    border-color: var(--light-color);
+    border-width: 2px;
+}
+
+.general-btn:hover {
+    transition: all 0.5s ease;
+    background-color: var(--back-color);
+    border-style: solid;
+    border-color: var(--button-hover-color);
+    border-width: 2px;
+    color: var(--light-color);
+    border-radius: 30px;
+    padding: 0.7rem;
+}
+
+/* Animation */
+
+.li-nav {
+    position: relative;
+    padding: 0 0.1rem;
+}
+
+.li-nav::after {
+    content: "";
+    position: absolute;
+    background-color: var(--light-color);
+    height: 1px;
+    width: 0;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.li-nav:hover::after {
+    width: 100%;
+}
+
+
+/* LOGO */
+.logo-mobile {
+    display: none;
+}
+
+
+.logo {
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 98;
+}
+
+.bbank-logo {
+    padding-top: 10px;
+    width: 160px;
+}
+
+.bbank-logo:hover {
+    transition: all 0.5s ease;
+    opacity: 0.8;
+}
+
+.bbank-logo:not(:hover) {
+    transition: all 0.5s ease;
+    opacity: 1;
+}
+
+/* ***************** */
+/* Responsive Design */
+/* ***************** */
+
+@media screen and (max-width: 768px) {
+    .logo {
+        display: none;
+    }
+
+    .logo-mobile {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height: 64px;
+        z-index: 99;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .cont_main {
+        flex-direction: column;
+    }
+
+    .navegation {
+        display: block;
+        padding-top: 50px;
+        position: static;
+        width: 100%;
+    }
+
+    .navegation nav {
+        height: 100%;
+    }
+
+    nav>ul {
+        display: block;
+        align-items: center;
+    }
+
+    nav>ul>li {
+        display: block;
+        margin: 0;
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    nav>ul>li:last-child {
+        margin-top: 30px;
+    }
+
+    nav {
+        font-size: 22px;
+    }
+}

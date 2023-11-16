@@ -1,0 +1,134 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Metadata -->
+  <meta charset="UTF-8">
+  <meta name="description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description"
+    content="Descubre la comodidad y la seguridad de gestionar tus finanzas con BeeBank. Nuestra plataforma de banca digital te ofrece acceso rápido y sencillo a tus cuentas, pagos en línea y servicios bancarios desde cualquier lugar. Simplifica tu vida financiera con BeeBank">
+  <meta name="author" content="BeeBank Corporation">
+  <meta name="keywords"
+    content="Banca Digital, Finanzas Personales, Gestión de Cuentas, Pagos en Línea, Transferencias Bancarias, Plataforma Bancaria, Servicios Financieros, Tecnología Bancaria, App Bancaria, Soluciones Financieras, Home Banking, Banca en Línea, BeeBank, Innovación Financiera, Seguridad Bancaria, Acceso a Cuentas, Ahorro Digital, Banco Virtual, Consultas de Saldo, Herramientas Financieras, Servicios Bancarios en Internet, Fondos de inversion, Gestión de Dinero, Banca Electrónica">
+  <title>BeeBank</title>
+
+  <!-- Links -->
+  <link rel="shortcut icon" href="resources/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!--Fin links de librerias-->
+  
+  <link rel="stylesheet" href="resources/main/main-logged.css" />
+  <link rel="stylesheet" href="resources/dedicated/css/l-loans.css" />
+  
+</head>
+
+<body>
+
+  <div class="logo-mobile">
+    <section class="logo-mobile">
+      <a href="l-home.html"><img src="resources/beebank-logo-claro.png" class="bbank-logo" alt="Beebank" draggable="false"></a>
+    </section>
+  </div>
+  <div class="cont_main">
+    <!-- NAV BAR -->
+
+    <div class="navigation-container">
+      <nav>
+        <ul class="navegation">
+          <li class="li-nav"><a href="l-home.html" class="a-nav" draggable="false"><i class="bi bi-house"></i>Inicio</a></li>
+          <li class="li-nav"><a href="l-accounts.html" class="a-nav" draggable="false"><i class="bi bi-person"></i>Cuenta</a></li>
+          <li class="li-nav"><a href="l-transfers.html" class="a-nav" draggable="false"><i class="bi bi-shuffle"></i>Transferencias</a></li>
+          <li class="li-nav"><a href="l-loans.html" class="a-nav" draggable="false"><i class="bi bi-bank"></i>Préstamos</a></li>
+          <li class="li-nav"><a href="support.html" class="a-nav" draggable="false"><i class="bi bi-shield-check"></i>Soporte</a></li>
+          <li class="li-nav"><a href="l-config.html" class="a-nav" draggable="false"><i class="bi bi-gear"></i>Configuración</a></li>
+          <li class="li-nav"><a href="index.html" class="a-nav" draggable="false"><i class="bi bi-box-arrow-left"></i>Cerrar Sesión</a></li>
+        </ul>
+      </nav>
+    </div>
+  
+
+    <!-- CONTENIDO -->
+  
+    <div class="content hidden-block">
+
+      <div class="logo">
+        <section class="logo">
+          <a href="l-home.html"><img src="resources/beebank-logo-claro.png" class="bbank-logo" alt="Beebank" draggable="false"></a>
+        </section>
+      </div>
+
+      <ul class="top-btns">
+        <li class="select">
+           <select name="select">
+             <option value="1">PRESTAMO PERSONAL</option>
+             <option value="2">PRESTAMO SALUD</option>
+             <option value="3">PRESTAMO EDUCACIONAL</option>
+             <option value="4">PRESTAMO JUBILATORIO 50%</option>
+             <option value="5" selected>Seleccione la linea de prestamo</option>
+           </select>
+        </li>
+
+        <li class="select">
+          <select name="select">
+            <option value="1">$10.000</option>
+            <option value="2">$50.000</option>
+            <option value="3">$100.000</option>
+            <option value="4">$500.000</option>
+            <option value="5" selected>Seleccione entre los importes disponibles</option>
+          </select>
+        </li>
+
+        <li class="select">
+          <select name="select">
+            <option value="1">Pago de deudas</option>
+            <option value="2">Educacion</option>
+            <option value="3">Pago de alquiler</option>
+            <option value="4">Pago de servicios</option>
+            <option value="5" selected>Seleccione Destino</option>
+          </select>
+        </li>
+               
+        <li class="select"> 
+          <button class="acept-btn"> Aceptar</button> <span><button class="cancel-btn">Cancelar</button></span>
+        </li>
+
+      </ul>
+      <section class="loans-calculator">
+
+        <div class="calculator-c">
+          <ul class="input-boxes">
+              <label for="loan">Monto del prestamo</label>
+              <li class="loanamount"><input type="number" id="loanamount"></li>
+              <label for="anual">Interes(%)</label>
+              <li class="anualinterest"><input type="number" id="anualinterest"></li>
+              <label for="time">Meses de duracion</label>
+              <li class="timeinmonths"><input type="number" id="timeinmonths"></li>
+       
+              <button onclick="loancalculator()" class="accept-btn"> Calcular </button>
+       
+       
+              <li class="result1">Valor del prestamo:</li><span class="resultText number-format" id="valuep"></span>
+       
+              <li class="result2">Abono por mes:</li><span class="resultText number-format" id="monthlypay"></span>
+       
+              <li class="result3">Total a pagar:</li><span class="resultText number-format" id="totalpayment"></span>
+            
+          </ul>
+                
+        </div>
+       
+      </section>
+    </div>
+  </div>
+       <!--SECTION CONTENIDO DE LA PAGINA PRESTAMOS-->>
+     <script src="resources/dedicated/js/loans.js"></script>
+     <script src="resources/main/main-js-animation.js"></script>
+
+</body>
+
+</html>

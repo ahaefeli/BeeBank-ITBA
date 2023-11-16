@@ -1,0 +1,176 @@
+/* balance */
+.page-content {
+    display: block;
+    width: 100%;
+    z-index: -1;
+  }
+  
+  .balance {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .balance-ul {
+    list-style-type: none;
+    color: var(--main-color);
+  }
+  
+  .balance-text {
+    position: relative;
+    right: 5rem;
+    font-size: 2rem;
+  }
+  
+  .balance-amount {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  
+  /* Panel de busqueda */
+  
+  .contactos {
+    background-color: var(--light-color);
+    width: 100%;
+    border-bottom: 3px solid var(--light-hover-color);
+    margin-bottom: 30px;
+    padding-top: 15px;
+  }
+  
+  .contact-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+    list-style-type: none;
+  }
+  
+  .contact-search-text {
+    position: relative;
+    padding: 0 0.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-search-text>a {
+    color: var(--main-color);
+  }
+  
+  .sub-text {
+    font-size: 1.7rem;
+  }
+  
+  .contact-search-text::after {
+    content: "";
+    position: absolute;
+    background-color: var(--main-color);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+  }
+  
+  .contact-search-text:hover::after {
+    width: 100%;
+    transition: all 0.5s ease;
+  }
+  
+  .contact-search-text:not(:hover)::after {
+    transition: all 0.5s ease;
+  }
+  
+  .input-barra {
+    width: 40rem;
+    outline: 0;
+    border: 0;
+    border-bottom: 2px solid var(--main-color);
+    background: transparent;
+    font-size: 1.5rem;
+    color: var(--main-color);
+    transition: 0.3s ease;
+  }
+  
+  .input-label {
+    display: block;
+    position: absolute;
+    margin-top: 3rem;
+    padding-right: 24rem;
+    padding-bottom: 7rem;
+    color: white;
+    color: var(--main-color);
+  }
+  
+  .input-barra:focus {
+    border-bottom: 2px solid var(--main-color);
+  }
+  
+  .input-barra::placeholder {
+    color: transparent;
+  
+  }
+  
+  /* Panel de transferencias */
+  
+  .sector-transfer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .svg-x {
+    width: 2rem;
+    color: white;
+  }
+  
+  .Transferencias-x abbr,
+  .Transferencias-y abbr {
+    text-decoration: none;
+  }
+  
+  .Transferencias {
+    list-style-type: none;
+    font-size: 1.3rem;
+    color: white;
+  }
+  
+  .Transferencias-x:hover {
+    color: #ff2a2a;
+    transition: 0.3s all ease;
+  }
+  
+  .Transferencias-x i {
+    color: #ff2a2a;
+  }
+  
+  .Transferencias-y i {
+    color: #01ff38;
+  }
+  
+  .Transferencias-y:hover {
+    color: #01ff38;
+    transition: 0.3s all ease;
+  }
+  
+  
+  .Transferencias-x:not(:hover),
+  .Transferencias-y:not(hover) {
+    transition: 0.6s all ease;
+  }
+  
+  
+  @media only screen and (max-width: 768px) {
+  
+    .input-barra,
+    .input-label {
+      display: none;
+    }
+  
+    .contacts .Transferencias {
+      padding-right: 5rem;
+    }
+  
+  }

@@ -1,0 +1,144 @@
+.page-content {
+    width: 50%;
+    padding: 20px;
+}
+
+.all-accounts {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.account{
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    border-radius: 20px;
+    padding: 0;
+    width: 100%;
+}
+
+.account > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.account-main-info {
+    align-items: center;
+    padding-left: 40px;
+}
+
+.log-on-container, .log-on-container:not(:hover){
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left-style: solid;
+    border-width: 1px;
+    border-color: var(--back-color);
+    flex: 1;
+    max-width: 15%;
+    border-radius: 0px 20px 20px 0px;
+    margin-right: -1px;
+}
+
+.log-on-container:hover{
+    transition: all 0.5s ease;
+    background-color: var(--back-hover-color);
+    cursor: pointer;
+}
+
+.log-on-container > i {
+    padding: 30px 0px;
+}
+
+.log-on {
+    margin: 0;
+    font-size: 40px;
+}
+
+.cbu-copy {
+    font-size: 15px;
+    padding: 0;
+    padding-right: 7px;
+}
+
+.account-transfer-info{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    padding-left: 10%;
+}
+
+.account-type, .account-number {
+    color: var(--back-light-color);
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.account-owner{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.beebank-tag {
+    color: var(--light-color);
+}
+
+.account-cbu:hover, .account-alias:hover, .account-alias > label {
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width:768px) {
+    .page-content{
+        width: 95%;
+    }  
+    .all-accounts {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .account{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 40px 0px 0px 0px;
+    }
+    
+    .account > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+    }  
+    .log-on-container, .log-on-container:not(:hover){
+        max-width: 100%;
+        width: 100%;
+        border-left-style: none;
+        border-top-style: solid;
+        border-radius: 0px 0px 20px 20px;
+    }
+    .log-on-container > i {
+        padding: 15px 0px;
+    }
+    
+    .log-on {
+        margin: 0;
+        font-size: 40px;
+    }
+.account-transfer-info{
+    margin: 30px 0px;
+}
+}
