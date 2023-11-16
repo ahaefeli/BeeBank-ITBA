@@ -9,6 +9,7 @@ from loans import views as viewsLoans
 from support import views as viewsSupport
 from transfers import views as viewsTransfers
 from initPage import views as viewsInitPage
+from faq import views as viewsFaq
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -19,6 +20,7 @@ urlpatterns = [
     path('loans/', viewsLoans.loans,name="Loans"),
     path('support/', viewsSupport.support,name="Support"),
     path('transfers/', viewsTransfers.transfers,name="Transfers"),
+    path('faq/', viewsFaq.faq,name="Faq"),
     path('', viewsInitPage.initPage,name="Inicio"),
     #path('', include('django_app.urls'))
 ]

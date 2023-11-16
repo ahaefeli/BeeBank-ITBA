@@ -20,8 +20,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{% static 'login/mainLogin.css' %}">
-    <link rel="stylesheet" href="{% static 'login/dedicatedLogin.css' %}">
+    <link rel="stylesheet" href="{% static 'faq/mainFaq.css' %}">
+    <link rel="stylesheet" href="{% static 'faq/dedicatedFaq.css' %}">
 
 </head>
 
@@ -33,28 +33,20 @@
                         draggable="false"></a></li>
             <li><a href="{% url 'Inicio' %}" class="a-nav" draggable="false">Inicio</a></li>
             <li><a href="{% url 'Support' %}" class="a-nav" draggable="false">Soporte</a></li>
-            <li><a href="{% url 'Faq' %}" class="a-nav" draggable="false">Consultas</a></li>
+            <li><a href="{% url 'Faq' %}" class="a-nav" draggable="false">Preguntas Frecuentes</a></li>
         </ul>
     </nav>
 
     <section class="content">
         <!-- Contenido de la Página-->
-        <div class="login-form">
-            <form action="">
-                <h4>Ingresa a tu cuenta</h4>
-
-                {% block loginForm %}
-                {% endblock %}
-
-                <a href="{% url 'Register' %}">Crear una cuenta</a>
-            </form>
+        <div class="faq-form">
+            {% block faqForm %}
+            {% endblock %}
         </div>
     </section>
 
+    <script src="{% static 'faq/faqjs.js' %}"></script>
 
-
-
-    <script src="{static 'login/loginjs.js'}"></script>
 </body>
 
 </html>
