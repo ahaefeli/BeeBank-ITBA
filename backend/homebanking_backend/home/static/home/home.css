@@ -45,6 +45,10 @@
   flex:2;
 }
 
+.balance{
+  font-size: 40px;
+}
+
 .cont_balance a{
   margin-right: 30px;
 }

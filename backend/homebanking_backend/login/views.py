@@ -15,7 +15,8 @@ def login(request):
             password = fLogin.cleaned_data["contraseña"]
 
             if Cliente.objects.filter(customer_name=name).exists() and Cliente.objects.filter(customer_password=password).exists():
-                return redirect(reverse('Login')+"?usrf")
+                request.session["clientId"] = (Cliente.objects.filter(customer_name=name).first()).customer_id
+                return redirect(reverse('Home'))
             else:
                 return redirect(reverse('Login')+"?usrnf")
 

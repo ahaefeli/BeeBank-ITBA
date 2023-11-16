@@ -56,7 +56,10 @@
         <div class="page-content">
         <!-- CONTENIDO -->
         <main>
-          <section class="N_A"><h2>NOMBRE NOMBRE APELLIDO</h2></section>
+          <section class="N_A">
+            {% block client_name %}
+            {% endblock %}
+          </section>
   
           <section class="cont_bank_data">
               <div class="cont_bank_data_bg">
@@ -67,7 +70,8 @@
                   <div class="cont_balance">
                       <div class="cont_balance_int">
                           <h3>BALANCE:</h3>
-                          <p>$XXXXX.XX</p>
+                          {% block balance %}
+                          {% endblock %}
                       </div>
                       <div>
                           <a class="general-btn" href="l-view-cbu.html" draggable="false">CBU</a>
