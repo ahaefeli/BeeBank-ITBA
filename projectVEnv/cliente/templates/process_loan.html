@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Solicitado{% endblock %}
+
+{% block content %}
+
+{% if success %}
+    <h2>Felicidades, tu préstamo ha sido aprobado</h2>
+{% else %}
+    <h2>Lo sentimos, ha habido un error en el préstamo</h2>
+{% endif %}
+<a href="{% url 'home_logged' %}">Volver al inicio</a>
+{% endblock %}

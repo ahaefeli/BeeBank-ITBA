@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <h1>Bienvenido, {{usuario}}</h1>
+    <h3>Balance: <label class="number_format">{{balance}}</label></h3>
+
+    {% if prestamos %}
+    <table>
+        <thead>
+          <tr>
+            <th>Préstamo</th>
+            <th>Total</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for prestamo in prestamos %}
+          <tr>
+            <td class="number_format">{{prestamo.loan_total}}</td>
+            <td class="number_format">{{ prestamo.loan_type }}</td>
+            <td class="number_format">{{ prestamo.loan_date }}</td>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+        <ul>
+            
+        </ul>
+    {% else %}
+        <p>No hay registro de préstamos</p>
+    {% endif %}
+        <a href="{% url 'new_loan' %}">Solicita un nuevo préstamo</a><br>
+        <a href="{% url 'logout' %}">Salir de la cuenta</a>
+{% endblock %}
