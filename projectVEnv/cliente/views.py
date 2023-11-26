@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Cliente, Cuenta, Prestamo, PrestamosPermitidos, Sucursal
+from .models import Cliente, Cuenta, Prestamo, PrestamosPermitidos, Sucursal, Direccion
 from datetime import datetime
 from django.contrib import messages
 
@@ -35,13 +35,16 @@ def new_loan(request):
     user_id = request.user.id
     cliente = Cliente.objects.filter(customer_id=user_id).first()
     prestamos_preaprobados=PrestamosPermitidos.objects.filter(customer_id=user_id)
-    sucursal = Sucursal.objects.filter(branch_id=cliente.branch_id)
+    
+    sucursal = Sucursal.objects.filter(branch_id=cliente.branch_id).first()
+    direccion = Direccion.objects.filter(adresss_id=sucursal.address_id).first()
+    
     if prestamos_preaprobados:
         for prestamo in prestamos_preaprobados:
             prestamo.loan_total = '{:,}'.format(prestamo.loan_total).replace('.','@').replace(',','.').replace('@',',')
     context = {
         'prestamos_preaprobados':prestamos_preaprobados,
-        'sucursal':sucursal,
+        'sucursal':direccion,
     }
     return render(request, 'loan.html', context)
 

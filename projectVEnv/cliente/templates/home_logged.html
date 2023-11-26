@@ -28,8 +28,6 @@
     {% else %}
         <p>No hay registro de préstamos</p>
     {% endif %}
-      <div class="bottom-links-home">
-        <a class="link" href="{% url 'new_loan' %}">Solicita un nuevo préstamo</a><br>
+        <a class="link" href="{% url 'new_loan' %}">Solicitar préstamo</a>
         <a class="link" href="{% url 'logout' %}">Salir de la cuenta</a>
-      </div>
 {% endblock %}

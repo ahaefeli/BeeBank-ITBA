@@ -24,7 +24,7 @@
         <h3 class="secondary-loan-info number_format">CFTEA: 1.006,99%</h3>
     </div>
 {% else %}
-    <h4>Lo sentimos, no estás habilitado para recibir un préstamo, asiste a tu sucursal asignada para obtener más información: {{sucursal.branch_name}} {{sucursal.branch_address}}</h4>
+    <h4>Lo sentimos, no estás habilitado para recibir un préstamo, asiste a tu sucursal asignada para obtener más información: <label class="number_format">{{sucursal.street}} {{sucursal.adress_number}}</label></h4>
 {% endif %}
     <a class="link" href="{% url 'home_logged' %}">Volver al inicio</a>
 
