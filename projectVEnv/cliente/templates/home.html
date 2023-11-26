@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+        <h1 class="title">Bienvenido a Beebank</h1>
+    
+        <p class="p-text">En esta demo de Beebank podrás probar las características de solicitud de préstamo. ¡Que lo disfrutes!</p>
+
+        {% if request.user.is_authenticated %}
+            <label ><a class="link" href="{% url 'home_logged' %}">Entra a Beebank!</label>
+        {% else %}
+            <label class="login-text"><a class="link" href="{% url 'login' %}">Inicia sesión</a> para usar Beebank!</label>
+        {% endif %}
+
+{% endblock %}
