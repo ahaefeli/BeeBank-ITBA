@@ -1,9 +1,191 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&family=Roboto:wght@300;400&display=swap');
+:root {
+    --main-color: #1F363D;
+    --secondary-color: #86beb7;
+    --highlighted-color: #cfe0c3;
+    --hover-color: #848f7d;
+  }
+  
+
 *{
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
+    background-color: var(--main-color);
+    color: var(--secondary-color);
 }
 
+.balance{
+    font-size: 30px;
+    color: var(--highlighted-color);
+}
 .number_format{
     font-family: Roboto, sans-serif;
 }
+
+.title {
+    text-align: center;
+}
+
+.login-text{
+    font-size: 20px;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.link, .link:not(:hover){
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 23px;
+    color: var(--highlighted-color);
+}
+
+.link:hover{
+    transition: all 0.3s ease;
+    color: var(--hover-color);
+}
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fields{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    gap: 10px;
+    margin: 10px 0px;
+}
+
+.fields>input, .button{
+    width: 200px;
+    border-radius: 6px;
+    border-style: none;
+    padding: 10px;
+    font-size: 16px
+}
+
+.button, .button:not(:hover){
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    background-color: var(--highlighted-color);
+    color: var(--main-color);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover{
+    transition: all 0.3s ease;
+    background-color: var(--hover-color);
+    cursor: pointer;
+}
+
+.bottom-links-home{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: var(--highlighted-color);
+    color: var(--main-color);
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  td, th {
+    white-space: nowrap;
+  }
+  
+  td, th {
+    vertical-align: middle;
+  }
+  
+  tr:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  td{
+    color: var(--highlighted-color);
+  }
+
+  .loan-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .select-loan{
+    height: 50px;
+    width: 350px;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+  }
+  .loan-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .loan-info>h3{
+    margin: 5px;
+  }
+
+  .main-loan-info{
+    font-size: 25px;
+  }
+
+  .secondary-loan-info{
+    font-size: 15px;
+  }
+
+  .main-title{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+  }

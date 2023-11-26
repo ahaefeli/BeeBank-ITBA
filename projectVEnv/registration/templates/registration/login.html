@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
-{% block title %}Inicia Sesión - Beebank{% endblock %}
+{% block title %}Inicia Sesión{% endblock %}
 
 {% block content %}
 <div class="login-container">
     <h2>Iniciar Sesión</h2>
-    <form method="post" action="{% url 'login' %}">
+    <form method="post" class="login-form" action="{% url 'login' %}">
       {% csrf_token %}
-      <label for="id_username">Usuario:</label>
-      <input type="text" name="username" id="id_username" required>
-      <br>
-      <label for="id_password">Contraseña:</label>
-      <input type="password" name="password" id="id_password" required>
-      <br>
-      <input type="submit" value="Iniciar Sesión">
+      <div class="fields">
+        <label for="id_username">Usuario:</label>
+        <input type="text" name="username" id="id_username" required>
+      </div>
+      <div class="fields">
+        <label for="id_password">Contraseña:</label>
+        <input type="password" name="password" id="id_password" required>
+      </div>
+        <input class="button" type="submit" value="Iniciar Sesión">
     </form>
   </div>
 {% endblock %}

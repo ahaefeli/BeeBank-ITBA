@@ -2,11 +2,14 @@
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-<h1 class="title">Bienvenido a Beebank</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta ipsum excepturi, fugiat non laudantium officia atque tempora, impedit tenetur similique fuga ex, reiciendis commodi nisi! Perferendis, amet! Labore, earum quod.</p>
-{% if request.user.is_authenticated %}
-<label for=""><a href="{% url 'home_logged' %}">Entra a Beebank!</label>
-{% else %}
-<label for=""><a href="{% url 'login' %}">Inicia sesión</a> para usar Beebank!</label>
-{% endif %}
+        <h1 class="title">Bienvenido a Beebank</h1>
+    
+        <p class="p-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta ipsum excepturi, fugiat non laudantium officia atque tempora, impedit tenetur similique fuga ex, reiciendis commodi nisi! Perferendis, amet! Labore, earum quod.</p>
+
+        {% if request.user.is_authenticated %}
+            <label ><a class="link" href="{% url 'home_logged' %}">Entra a Beebank!</label>
+        {% else %}
+            <label class="login-text"><a class="link" href="{% url 'login' %}">Inicia sesión</a> para usar Beebank!</label>
+        {% endif %}
+
 {% endblock %}

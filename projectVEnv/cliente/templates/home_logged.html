@@ -2,8 +2,8 @@
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-    <h1>Bienvenido, {{usuario}}</h1>
-    <h3>Balance: <label class="number_format">{{balance}}</label></h3>
+    <h1 class="title">Bienvenido, {{usuario}}</h1>
+    <h3 >Balance: <label class="balance number_format">${{balance}}</label></h3>
 
     {% if prestamos %}
     <table>
@@ -24,12 +24,12 @@
             {% endfor %}
         </tbody>
       </table>
-        <ul>
-            
-        </ul>
+
     {% else %}
         <p>No hay registro de préstamos</p>
     {% endif %}
-        <a href="{% url 'new_loan' %}">Solicita un nuevo préstamo</a><br>
-        <a href="{% url 'logout' %}">Salir de la cuenta</a>
+      <div class="bottom-links-home">
+        <a class="link" href="{% url 'new_loan' %}">Solicita un nuevo préstamo</a><br>
+        <a class="link" href="{% url 'logout' %}">Salir de la cuenta</a>
+      </div>
 {% endblock %}

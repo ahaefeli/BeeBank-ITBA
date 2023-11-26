@@ -13,9 +13,11 @@ def home(request):
 def home_logged(request):
     user_id = request.user.id
     cliente = Cliente.objects.filter(customer_id=user_id).first()
-    cuenta_cliente = int(Cuenta.objects.filter(account_id=cliente.customer_id).first().balance)
-    balance = '{:,}'.format(cuenta_cliente).replace(',','.')
-
+    cuenta_cliente = Cuenta.objects.filter(customer_id=cliente.customer_id).first()
+    if cuenta_cliente:
+        balance = '{:,}'.format(cuenta_cliente.balance).replace(',','.')
+    else:
+        balance = "! Sin Autorización"
     prestamos = Prestamo.objects.filter(customer_id=user_id)
     for prestamo in prestamos:
         prestamo.loan_total = '{:,}'.format(prestamo.loan_total).replace('.','@').replace(',','.').replace('@',',')
@@ -61,6 +63,7 @@ def procesar_prestamo(request):
                 customer_id=user_id
             )
             nuevo_prestamo.save()
+            prestamo_seleccionado.delete()
             success = True
         except Exception as e:
             success = False

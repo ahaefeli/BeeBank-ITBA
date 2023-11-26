@@ -241,7 +241,7 @@ class PrestamosPermitidos(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'prestamo'
+        db_table = 'prestamos_permitidos'
 
 
 class Sucursal(models.Model):
