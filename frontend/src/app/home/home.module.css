@@ -1,0 +1,175 @@
+.separatorContainer,
+.firstContainer {
+  margin: 20px 0px;
+  background-color: var(--main-color);
+  padding: 20px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex: 1;
+  width: 50%;
+}
+
+.upperContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.balance {
+  font-size: 30px;
+}
+
+.eye {
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.bankData__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.interiorBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 50%;
+}
+
+.balanceBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  width: 100%;
+}
+
+.balanceBox>p {
+  text-align: right;
+  width: 80%;
+}
+
+.balanceBox>i {
+  text-align: left;
+  font-size: 30px;
+  width: 20%;
+}
+
+.bankData__info__balance {
+  font-size: large;
+}
+
+.utilities {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.history__header{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history__table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.history {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.history__table__head {
+  background-color: var(--main-color);
+  color: var(--back-light-color);
+}
+
+.history__table__row{
+  height: 35px;
+}
+
+.history__table__row:nth-child(even) {
+  background-color: var(--back-color);
+}
+.history__table__row:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);}
+
+  .history__table__head, .history__table__data {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  
+  .history__table__data, .history__table__head {
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 10px;
+  }
+  
+
+.title {
+  color: var(--light-color);
+  font-size: 25px;
+  text-align: center;
+}
+
+
+.cardPreview {
+  background-image: url('https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/Cards/card-preview.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 256px;
+  height: 100px;
+  cursor: pointer;
+  padding: 20px;
+  color: var(--card-color);
+}
+
+@media only screen and (max-width:768px) {
+
+  .firstContainer {
+    width: 80%;
+  }
+  .upperContainer{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .interiorBox{
+    width: 100%;
+  }
+
+  .separatorContainer {
+    width: 80%;
+    margin: 20px auto;
+  }
+
+  .utilities {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+
