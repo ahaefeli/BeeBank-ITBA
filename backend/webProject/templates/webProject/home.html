@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <title>Beebank - API REST</title>
+</head>
+
+<body>
+    <div class="content">
+        
+        <div class="title_container">
+            <h2 class="title">Welcome, {{request.user}}, to the Beebank's REST API!</h2>
+            <p>There is a list of all endpoints</p>
+        </div>
+        
+        <div class="options_container">
+            <div class="list-item">
+                <a href="{% url 'show_branches' %}">Show Branches</a>
+                <label>Get all branches and their address info</label>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
