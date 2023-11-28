@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Raleway:wght@300&display=swap');
 
 /* Colors */
 body, html{
@@ -55,14 +55,14 @@ body, html{
     font-size: 14px;
 }
 
-.lists-item{
-    display: flex;
+.list-item{
+    margin: 10px 0px;
 }
 
 .list-item > a, .list-item > a:not(:hover) {
     transition: all 0.3s ease;
     color: var(--light-color);
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .list-item > a:hover {
@@ -71,5 +71,20 @@ body, html{
 }
 
 .list-item > label {
-    font-size: 14.5px;
+    font-size: 16.5px;
+}
+
+.options_container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.url{
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    font-size: 14px !important;
+    vertical-align: bottom !important;
+    text-align: end !important;
+    letter-spacing: 2px;
 }

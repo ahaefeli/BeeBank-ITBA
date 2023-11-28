@@ -18,10 +18,33 @@
         </div>
         
         <div class="options_container">
+
             <div class="list-item">
+                <label class="url">127.0.0.1{{ show_branches_url }}</label>
                 <a href="{% url 'show_branches' %}">Show Branches</a>
-                <label>Get all branches and their address info</label>
+                <label>(GET) all branches and their address info</label>
             </div>
+            <div class="list-item">
+                <label class="url">127.0.0.1{{ loans_branches_url }}</label>
+                <a href="">Loan Branches</a>
+                <label>(GET) info from branch's loan/s</label>
+            </div>
+            <div class="list-item">
+                <label class="url">127.0.0.1{{ cliente_data_url }}</label>
+                <a href="{% url 'cliente_data' %}">Client Info</a>
+                <label>(GET) info from an authenticated client</label>
+            </div>
+            <div class="list-item">
+                <label class="url">127.0.0.1{{ cuenta_data_url }}</label>
+                <a href="{% url 'cuenta_data' %}">Accounts Info</a>
+                <label>(GET) info from an authenticated client's accounts</label>
+            </div>
+            <div class="list-item">
+                <label class="url">127.0.0.1{{ prestamo_data_url }}</label>
+                <a href="{% url 'prestamo_data' %}">Loan Info</a>
+                <label>(GET) info from an authenticated client's loans</label>
+            </div>
+ 
         </div>
 
     </div>

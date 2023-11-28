@@ -18,9 +18,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'webProject',
     'cliente',
     'sucursal',
+    'cuenta',
+    'prestamo',
     'rest_framework'
 ]
 
@@ -105,3 +108,7 @@ REST_FRAMEWORK = {
 }
 
 LOGIN_URL = "/admin/"
+
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:3000',
+]
