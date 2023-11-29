@@ -26,10 +26,6 @@ export default function LoansContent() {
       var totalpayment = valuep * (monthlyinterest ** timem);
       var monthlypay = (totalpayment) / 12;
 
-      console.log(monthlyinterest)
-      console.log(anualinterest)
-      console.log(totalpayment)
-
       // Mostrar en pantalla los resultados y redondearlos con toFixed
       document.getElementById("valuep").innerHTML = valuep.toFixed(2);
       document.getElementById("monthlypay").innerHTML = monthlypay.toFixed(2);

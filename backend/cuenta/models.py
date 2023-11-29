@@ -49,19 +49,20 @@ class Cuenta(models.Model):
     balance = models.IntegerField()
     iban = models.TextField()
     tipo_cuenta = models.TextField(blank=True, null=True)
-
+    account_cbu = models.TextField()
+    account_alias = models.TextField()
     class Meta:
         managed = False
         db_table = 'cuenta'
 
 
-class Movimientos(models.Model):
-    movement_id = models.AutoField(primary_key=True, blank=True)
-    account_id = models.IntegerField(blank=True, null=True)
-    amount = models.FloatField(blank=True, null=True)
-    operation = models.TextField(blank=True, null=True)
-    time = models.TextField(blank=True, null=True)
+class Transferencia(models.Model):
+    transfer_id = models.AutoField(primary_key=True, blank=True)
+    from_account_id = models.IntegerField(blank=True, null=True)
+    to_account_id = models.IntegerField(blank=True, null=True)
+    ammount = models.IntegerField(blank=True, null=True)
+    executed_at = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'movimientos'
+        db_table = 'transferencias'

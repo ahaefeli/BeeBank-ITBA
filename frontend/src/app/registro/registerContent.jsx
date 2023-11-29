@@ -6,9 +6,9 @@ export default function RegisterContent() {
     <div className={styleRegister.login}>
       <form action>
         <div className={styleRegister.title}>Registrarse</div>
-        <label className={styleRegister.loginText}>Correo electrónico:</label>
+        <label className={styleRegister.loginText}>Documento:</label>
         <input type="text" className={styleRegister.mail} id="registerMail" placeholder="correo electrónico" required />
-        <label className={styleRegister.loginText}>Ingrese nuevamente el correo:</label>
+        <label className={styleRegister.loginText}>Correo electrónico:</label>
         <input type="text" className={styleRegister.mail} id="mail-confirmation" placeholder="correo electrónico" required />
         <label className={styleRegister.loginText}>Contraseña:</label>
         <input type="password" className={styleRegister.password} id="registerPassword" placeholder="contraseña" required />

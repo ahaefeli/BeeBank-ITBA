@@ -1,7 +1,9 @@
 'use client';
 
+import axios from 'axios';
+
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CbuPopUp from './cbu/cbuPopUp';
 import TransferPopUp from './transfers/transferPopUp';
 import CurrencyConverter from './conversor/conversorPopUp';
@@ -11,8 +13,33 @@ import AdminPopUp from './adminCards/adminPopUp'
 import TransferAPI from "../TransferAPI.json";
 
 import styleHome from './home.module.css';
+
 import { BalanceEconomico } from "../BalanceCounter";
+
+
+
 export default function HomeContent(props) {
+  const [accountData, setAccountData] = useState(null);
+  const [clientData, setClientData] = useState(null);
+  const accountDataUrl = 'http://127.0.0.1:8000/cuenta/data/';
+  const clientDataUrl = 'http://127.0.0.1:8000/cliente/data/';
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const responseAccount = await axios.get(accountDataUrl);
+        setAccountData(responseAccount.data);
+        const responseClient = await axios.get(clientDataUrl);
+        setClientData(responseClient.data);
+      } catch (error) {
+        console.error('Error fetching account data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
   let fecha1, nombre1, alias1, cbu1, monto1, motivo1;
   let fecha2, nombre2, alias2, cbu2, monto2, motivo2;
   let fecha3, nombre3, alias3, cbu3, monto3, motivo3;
@@ -140,7 +167,7 @@ export default function HomeContent(props) {
         <div className={styleHome.upperContainer}>
 
           <div className={styleHome.interiorBox}>
-            <div className={styleHome.title}>Juan Manuel Perez</div>
+            <div className={styleHome.title}>{clientData?`${clientData.first_name} ${clientData.last_name}`:"Bienvenido"}</div>
             <div className={styleHome.bankData__info__card}>
               <div className={styleHome.cardPreview} onClick={turnCardsPopUp}>Terminada en <label className='number_format'>2357</label></div>
             </div>
@@ -149,7 +176,7 @@ export default function HomeContent(props) {
           <div className={styleHome.interiorBox}>
             <div className={styleHome.title}>Balance:</div>
             <div className={styleHome.balanceBox}>
-              <p className={`number_format ${styleHome.balance}`}>${isBalanceShowed ? BalanceEconomico : '******'}</p>
+              <p className={`number_format ${styleHome.balance}`}>${isBalanceShowed ? (accountData?accountData[0].balance:'******') : '******'}</p>
               <i className={`bi ${isBalanceShowed ? 'bi-eye' : 'bi-eye-slash'} ${styleHome.eye}`} onClick={turnEye}></i>
             </div>
           </div>

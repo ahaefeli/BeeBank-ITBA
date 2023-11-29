@@ -61,10 +61,10 @@ export default function LoginContent() {
       <form>
         <div className={stylesLogin.title}>Ingresa a tu cuenta</div>
 
-        <label>Correo electrónico:</label>
+        <label className={stylesLogin.loginText}>Usuario:</label>
         <input type="text" className={stylesLogin.mail} id="correo" placeholder="correo electrónico" required />
 
-        <label>Contraseña:</label>
+        <label className={stylesLogin.loginText}>Contraseña:</label>
         <input type="password" className={stylesLogin.password} id="password" placeholder="contraseña" required />
         <button onClick={handleButton} href='/home' className={`button--general ${stylesLogin.login_btn}`} id='submit'>Ingresar</button>
 

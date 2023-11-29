@@ -6,14 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'main.css' %}">
-    <title>Beebank - API REST</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <title>Beebank - REST API</title>
 </head>
 
 <body>
     <div class="content">
         
         <div class="title_container">
-            <h2 class="title">Welcome, {{request.user}}, to the Beebank's REST API!</h2>
+            <h2 class="title">Welcome{% if request.user.username == "admin" %}, admin,{%else%}, {{request.user.first_name}},{%endif%} to the Beebank's REST API!</h2>
             <p>There is a list of all endpoints</p>
         </div>
         
@@ -26,8 +27,8 @@
             </div>
             <div class="list-item">
                 <label class="url">127.0.0.1{{ loans_branches_url }}</label>
-                <a href="">Loan Branches</a>
-                <label>(GET) info from branch's loan/s</label>
+                <a href="{% url 'loans_branches' %}">Loan Branches</a>
+                <label>(GET) info from branch's loans</label>
             </div>
             <div class="list-item">
                 <label class="url">127.0.0.1{{ cliente_data_url }}</label>
@@ -44,7 +45,33 @@
                 <a href="{% url 'prestamo_data' %}">Loan Info</a>
                 <label>(GET) info from an authenticated client's loans</label>
             </div>
- 
+            <div class="list-item">
+                <label class="url">127.0.0.1{{ credito_data_url }}</label>
+                <a href="{% url 'credito_data' %}">Credit Cards</a>
+                <label>(GET) all credit cards from an specific client</label>
+            </div>
+            <div class="list-item">
+                <label class="url">127.0.0.1{{ debito_data_url }}</label>
+                <a href="{% url 'debito_data' %}">Debit Cards</a>
+                <label>(GET) all debit cards from an specific client</label>
+            </div>
+
+            <div class="list-item">
+                <label class="url">127.0.0.1{{ prestamo_cliente_data_url }}</label>
+                <a href="">Client Loans</a>
+                <label>(GET/POST) all loans from an specific client</label>
+            </div>
+            <div class="list-item">
+                <label class="url">127.0.0.1{{ prestamo_cliente_editar_data_url }}</label>
+                <a href="">Edit Loan</a>
+                <label>(GET/PUT/DELETE) update or delete a loan from an specific client</label>
+            </div>
+            <div class="list-item">
+                <label class="url">127.0.0.1{{ direccion_data_url }}</label>
+                <a href="">Edit Address</a>
+                <label>(GET/PUT) update an address from an specific client or employee</label>
+            </div>
+
         </div>
 
     </div>

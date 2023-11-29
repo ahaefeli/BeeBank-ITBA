@@ -4,6 +4,10 @@ from sucursal.models import Sucursal
 from django.contrib.auth.models import User
 
 
+
+
+# 127.0.0.1/cliente/data/
+# 127.0.0.1/cliente/direccion/<int>
 class DireccionSerializer(serializers.ModelSerializer):
     class Meta:
         model=Direccion
@@ -14,7 +18,6 @@ class SucursalSerializer(serializers.ModelSerializer):
     class Meta:
         model=Sucursal
         fields=['branch_name']
-
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -38,4 +41,3 @@ class UserSerializer(serializers.ModelSerializer):
 
         sucursal_serializer = SucursalSerializer(sucursal_instance)
         return sucursal_serializer.data
-    

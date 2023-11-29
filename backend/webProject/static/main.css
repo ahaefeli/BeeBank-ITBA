@@ -31,10 +31,10 @@ body, html{
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
     gap: 20px;
     align-items: center;
     align-self: center;
+    padding-bottom: 50px;
 }
 
 .title_container{

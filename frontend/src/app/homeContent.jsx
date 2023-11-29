@@ -7,11 +7,12 @@ import stylesIndex from './index.module.css'
 
 export default function HomeContent() {
   function getWindowDimensions() {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-      width,
-      height
-    };
+    if (typeof window !== 'undefined'){
+      const width = window.innerWidth
+      return {
+        width,
+      };
+    }
   }
 
   const widthScreen = getWindowDimensions().width
@@ -21,7 +22,6 @@ export default function HomeContent() {
   const [sliderStyle, setSliderStyle] = useState({});
 
   useEffect(() => {
-    console.log(widthScreen)
     const sliderInterval = setInterval(moveToRight, 10000);
 
     return () => {
@@ -55,7 +55,7 @@ export default function HomeContent() {
           </div>
           <div className={stylesIndex.carousel__carouseles} id='slider' style={sliderStyle}>
             <section className={stylesIndex.slider_section} id='slider-section'>
-              <Image alt='Beebank, banco nacional argentino' quality={100} width={widthScreen} height={750} src={'https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/uc.png'} draggable='false' />
+              <Image alt='Beebank, banco nacional argentino' quality={100} width={widthScreen} height={750} src={'https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/uc.png'} priority="true" draggable='false' />
             </section>
             <section className='slider-section'>
               <Image alt='Beebank, banco nacional argentino' quality={100} width={widthScreen} height={750} src={'https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/uc2.png'} draggable='false' />
