@@ -58,8 +58,36 @@ class Cuenta(models.Model):
 
 class Transferencia(models.Model):
     transfer_id = models.AutoField(primary_key=True, blank=True)
-    from_account_id = models.IntegerField(blank=True, null=True)
+    from_account_id = models.ForeignKey('Cuenta', on_delete=models.CASCADE, related_name='transferencias_salientes')
     to_account_id = models.IntegerField(blank=True, null=True)
+    ammount = models.IntegerField(blank=True, null=True)
+    executed_at = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'transferencias'
+
+
+# models.py
+from django.db import models
+
+class Cuenta(models.Model):
+    account_id = models.AutoField(primary_key=True)
+    customer_id = models.IntegerField()
+    balance = models.IntegerField()
+    iban = models.TextField()
+    tipo_cuenta = models.TextField(blank=True, null=True)
+    account_cbu = models.TextField()
+    account_alias = models.TextField()
+
+    class Meta:
+        managed = False
+        db_table = 'cuenta'
+
+class Transferencia(models.Model):
+    transfer_id = models.AutoField(primary_key=True, blank=True)
+    from_account = models.ForeignKey(Cuenta, on_delete=models.CASCADE, related_name='transferencias_salientes')
+    to_account = models.ForeignKey(Cuenta, on_delete=models.CASCADE, related_name='transferencias_entrantes')
     ammount = models.IntegerField(blank=True, null=True)
     executed_at = models.TextField(blank=True, null=True)
 

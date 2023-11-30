@@ -14,99 +14,30 @@ import TransferAPI from "../TransferAPI.json";
 
 import styleHome from './home.module.css';
 
-import { BalanceEconomico } from "../BalanceCounter";
 
 
 
 export default function HomeContent(props) {
   const [accountData, setAccountData] = useState(null);
   const [clientData, setClientData] = useState(null);
+  const [transfersData, setTransfersData] = useState(null);
   const accountDataUrl = 'http://127.0.0.1:8000/cuenta/data/';
   const clientDataUrl = 'http://127.0.0.1:8000/cliente/data/';
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const responseAccount = await axios.get(accountDataUrl);
-        setAccountData(responseAccount.data);
-        const responseClient = await axios.get(clientDataUrl);
-        setClientData(responseClient.data);
-      } catch (error) {
-        console.error('Error fetching account data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const transferDataUrl = 'http://127.0.0.1:8000/cuenta/transferencia/';
 
 
-  let fecha1, nombre1, alias1, cbu1, monto1, motivo1;
-  let fecha2, nombre2, alias2, cbu2, monto2, motivo2;
-  let fecha3, nombre3, alias3, cbu3, monto3, motivo3;
-  let indexId = 0;
-  TransferAPI.forEach((elemento) => {
+  useEffect(()=>{
+    axios.get(accountDataUrl).then((response)=>{
+      setAccountData(response.data)
+    })
+    axios.get(clientDataUrl).then((response)=>{
+      setClientData(response.data)
+    })
+    axios.get(transferDataUrl).then((response)=>{
+      setTransfersData(response.data)
+    })
+  },[])
 
-    if (indexId <= elemento.Fid && elemento.Fid == 0) {
-      fecha3 = "-----";
-      nombre3 = "-----";
-      alias3 = "-----";
-      cbu3 = "-----";
-      monto3 = "-----";
-      motivo3 = "-----";
-      fecha2 = "-----";
-      nombre2 = "-----";
-      alias2 = "-----";
-      cbu2 = "-----";
-      monto2 = "-----";
-      motivo2 = "-----";
-      fecha1 = elemento.Ffecha;
-      nombre1 = elemento.FDnombre;
-      alias1 = elemento.FDalias;
-      cbu1 = elemento.FDcbu;
-      monto1 = elemento.Fmonto;
-      motivo1 = elemento.Fmotivo;
-    }
-    else if (indexId <= elemento.Fid && elemento.Fid == 1) {
-      fecha3 = "-----";
-      nombre3 = "-----";
-      alias3 = "-----";
-      cbu3 = "-----";
-      monto3 = "-----";
-      motivo3 = "-----";
-      fecha2 = fecha1;
-      nombre2 = nombre1;
-      alias2 = alias1;
-      cbu2 = cbu1;
-      monto2 = monto1;
-      motivo2 = motivo1;
-      fecha1 = elemento.Ffecha;
-      nombre1 = elemento.FDnombre;
-      alias1 = elemento.FDalias;
-      cbu1 = elemento.FDcbu;
-      monto1 = elemento.Fmonto;
-      motivo1 = elemento.Fmotivo;
-    }
-    else if (indexId <= elemento.Fid && elemento.Fid >= 2) {
-      fecha3 = fecha2;
-      nombre3 = nombre2;
-      alias3 = alias2;
-      cbu3 = cbu2;
-      monto3 = monto2;
-      motivo3 = motivo2;
-      fecha2 = fecha1;
-      nombre2 = nombre1;
-      alias2 = alias1;
-      cbu2 = cbu1;
-      monto2 = monto1;
-      motivo2 = motivo1;
-      fecha1 = elemento.Ffecha;
-      nombre1 = elemento.FDnombre;
-      alias1 = elemento.FDalias;
-      cbu1 = elemento.FDcbu;
-      monto1 = elemento.Fmonto;
-      motivo1 = elemento.Fmotivo;
-    }
-  });
 
   const [cbuPopUp, setcbuPopUp] = useState(false);
   const [transferPopUp, settransferPopUp] = useState(false);
@@ -214,26 +145,13 @@ export default function HomeContent(props) {
                 <th className={styleHome.history__table__head}>Motivo</th>
               </tr>
               <tr className={styleHome.history__table__row}>
-                <td className={`${styleHome.history__table__data} number_format`}>{fecha1}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>{nombre1}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>{alias1}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>${monto1}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>{motivo1}</td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
               </tr>
-              <tr className={styleHome.history__table__row}>
-                <td className={`${styleHome.history__table__data} number_format`}>{fecha2}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>{nombre2}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>{alias2}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>${monto2}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>{motivo2}</td>
-              </tr>
-              <tr className={styleHome.history__table__row}>
-                <td className={`${styleHome.history__table__data} number_format`}>{fecha3}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>{nombre3}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>{alias3}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>${monto3}</td>
-                <td className={`${styleHome.history__table__data} number_format`}>{motivo3}</td>
-              </tr>
+            
             </tbody>
           </table>
         </section>

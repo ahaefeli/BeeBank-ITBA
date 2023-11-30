@@ -1,6 +1,6 @@
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import generics
-from .serializer import CuentaSerializer, TarjetaSerializer
+from .serializer import CuentaSerializer, TarjetaSerializer, TransferenciaSerializer
 from .models import Cuenta, Cards, Transferencia
 from django.contrib.auth.models import User
 
@@ -44,3 +44,13 @@ class TarjetaDebitoView(generics.ListAPIView):
         else:
             return Cards.objects.filter(card_type="Debito")
         
+
+# 127.0.0.1/cuenta/transferencia
+class TransferenciaView(generics.ListCreateAPIView):
+    queryset = Cuenta.objects.all()
+    serializer_class = TransferenciaSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        #return Cuenta.objects.get(customer_id=self.request.user.id)
+        return Cuenta.objects.filter(customer_id=6)

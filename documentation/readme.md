@@ -11,6 +11,11 @@ En este sprint el equipo de desarrollo fullstack de Beebank se encargó de unifi
 - creamos todos los endpoints solicitados
 
 
+
+
+
+
+
 # ##################################################### #
 #                       TO DO                           #
 # ##################################################### #
@@ -19,8 +24,6 @@ En este sprint el equipo de desarrollo fullstack de Beebank se encargó de unifi
     # Una vez hecho el Auth:
       restaurar los comentarios de la línea 12 de   cliente.views  |  cuenta.views
 
-# (BACK)
-• Crear endpoint para transferencias (get/post)
 
 # (FRONT)
 • Eliminar las transferencias hardcodeadas y tomarlas en una lista desde el endpoint
