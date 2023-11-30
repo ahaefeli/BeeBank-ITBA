@@ -56,17 +56,6 @@ class Cuenta(models.Model):
         db_table = 'cuenta'
 
 
-class Transferencia(models.Model):
-    transfer_id = models.AutoField(primary_key=True, blank=True)
-    from_account_id = models.ForeignKey('Cuenta', on_delete=models.CASCADE, related_name='transferencias_salientes')
-    to_account_id = models.IntegerField(blank=True, null=True)
-    ammount = models.IntegerField(blank=True, null=True)
-    executed_at = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'transferencias'
-
 
 # models.py
 from django.db import models

@@ -43,7 +43,7 @@ class TarjetaDebitoView(generics.ListAPIView):
             return Cards.objects.filter(customer_id=customer_id, card_type="Debito")
         else:
             return Cards.objects.filter(card_type="Debito")
-        
+
 
 # 127.0.0.1/cuenta/transferencia
 class TransferenciaView(generics.ListCreateAPIView):
@@ -52,5 +52,5 @@ class TransferenciaView(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        #return Cuenta.objects.get(customer_id=self.request.user.id)
+        #return Cuenta.objects.filter(customer_id=self.request.user.id)
         return Cuenta.objects.filter(customer_id=6)

@@ -15,6 +15,8 @@ import TransferAPI from "../TransferAPI.json";
 import styleHome from './home.module.css';
 
 
+import { BalanceEconomico } from "../BalanceCounter";
+
 
 
 export default function HomeContent(props) {
