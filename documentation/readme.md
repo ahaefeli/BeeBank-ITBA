@@ -1,6 +1,6 @@
 En este sprint el equipo de desarrollo fullstack de Beebank se encargó de unificar el proyecto,
 - separamos todo el proyecto en 2 carpetas, una para el backend y otra para el frontend
-- reformamos la base de datos para adapatarla a nuestras necesidades, lo que incluye la creación de 4 triggers:
+- reformamos la base de datos para adaptarla a nuestras necesidades, lo que incluye la creación de 4 triggers:
     
     -   (1) after_insert_auth_user_cliente
         (2) after_insert_auth_user_empleado
