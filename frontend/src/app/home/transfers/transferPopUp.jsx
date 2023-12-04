@@ -1,10 +1,8 @@
 import styleTransfer from './transfer.module.css';
 import { useState, useEffect } from "react";
-import { BalanceEconomico } from '../../BalanceCounter';
-import UsersApi from "../../UsersAPI.json";
 
-export default function TransferPopUp(props) {
-  let MainIndex = 0;
+export default function TransferPopUp() {
+  /*let MainIndex = 0;
 
   //manejo del json API
   const newObjectTransfer = {
@@ -109,7 +107,7 @@ export default function TransferPopUp(props) {
   //useEffect cbu y monto
   useEffect(()=>{
     let MontoToNumber = parseInt(svMontoSearchText);
-    MainIndex = UsersApi.length;
+    MainIndex = 0;
     UsersApi.forEach((elemento)=>{
       if(flag1==false){
         foundState=false;
@@ -283,5 +281,5 @@ export default function TransferPopUp(props) {
       </section>
 
     </div>
-  )
+  )*/
 }

@@ -1,8 +1,8 @@
-import { useMyContext } from "../AppContext";
+import Cookies from 'js-cookie'
 
 import Link from "next/link"
 import { useRouter } from 'next/navigation';
-import { useState , useEffect} from "react";
+import { useState , useEffect, useContext} from "react";
 
 import stylesLogin from './login.module.css';
 import ErrorPopUp from './errorPopUp'
@@ -51,7 +51,6 @@ async function verifyLogin() {
 
 
 export default function LoginContent() {
-  let {cId, setCId} = useMyContext()
 
   const submitButton = document.querySelector('#submit')
   const router = useRouter();
@@ -63,11 +62,12 @@ export default function LoginContent() {
     const isUserValid = await verifyLogin();
 
     if (isUserValid[0]) {
-      setCId(isUserValid[1])
-      //router.push('/home');
+      //setCId(isUserValid[1])
+      Cookies.set("cId",`${isUserValid[1]}`)
+      router.push("/home")
     } 
     else {
-      setCId(-1)
+      //setCId(-1)
       setAccessDenied(true)
       setTimeout(() => {
         setAccessDenied(false);

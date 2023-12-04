@@ -1,45 +1,57 @@
 'use client';
-
-import { useMyContext } from '../AppContext';
+import Cookies from 'js-cookie'
 
 import axios from 'axios';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import CbuPopUp from './cbu/cbuPopUp';
 import TransferPopUp from './transfers/transferPopUp';
 import CurrencyConverter from './conversor/conversorPopUp';
 import ContactsPopUp from './contacts/contactsPopUp';
 import CardsPopUp from './cards/cardsAdminPopUp'
 import AdminPopUp from './adminCards/adminPopUp'
-import TransferAPI from "../TransferAPI.json";
 
 import styleHome from './home.module.css';
 
+export default function HomeContent() {
 
-import { BalanceEconomico } from "../BalanceCounter";
-
-
-
-export default function HomeContent(props) {
-  let {cId, setCId} = useMyContext()
+  const cId = Cookies.get("cId")
 
   const [accountData, setAccountData] = useState(null);
   const [clientData, setClientData] = useState(null);
   const [transfersData, setTransfersData] = useState(null);
-  const accountDataUrl = 'http://127.0.0.1:8000/cuenta/data/';
-  const clientDataUrl = 'http://127.0.0.1:8000/cliente/data/';
-  const transferDataUrl = 'http://127.0.0.1:8000/cuenta/transferencia/';
+  const accountDataUrl = 'http://localhost:8000/cuenta/data/';
+  const clientDataUrl = `http://localhost:8000/cliente/api/users/${cId}`;
+  const transferDataUrl = 'http://localhost:8000/cuenta/transferencia/';
 
 
   useEffect(()=>{
-    axios.get(accountDataUrl).then((response)=>{
+    //datos de la cuenta
+    axios.get(accountDataUrl,{
+      auth:{
+        username:'admin',
+        password:'admin'
+      }
+    }).then((response)=>{
       setAccountData(response.data)
     })
-    axios.get(clientDataUrl).then((response)=>{
+    //datos del cliente
+    axios.get(clientDataUrl,{
+      auth:{
+        username:'admin',
+        password:'admin'
+      }
+    }).then((response)=>{
       setClientData(response.data)
     })
-    axios.get(transferDataUrl).then((response)=>{
+    //datos de transferencias
+    axios.get(transferDataUrl,{
+      auth:{
+        username:'admin',
+        password:'admin'
+      }
+    }).then((response)=>{
       setTransfersData(response.data)
     })
   },[])

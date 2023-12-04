@@ -1,15 +1,20 @@
 'use client';
+import Cookies from 'js-cookie'
 
-import { useMyContext } from './AppContext';
-
-import { useEffect, useState } from 'react';
+import { useEffect, useState} from 'react';
 import Image from 'next/image';
 import stylesIndex from './index.module.css'
 
 
 export default function HomeContent() {
-  let {cId, setCId} = useMyContext()
-  setCId(-1)
+  
+  //eliminacion de cookies
+  useEffect(()=>{
+    const cExistence = Cookies.get("cId")
+    if(cExistence){
+      Cookies.remove("cId")
+    }
+  },[])
 
   function getWindowDimensions() {
     if (typeof window !== 'undefined'){
