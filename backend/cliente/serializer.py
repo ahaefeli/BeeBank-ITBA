@@ -21,23 +21,6 @@ class SucursalSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    direccion = serializers.SerializerMethodField()
-    sucursal = serializers.SerializerMethodField()
-
     class Meta:
-        model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'direccion', 'sucursal']
-
-    def get_direccion(self, instance):
-        cliente_instance = Cliente.objects.get(customer_id=instance.id)
-        direccion_instance = Direccion.objects.get(address_id=cliente_instance.address_id)
-        
-        direccion_serializer = DireccionSerializer(direccion_instance)
-        return direccion_serializer.data
-    
-    def get_sucursal(self, instance):
-        cliente_instance = Cliente.objects.get(customer_id=instance.id)
-        sucursal_instance = Sucursal.objects.get(branch_id=cliente_instance.branch_id)
-
-        sucursal_serializer = SucursalSerializer(sucursal_instance)
-        return sucursal_serializer.data
+        model=User
+        fields=["id","password","last_login","username","last_name","email","first_name"]

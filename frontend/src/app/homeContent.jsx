@@ -1,11 +1,16 @@
 'use client';
 
+import { useMyContext } from './AppContext';
+
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import stylesIndex from './index.module.css'
 
 
 export default function HomeContent() {
+  let {cId, setCId} = useMyContext()
+  setCId(-1)
+
   function getWindowDimensions() {
     if (typeof window !== 'undefined'){
       const width = window.innerWidth

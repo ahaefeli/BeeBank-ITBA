@@ -1,5 +1,7 @@
 'use client';
 
+import { useMyContext } from '../AppContext';
+
 import axios from 'axios';
 
 import Link from 'next/link';
@@ -20,6 +22,8 @@ import { BalanceEconomico } from "../BalanceCounter";
 
 
 export default function HomeContent(props) {
+  let {cId, setCId} = useMyContext()
+
   const [accountData, setAccountData] = useState(null);
   const [clientData, setClientData] = useState(null);
   const [transfersData, setTransfersData] = useState(null);

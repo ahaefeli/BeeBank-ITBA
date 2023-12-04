@@ -3,17 +3,18 @@ from rest_framework import generics
 from .serializer import UserSerializer, DireccionSerializer
 from django.contrib.auth.models import User
 from .models import Direccion
+from rest_framework.views import APIView
 
-# 127.0.0.1/cliente/data/
-class UserView(generics.RetrieveAPIView):
+# 127.0.0.1/cliente/api/users/
+class UserList(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [AllowAny]
 
-    def get_object(self):
-        #return User.objects.get(id=self.request.user.id)
-        return User.objects.get(id=6)
-
+class UserListDetail(generics.RetrieveAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 # 127.0.0.1/cliente/direccion/<address_id>
 class DireccionEditarView(generics.RetrieveUpdateAPIView):

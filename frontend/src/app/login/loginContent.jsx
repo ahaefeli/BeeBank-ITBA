@@ -1,7 +1,8 @@
+import { useMyContext } from "../AppContext";
 
 import Link from "next/link"
 import { useRouter } from 'next/navigation';
-import { useState } from "react";
+import { useState , useContext} from "react";
 
 import stylesLogin from './login.module.css';
 import ErrorPopUp from './errorPopUp'
@@ -35,12 +36,15 @@ export async function getData() {
 
 
 export default function LoginContent() {
+  let {cId, setCId} = useMyContext()
+
   const submitButton = document.querySelector('#submit')
   const router = useRouter();
   const [accessDenied, setAccessDenied] = useState(false)
 
 
   async function handleButton(event) {
+
     event.preventDefault();
     const isUserValid = await verifyLogin();
 
