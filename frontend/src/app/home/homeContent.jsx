@@ -1,10 +1,9 @@
 'use client';
 import Cookies from 'js-cookie'
-
 import axios from 'axios';
-
 import Link from 'next/link';
 import { useState, useEffect} from 'react';
+
 import CbuPopUp from './cbu/cbuPopUp';
 import TransferPopUp from './transfers/transferPopUp';
 import CurrencyConverter from './conversor/conversorPopUp';
@@ -15,6 +14,8 @@ import AdminPopUp from './adminCards/adminPopUp'
 import styleHome from './home.module.css';
 
 export default function HomeContent() {
+
+  
 
   const cId = Cookies.get("cId")
 
