@@ -2,35 +2,50 @@ import { useMyContext } from "../AppContext";
 
 import Link from "next/link"
 import { useRouter } from 'next/navigation';
-import { useState , useContext} from "react";
+import { useState , useEffect} from "react";
 
 import stylesLogin from './login.module.css';
 import ErrorPopUp from './errorPopUp'
+import axios from "axios";
 
 
-export async function getData() {
-  const res = await fetch('https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/json/auth.json');
+export async function getData(usernameInput, passwordInput) {
+  const PageLimit = 50
+  let PageOffset = 0
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
+  while (true){
+    let dataUrl = `http://localhost:8000/cliente/api/users/?limit=${PageLimit}&offset=${PageOffset}`
+    let response = await axios.get(dataUrl,{
+      auth:{
+        username:'admin',
+        password:'admin'
+      }
+    })
 
+    if((response.data).length<=0){
+      return [false,-1]
+    }
+
+    for (const cliente of response.data) {
+      if (cliente.username === usernameInput && cliente.password === passwordInput) {
+        return [true, cliente.id];
+      }
+    }
+
+    PageOffset += PageLimit
   }
-  return res.json()
 }
 
 
 
 
- async function verifyLogin() {
+async function verifyLogin() {
 
   const usernameInput = document.querySelector('#correo').value;
   const passwordInput = document.querySelector('#password').value;
-  const data = await getData();
+  const data = await getData(usernameInput, passwordInput);
 
-  const isUserValid = Object.keys(data).some((username) => {
-    return username === usernameInput && data[username] === passwordInput;
-  });
-  return isUserValid
+  return data
 }
 
 
@@ -42,22 +57,23 @@ export default function LoginContent() {
   const router = useRouter();
   const [accessDenied, setAccessDenied] = useState(false)
 
-
   async function handleButton(event) {
 
     event.preventDefault();
     const isUserValid = await verifyLogin();
 
-    if (isUserValid) {
-      console.log("Logged in");
-      router.push('/home');
-    } else {
-      console.log("Invalid credentials");
+    if (isUserValid[0]) {
+      setCId(isUserValid[1])
+      //router.push('/home');
+    } 
+    else {
+      setCId(-1)
       setAccessDenied(true)
       setTimeout(() => {
         setAccessDenied(false);
       }, 3000);
     }
+
   }
   return (<>
     <ErrorPopUp show={accessDenied}/>
