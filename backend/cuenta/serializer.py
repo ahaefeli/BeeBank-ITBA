@@ -13,10 +13,9 @@ class CuentaSerializer(serializers.ModelSerializer):
 # 127.0.0.1/cuenta/tarjeta/credito
 # 127.0.0.1/cuenta/tarjeta/debito
 class TarjetaSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Cards
-        fields = ['card_id', 'customer_id', 'card_type', 'card_create_date', 'card_create_expdate']
+        fields = ['card_id', 'customer_id', 'card_type', 'card_number','card_create_date', 'card_create_expdate', 'card_cvv']
 
 
 # 127.0.0.1/cuenta/transferencia

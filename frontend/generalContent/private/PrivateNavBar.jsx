@@ -11,9 +11,9 @@ export default function LoggedNavBar () {
       setIsMenuOpen(!isMenuOpen);
     };
 
-    useEffect(() => {
+    /*useEffect(() => {
         console.log(isMenuOpen)
-    }, [isMenuOpen]);
+    }, [isMenuOpen]);*/
 
     return (<>
             <span><i className={`bi bi-chevron-down ${isMenuOpen?styleNav.iconOpen:styleNav.iconClosed} ${styleNav.toggleMenu}`} onClick={toggleMenu}></i></span>

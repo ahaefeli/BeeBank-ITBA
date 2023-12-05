@@ -14,20 +14,100 @@ import AdminPopUp from './adminCards/adminPopUp'
 import styleHome from './home.module.css';
 
 export default function HomeContent() {
-
-  
-
   const cId = Cookies.get("cId")
 
+  const [expDate, setExpDate] = useState("---")
+  const [endedWith, setEndedWith] = useState("----")
   const [accountData, setAccountData] = useState(null);
-  const [clientData, setClientData] = useState(null);
   const [transfersData, setTransfersData] = useState(null);
   const accountDataUrl = 'http://localhost:8000/cuenta/data/';
-  const clientDataUrl = `http://localhost:8000/cliente/api/users/${cId}`;
   const transferDataUrl = 'http://localhost:8000/cuenta/transferencia/';
+  const userDataUrl = `http://localhost:8000/cliente/api/users/${cId}`;
+  const debitCardUrl = `http://localhost:8000/cuenta/tarjeta/debito/${cId}`
+  const creditCardUrl = `http://localhost:8000/cuenta/tarjeta/credito/${cId}`
 
+  const [cardDebitData,setCardDebitData] = useState(
+    {
+      "card_id": "---",
+      "customer_id": "---",
+      "card_type": "---",
+      "card_number": "-----------",
+      "card_create_date": "---",
+      "card_create_expdate": "---",
+      "card_cvv": "---"
+    }
+  )
 
-  useEffect(()=>{
+  const [cardCreditData,setCardCreditData] = useState(
+    {
+      "card_id": "---",
+      "customer_id": "---",
+      "card_type": "---",
+      "card_number": "-----------",
+      "card_create_date": "---",
+      "card_create_expdate": "---",
+      "card_cvv": "---"
+    }
+  )
+
+  const [cardData,setCardData] = useState(
+    {
+      "card_id": "---",
+      "customer_id": "---",
+      "card_type": "---",
+      "card_number": "-----------",
+      "card_create_date": "---",
+      "card_create_expdate": "---",
+      "card_cvv": "---"
+    }
+  )
+
+  const [userData,setUserData] = useState(
+    {
+      "id": "---",
+      "password": "---",
+      "last_login": "---",
+      "username": "---",
+      "last_name": "---",
+      "email": "---",
+      "first_name": "---"
+    }
+  )
+
+  //toma de datos del cliente y sus trajetas
+  useEffect(() => {
+
+    //datos de las tarjetas de debito
+    axios.get(debitCardUrl, {
+      auth: {
+        username: 'admin',
+        password: 'admin'
+      }
+    }).then((response) => {
+        setCardDebitData(response.data);
+    });
+
+    //datos de las tarjetas de credito
+    axios.get(creditCardUrl, {
+      auth: {
+        username: 'admin',
+        password: 'admin'
+      }
+    }).then((response) => {
+      setCardCreditData(response.data);
+    })
+  
+    //datos del usuario
+    axios.get(userDataUrl, {
+      auth: {
+        username: 'admin',
+        password: 'admin'
+      }
+    })
+    .then((response) => {
+      setUserData(response.data);
+    });
+
     //datos de la cuenta
     axios.get(accountDataUrl,{
       auth:{
@@ -37,15 +117,7 @@ export default function HomeContent() {
     }).then((response)=>{
       setAccountData(response.data)
     })
-    //datos del cliente
-    axios.get(clientDataUrl,{
-      auth:{
-        username:'admin',
-        password:'admin'
-      }
-    }).then((response)=>{
-      setClientData(response.data)
-    })
+
     //datos de transferencias
     axios.get(transferDataUrl,{
       auth:{
@@ -55,8 +127,32 @@ export default function HomeContent() {
     }).then((response)=>{
       setTransfersData(response.data)
     })
-  },[])
+  }, []);
+  
+  //logica a implementar cuando los datos de la tarjeta son leidos
+  useEffect(()=>{
+    if(cardDebitData.customer_id>0){
+      setCardData(cardDebitData)
+    }
+    else{
+      setCardData(cardCreditData)
+    }
+  },[cardCreditData, cardDebitData])
 
+  useEffect(()=>{
+    if(cardData.cvv!="---"){
+      //logica para fecha expiracion
+      let expDateArray = cardData.card_create_expdate.split('')
+      //0123-56
+      setExpDate(expDateArray[5]+expDateArray[6]+"-"+expDateArray[2]+expDateArray[3])
+
+      //logica para ultimos 4 numeros
+      let lastFourArray = (String(cardData.card_number)).split('')
+      let lastFourArrayLength = lastFourArray.length-1
+
+      setEndedWith(lastFourArray[lastFourArrayLength-3]+lastFourArray[lastFourArrayLength-2]+lastFourArray[lastFourArrayLength-1]+lastFourArray[lastFourArrayLength])
+    }
+  },[cardData])
 
   const [cbuPopUp, setcbuPopUp] = useState(false);
   const [transferPopUp, settransferPopUp] = useState(false);
@@ -100,7 +196,7 @@ export default function HomeContent() {
     <div className='mainContainer'>
       <CbuPopUp show={cbuPopUp} />
       <TransferPopUp show={transferPopUp} />
-      <CardsPopUp show={cardsPopUp} />
+      <CardsPopUp userData={userData} cardData={cardData} endedWith={endedWith} expDate={expDate} show={cardsPopUp} />
       <CurrencyConverter show={conversorPopUp} />
       <ContactsPopUp show={contactsPopUp} />
       <AdminPopUp show={adminPopUp} />
@@ -117,9 +213,9 @@ export default function HomeContent() {
         <div className={styleHome.upperContainer}>
 
           <div className={styleHome.interiorBox}>
-            <div className={styleHome.title}>{clientData?`${clientData.first_name} ${clientData.last_name}`:"Bienvenido"}</div>
+            <div className={styleHome.title}>{userData?`${userData.first_name} ${userData.last_name}`:"Bienvenido"}</div>
             <div className={styleHome.bankData__info__card}>
-              <div className={styleHome.cardPreview} onClick={turnCardsPopUp}>Terminada en <label className='number_format'>2357</label></div>
+              <div className={styleHome.cardPreview} onClick={turnCardsPopUp}>Terminada en <label className='number_format'>{endedWith}</label></div>
             </div>
           </div>
 

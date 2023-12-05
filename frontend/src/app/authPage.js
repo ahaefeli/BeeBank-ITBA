@@ -12,7 +12,7 @@ const cId = Cookies.get('cId')
 if (!cId) {
     authRouter.push('/')
 }
-
-
-  return <>{children}</>
+else{
+    return <>{children}</>
+}
 };

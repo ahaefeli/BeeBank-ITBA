@@ -1,8 +1,17 @@
 import styleCards from './cardsAdmin.module.css'
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'
+import Cookies from 'js-cookie'
 
 export default function CardsPopUp(props) {
+  let userData=props.userData
+  let cardData=props.cardData
+  let expDate=props.expDate
+  let endedWith=props.endedWith
+
+  const cId = Cookies.get("cId")
+
   const [visibleInfo, setVisibleInfo] = useState(false);
 
   const showInfo = () => {
@@ -17,13 +26,13 @@ export default function CardsPopUp(props) {
         <div className={styleCards.card} onClick={showInfo}>
           <div className={styleCards.cardInner} style={visibleInfo ? { transform: 'rotateY(180deg)' } : null}>
             <div className={styleCards.beeCardBack}>
-              <div className={`${styleCards.cardInfo} ${styleCards.cardNumber} number_format`}>4521 7482 3058 2357</div>
-              <div className={`${styleCards.cardInfo} ${styleCards.cardName} number_format`}>Juan Manuel Perez<label className='number_format'>CVV: 767</label></div>
-              <div className={`${styleCards.cardInfo} ${styleCards.cardExpirationDate} number_format`}>Vencimiento:<label className='number_format'>08/27</label></div>
+              <div className={`${styleCards.cardInfo} ${styleCards.cardNumber} number_format`}>{cardData.card_number}</div>
+              <div className={`${styleCards.cardInfo} ${styleCards.cardName} number_format`}>{userData.first_name} {userData.last_name}<label className='number_format'>CVV: {cardData.card_cvv}</label></div>
+              <div className={`${styleCards.cardInfo} ${styleCards.cardExpirationDate} number_format`}>Vencimiento:<label className='number_format'>{expDate}</label></div>
             </div>
             <div className={styleCards.beeCard}>
-              <div className={styleCards.name}>Juan Manuel Perez</div>
-              <div className={styleCards.lastNumber}>Terminada en <label className='number_format'>2357</label></div>
+              <div className={styleCards.name}>{userData.first_name} {userData.last_name}</div>
+              <div className={styleCards.lastNumber}>Terminada en <label className='number_format'>{endedWith}</label></div>
             </div>
           </div>
         </div>
