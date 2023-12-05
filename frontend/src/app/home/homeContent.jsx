@@ -300,6 +300,27 @@ export default function HomeContent() {
                 <td className={`${styleHome.history__table__data} number_format`}></td>
                 <td className={`${styleHome.history__table__data} number_format`}></td>
               </tr>
+              <tr className={styleHome.history__table__row}>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+              </tr>
+              <tr className={styleHome.history__table__row}>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+              </tr>
+              <tr className={styleHome.history__table__row}>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}></td>
+              </tr>
             
             </tbody>
           </table>

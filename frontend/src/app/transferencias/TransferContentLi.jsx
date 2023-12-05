@@ -1,7 +1,7 @@
 'use client'
 import styleTransfers from './transfers.module.css';
 import { useEffect, useState } from 'react';
-import TransferAPI from '../TransferAPI.json';
+//import TransferAPI from '../TransferAPI.json';
 import CompFactura from './CompFactura';
 export default function TransferContentLi(props) {
 
@@ -15,7 +15,7 @@ export default function TransferContentLi(props) {
 
     const [apiData, setApiData] = useState([]);
 	useEffect(()=>{
-		setApiData(TransferAPI);
+		//setApiData(TransferAPI);
 	});
     let FacturaData ={};
 	apiData.forEach((elemento)=>{
