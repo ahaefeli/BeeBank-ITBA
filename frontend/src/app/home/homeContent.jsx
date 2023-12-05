@@ -18,13 +18,26 @@ export default function HomeContent() {
 
   const [expDate, setExpDate] = useState("---")
   const [endedWith, setEndedWith] = useState("----")
-  const [accountData, setAccountData] = useState(null);
   const [transfersData, setTransfersData] = useState(null);
-  const accountDataUrl = 'http://localhost:8000/cuenta/data/';
+  const [accountType, setAccountType] = useState("---")
+
+
+  const accountDataUrl = `http://localhost:8000/cuenta/data/main/${cId}`;
   const transferDataUrl = 'http://localhost:8000/cuenta/transferencia/';
   const userDataUrl = `http://localhost:8000/cliente/api/users/${cId}`;
   const debitCardUrl = `http://localhost:8000/cuenta/tarjeta/debito/${cId}`
   const creditCardUrl = `http://localhost:8000/cuenta/tarjeta/credito/${cId}`
+  
+  const [accountData, setAccountData] = useState(
+    {
+      "customer_id": cId,
+      "balance": "******",
+      "tipo_cuenta": "*****",
+      "account_alias": "****.****.****",
+      "account_cbu": "*********************",
+      "iban": "*******************"
+    }
+  );
 
   const [cardDebitData,setCardDebitData] = useState(
     {
@@ -115,7 +128,28 @@ export default function HomeContent() {
         password:'admin'
       }
     }).then((response)=>{
-      setAccountData(response.data)
+      if((response.data).tipo_cuenta=="ahorro" || (response.data).tipo_cuenta=="corriente"){
+        if((response.data).tipo_cuenta=="ahorro"){
+          setAccountType("Caja de Ahorros (CA)")
+        }
+        else{
+          setAccountType("Cuenta Corriente (CC)")
+        }
+
+        setAccountData(response.data)
+      }
+      else{
+        setAccountData(
+          {
+            "customer_id": cId,
+            "balance": "******",
+            "tipo_cuenta": "*****",
+            "account_alias": "****.****.****",
+            "account_cbu": "*********************",
+            "iban": "*******************"
+          }
+        )
+      }
     })
 
     //datos de transferencias
@@ -194,7 +228,7 @@ export default function HomeContent() {
 
   return (
     <div className='mainContainer'>
-      <CbuPopUp show={cbuPopUp} />
+      <CbuPopUp userData={userData} accountData={accountData} accountType={accountType} show={cbuPopUp} />
       <TransferPopUp show={transferPopUp} />
       <CardsPopUp userData={userData} cardData={cardData} endedWith={endedWith} expDate={expDate} show={cardsPopUp} />
       <CurrencyConverter show={conversorPopUp} />
@@ -222,7 +256,7 @@ export default function HomeContent() {
           <div className={styleHome.interiorBox}>
             <div className={styleHome.title}>Balance:</div>
             <div className={styleHome.balanceBox}>
-              <p className={`number_format ${styleHome.balance}`}>${isBalanceShowed ? (accountData?accountData[0].balance:'******') : '******'}</p>
+              <p className={`number_format ${styleHome.balance}`}>${isBalanceShowed ? (accountData?accountData.balance:'******') : '******'}</p>
               <i className={`bi ${isBalanceShowed ? 'bi-eye' : 'bi-eye-slash'} ${styleHome.eye}`} onClick={turnEye}></i>
             </div>
           </div>
