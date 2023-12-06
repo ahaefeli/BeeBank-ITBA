@@ -6,6 +6,7 @@ class Cliente(models.Model):
     customer_id = models.AutoField(primary_key=True)
     branch_id = models.IntegerField()
     address_id = models.IntegerField(blank=True, null=True)
+    dni = models.IntegerField()
     
     class Meta:
         managed = False

@@ -24,3 +24,8 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model=User
         fields=["id","password","last_login","username","last_name","email","first_name"]
+
+class ClientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Cliente
+        fields=['customer_id','branch_id','address_id','dni']

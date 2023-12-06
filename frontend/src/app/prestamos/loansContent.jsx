@@ -50,30 +50,30 @@ export default function LoansContent() {
           <ul className={styleLoans.topBtns}>
            <div className={styleLoans.title}>Pedí tu préstamo</div>
             <li className={styleLoans.select}>
-              <select name='select' className={styleLoans.menuSelect}>
+              <select name='select' className={styleLoans.menuSelect} defaultValue={5}>
                 <option value={1}>PRESTAMO PERSONAL</option>
                 <option value={2}>PRESTAMO SALUD</option>
                 <option value={3}>PRESTAMO EDUCACIONAL</option>
                 <option value={4}>PRESTAMO JUBILATORIO 50%</option>
-                <option value={5} selected>Seleccione la linea de prestamo</option>
+                <option value={5}>Seleccione la linea de prestamo</option>
               </select>
             </li>
             <li className={styleLoans.select}>
-              <select name='select' className={styleLoans.menuSelect}>
+              <select name='select' className={styleLoans.menuSelect} defaultValue={5}>
                 <option value={1}>$10.000</option>
                 <option value={2}>$50.000</option>
                 <option value={3}>$100.000</option>
                 <option value={4}>$500.000</option>
-                <option value={5} selected>Seleccione entre los importes disponibles</option>
+                <option value={5}>Seleccione entre los importes disponibles</option>
               </select>
             </li>
             <li className={styleLoans.select}>
-              <select name='select' className={styleLoans.menuSelect}>
+              <select name='select' className={styleLoans.menuSelect} defaultValue={5}>
                 <option value={1}>Pago de deudas</option>
                 <option value={2}>Educacion</option>
                 <option value={3}>Pago de alquiler</option>
                 <option value={4}>Pago de servicios</option>
-                <option value={5} selected>Seleccione Destino</option>
+                <option value={5}>Seleccione Destino</option>
               </select>
             </li>
             <li className={styleLoans.select}>
