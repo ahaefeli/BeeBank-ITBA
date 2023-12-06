@@ -3,17 +3,16 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import CompFactura from './CompFactura.module.css';
 export default function CFactura(props) {
-
-  const { CFDnombre, CFDapellido, CFDdni, CFDcbu, CFDalias, CFDbank, CFOnombre, CFOapellido, CFOdni, CFOcbu, CFOalias, CFObank, CFmonto, CFmotivo, CFdescription, CFttransferencia, CFfecha, CFtransfnum, CFstate, TgVisibility } = props;
+  const {TFstate,TFdescription,TFfecha,TFmonto,TFmotivo,TFid,TFio,TFDnombre,TFDapellido,TFDcbu,TFDalias,TFDdni,TFDbank,TFOnombre,TFOapellido,TFOcbu,TFOalias,TFOdni,TFObank,TgVisibility} = props
   const [contText, setContText] = useState('Undefined');
   const [colorTxt, setColorTxt] = useState('gray');
   const [stateImg, setStateImg] = useState('/UND.png');
   let StateImgAlt;
 
-  if (CFstate === 'Approved') {
+  if (TFstate === 'aceptado') {
     StateImgAlt = 'Aprobado';
   }
-  else if (CFstate === 'Rejected') {
+  else if (TFstate === 'rechazado') {
     StateImgAlt = 'Rechazado';
   }
   else {
@@ -24,12 +23,12 @@ export default function CFactura(props) {
   const [showElement, setShowElement] = useState('');
 
   useEffect(() => {
-    if (CFstate === 'Approved') {
+    if (TFstate === 'aceptado') {
       setContText('APROBADO');
       setColorTxt('#49e33b');
       setStateImg('https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/prestamos%20img/YES.png');
     }
-    else if (CFstate === 'Rejected') {
+    else if (TFstate === 'rechazado') {
       setContText('RECHAZADO');
       setColorTxt('#ea4848');
       setStateImg('https://raw.githubusercontent.com/ahaefeli/beebank-resources/main/prestamos%20img/X.png');
@@ -52,40 +51,40 @@ export default function CFactura(props) {
           <div className={CompFactura.internalContent}>
             <p className={CompFactura.Title}>Banco Nacional Beebank</p>
             <section className={CompFactura.S1}>
-              <p className={CompFactura.S1p}>Fecha: {CFfecha}</p>
+              <p className={CompFactura.S1p}>Fecha: {TFfecha}</p>
               <Image src={stateImg} alt={StateImgAlt} height={50} width={50}></Image>
-              <p className={CompFactura.S1p}>Trans. Nº: {CFtransfnum}</p>
+              <p className={CompFactura.S1p}>Trans. Nº: {TFid}</p>
             </section>
             <section className={CompFactura.S2}>
               <div>
                 <p className={CompFactura.subTitle}>Destinatario:</p>
-                <p className={CompFactura.Info}>Nombre: {CFDnombre}</p>
-                <p className={CompFactura.Info}>Apellido: {CFDapellido}</p>
-                <p className={CompFactura.Info}>DNI: {CFDdni.toLocaleString()}</p>
-                <p className={CompFactura.Info}>CBU: {CFDcbu}</p>
-                <p className={CompFactura.Info}>Alias: {CFDalias}</p>
-                <p className={CompFactura.Info}>Banco: {CFDbank}</p>
+                <p className={CompFactura.Info}>Nombre: {TFDnombre}</p>
+                <p className={CompFactura.Info}>Apellido: {TFDapellido}</p>
+                <p className={CompFactura.Info}>DNI: {TFDdni}</p>
+                <p className={CompFactura.Info}>CBU: {TFDcbu}</p>
+                <p className={CompFactura.Info}>Alias: {TFDalias}</p>
+                <p className={CompFactura.Info}>Banco: {TFDbank}</p>
               </div>
               <div>
                 <p className={CompFactura.subTitle}>Origen:</p>
-                <p className={CompFactura.Info}>Nombre: {CFOnombre}</p>
-                <p className={CompFactura.Info}>Apellido: {CFOapellido}</p>
-                <p className={CompFactura.Info}>DNI: {CFOdni.toLocaleString()}</p>
-                <p className={CompFactura.Info}>CBU: {CFOcbu}</p>
-                <p className={CompFactura.Info}>Alias: {CFOalias}</p>
-                <p className={CompFactura.Info}>Banco: {CFObank}</p>
+                <p className={CompFactura.Info}>Nombre: {TFOnombre}</p>
+                <p className={CompFactura.Info}>Apellido: {TFOapellido}</p>
+                <p className={CompFactura.Info}>DNI: {TFOdni}</p>
+                <p className={CompFactura.Info}>CBU: {TFOcbu}</p>
+                <p className={CompFactura.Info}>Alias: {TFOalias}</p>
+                <p className={CompFactura.Info}>Banco: {TFObank}</p>
               </div>
             </section>
             <section className={CompFactura.S3}>
-              <p className={CompFactura.subTitle}>Monto: ${CFmonto.toLocaleString()}</p>
-              <p className={CompFactura.Info}>Motivo: {CFmotivo}</p>
+              <p className={CompFactura.subTitle}>Monto: ${TFmonto}</p>
+              <p className={CompFactura.Info}>Motivo: {TFmotivo}</p>
               <p className={CompFactura.Info}>IVA: 0%</p>
-              <p className={CompFactura.Info}>Referencia: {CFdescription}</p>
-              <p className={CompFactura.Info}>Tipo: {CFttransferencia}</p>
+              <p className={CompFactura.Info}>Referencia: {TFdescription}</p>
+              <p className={CompFactura.Info}>Tipo: {TFio}</p>
               <p className={CompFactura.InfoState} style={{ color: colorTxt }}>{contText}</p>
             </section>
           </div>
         </div>
     </>
-  );
+  )
 }

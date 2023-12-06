@@ -1,6 +1,6 @@
 'use client'
-import PrivateNavBar from '../../../generalContent/private/privateNavBar';
-import TransfersContent from './transfersContent';
+import PrivateNavBar from '../../../generalContent/private/privateNavBar'
+import TransfersContent from './transfersContent'
 import Logo from '../../../generalContent/private/logo'
 import styleTransfers from './transfers.module.css'
 
@@ -17,5 +17,5 @@ export default function Home() {
         <TransfersContent/>
       </div>
     </AuthChecker>
-  );
+  )
 }
