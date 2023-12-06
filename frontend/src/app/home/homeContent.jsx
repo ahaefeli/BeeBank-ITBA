@@ -18,17 +18,29 @@ export default function HomeContent() {
 
   const [expDate, setExpDate] = useState("---")
   const [endedWith, setEndedWith] = useState("----")
-  const [transfersData, setTransfersData] = useState(null);
   const [accountType, setAccountType] = useState("---")
 
 
-  const accountDataUrl = `http://localhost:8000/cuenta/data/main/${cId}`;
-  const transferDataUrl = 'http://localhost:8000/cuenta/transferencia/';
+  const accountransfersDataUrl = `http://localhost:8000/cuenta/data/main/${cId}`;
   const userDataUrl = `http://localhost:8000/cliente/api/users/${cId}`;
   const debitCardUrl = `http://localhost:8000/cuenta/tarjeta/debito/${cId}`
   const creditCardUrl = `http://localhost:8000/cuenta/tarjeta/credito/${cId}`
+  const transfersUrl = `http://localhost:8000/cuenta/transferencia/${cId}`
   
-  const [accountData, setAccountData] = useState(
+  const [transfersData, setTransfersData] = useState(
+    {
+      "transfer_id": "---",
+      "from_account_id": "---",
+      "to_account_id": "---",
+      "ammount": "---",
+      "executed_at": "---",
+      "motivo": "---",
+      "descripcion": "---",
+      "state": "---"
+    }
+  );
+
+  const [accountransfersData, setAccountransfersData] = useState(
     {
       "customer_id": cId,
       "balance": "******",
@@ -39,7 +51,7 @@ export default function HomeContent() {
     }
   );
 
-  const [cardDebitData,setCardDebitData] = useState(
+  const [cardDebitransfersData,setCardDebitransfersData] = useState(
     {
       "card_id": "---",
       "customer_id": "---",
@@ -51,7 +63,7 @@ export default function HomeContent() {
     }
   )
 
-  const [cardCreditData,setCardCreditData] = useState(
+  const [cardCreditransfersData,setCardCreditransfersData] = useState(
     {
       "card_id": "---",
       "customer_id": "---",
@@ -87,6 +99,8 @@ export default function HomeContent() {
     }
   )
 
+  const [nombres, setNombres] = useState(["---","---","---"])
+  const [alias, setAlias] = useState(["---","---","---"])
   //toma de datos del cliente y sus trajetas
   useEffect(() => {
 
@@ -97,7 +111,7 @@ export default function HomeContent() {
         password: 'admin'
       }
     }).then((response) => {
-        setCardDebitData(response.data);
+        setCardDebitransfersData(response.data);
     });
 
     //datos de las tarjetas de credito
@@ -107,7 +121,7 @@ export default function HomeContent() {
         password: 'admin'
       }
     }).then((response) => {
-      setCardCreditData(response.data);
+      setCardCreditransfersData(response.data);
     })
   
     //datos del usuario
@@ -122,7 +136,7 @@ export default function HomeContent() {
     });
 
     //datos de la cuenta
-    axios.get(accountDataUrl,{
+    axios.get(accountransfersDataUrl,{
       auth:{
         username:'admin',
         password:'admin'
@@ -136,10 +150,10 @@ export default function HomeContent() {
           setAccountType("Cuenta Corriente (CC)")
         }
 
-        setAccountData(response.data)
+        setAccountransfersData(response.data)
       }
       else{
-        setAccountData(
+        setAccountransfersData(
           {
             "customer_id": cId,
             "balance": "******",
@@ -151,27 +165,83 @@ export default function HomeContent() {
         )
       }
     })
-
-    //datos de transferencias
-    axios.get(transferDataUrl,{
-      auth:{
-        username:'admin',
-        password:'admin'
-      }
-    }).then((response)=>{
-      setTransfersData(response.data)
-    })
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Obtener datos de transferencias
+        const transferenciasResponse = await axios.get(transfersUrl, {
+          auth: {
+            username: 'admin',
+            password: 'admin',
+          },
+        });
+        
+        const responseData = (transferenciasResponse.data.slice(-3)).reverse();
+        setTransfersData(responseData);
   
+        if (responseData.length > 0) {
+          let namesArray = [];
+          let aliasArray = [];
+  
+          // Crear un array de promesas para las llamadas asíncronas
+          const promises = responseData.map(async (Data) => {
+            let destinyId;
+            console.log("ToAccount"+Data.to_account_id)
+            console.log("FromAccount"+Data.from_account_id)
+            console.log("///////////")
+            if (Data.to_account_id != cId) {
+              destinyId = Data.to_account_id;
+            } else {
+              destinyId = Data.from_account_id;
+            }
+  
+            // Llamadas asíncronas a las otras API
+            const userResponse = await axios.get(`http://localhost:8000/cliente/api/users/${destinyId}`, {
+              auth: {
+                username: 'admin',
+                password: 'admin',
+              },
+            });
+  
+            const accountResponse = await axios.get(`http://localhost:8000/cuenta/data/main/${destinyId}`, {
+              auth: {
+                username: 'admin',
+                password: 'admin',
+              },
+            });
+  
+            namesArray.push(userResponse.data.first_name);
+            aliasArray.push(accountResponse.data.account_alias);
+          });
+  
+          // Esperar a que todas las promesas se resuelvan
+          await Promise.all(promises);
+  
+          // Actualizar estados después de que todas las promesas se resuelvan
+          setNombres(namesArray);
+          setAlias(aliasArray);
+        }
+      } catch (error) {
+        console.error('Error al obtener datos:', error);
+      }
+    };
+  
+    fetchData();
+  }, [transfersUrl, cId]);
+  
+  
+
   //logica a implementar cuando los datos de la tarjeta son leidos
   useEffect(()=>{
-    if(cardDebitData.customer_id>0){
-      setCardData(cardDebitData)
+    if(cardDebitransfersData.customer_id>0){
+      setCardData(cardDebitransfersData)
     }
     else{
-      setCardData(cardCreditData)
+      setCardData(cardCreditransfersData)
     }
-  },[cardCreditData, cardDebitData])
+  },[cardCreditransfersData, cardDebitransfersData])
 
   useEffect(()=>{
     if(cardData.cvv!="---"){
@@ -228,7 +298,7 @@ export default function HomeContent() {
 
   return (
     <div className='mainContainer'>
-      <CbuPopUp userData={userData} accountData={accountData} accountType={accountType} show={cbuPopUp} />
+      <CbuPopUp userData={userData} accountransfersData={accountransfersData} accountType={accountType} show={cbuPopUp} />
       <TransferPopUp show={transferPopUp} />
       <CardsPopUp userData={userData} cardData={cardData} endedWith={endedWith} expDate={expDate} show={cardsPopUp} />
       <CurrencyConverter show={conversorPopUp} />
@@ -256,7 +326,7 @@ export default function HomeContent() {
           <div className={styleHome.interiorBox}>
             <div className={styleHome.title}>Balance:</div>
             <div className={styleHome.balanceBox}>
-              <p className={`number_format ${styleHome.balance}`}>${isBalanceShowed ? (accountData?accountData.balance:'******') : '******'}</p>
+              <p className={`number_format ${styleHome.balance}`}>${isBalanceShowed ? (accountransfersData?accountransfersData.balance:'******') : '******'}</p>
               <i className={`bi ${isBalanceShowed ? 'bi-eye' : 'bi-eye-slash'} ${styleHome.eye}`} onClick={turnEye}></i>
             </div>
           </div>
@@ -294,32 +364,25 @@ export default function HomeContent() {
                 <th className={styleHome.history__table__head}>Motivo</th>
               </tr>
               <tr className={styleHome.history__table__row}>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}>{transfersData[0]?transfersData[0]['executed_at']:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{nombres[0]?nombres[0]:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{alias[0]?alias[0]:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{transfersData[0]?transfersData[0]['ammount']:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{transfersData[0]?transfersData[0]['motivo']:"----"}</td>
               </tr>
               <tr className={styleHome.history__table__row}>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}>{transfersData[1]?transfersData[1]['executed_at']:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{nombres[1]?nombres[1]:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{alias[1]?alias[1]:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{transfersData[1]?transfersData[1]['ammount']:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{transfersData[1]?transfersData[1]['motivo']:"----"}</td>
               </tr>
               <tr className={styleHome.history__table__row}>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-              </tr>
-              <tr className={styleHome.history__table__row}>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
-                <td className={`${styleHome.history__table__data} number_format`}></td>
+                <td className={`${styleHome.history__table__data} number_format`}>{transfersData[2]?transfersData[2]['executed_at']:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{nombres[2]?nombres[2]:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{alias[2]?alias[2]:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{transfersData[2]?transfersData[2]['ammount']:"----"}</td>
+                <td className={`${styleHome.history__table__data} number_format`}>{transfersData[2]?transfersData[2]['motivo']:"----"}</td>
               </tr>
             
             </tbody>

@@ -2,9 +2,7 @@ import styleCBU from './cbu.module.css'
 
 export default function CbuPopUp(props) {
 
-  let userData = props.userData
-  let accountData = props.accountData
-  let accountType = props.accountType
+  let {userData, accountData, accountType} = props
   
   return (
     <div className={props.show ? "popUp" : "popUp-hide"}>
@@ -14,7 +12,7 @@ export default function CbuPopUp(props) {
           <tbody>
             <tr>
               <td><p className={styleCBU.dataText}>IBAN</p></td>
-              <td><p className={`${styleCBU.dataValue} number_format`}>{accountData.iban}</p></td>
+              <td><p className={`${styleCBU.dataValue} number_format`}>{accountData?accountData.iban:"**************"}</p></td>
             </tr>
             <tr>
               <td><p className={styleCBU.dataText}>Banco</p></td>
@@ -26,11 +24,11 @@ export default function CbuPopUp(props) {
             </tr>
             <tr>
               <td><p className={styleCBU.dataText}>CBU</p></td>
-              <td><p className={`${styleCBU.dataValue} number_format`}>{accountData.account_cbu}</p></td>
+              <td><p className={`${styleCBU.dataValue} number_format`}>{accountData?accountData.cbu:"**************"}</p></td>
             </tr>
             <tr>
               <td><p className={styleCBU.dataText}>Alias</p></td>
-              <td><p className={styleCBU.dataValue}>{accountData.account_alias}</p></td>
+              <td><p className={styleCBU.dataValue}>{accountData?accountData.alias:"**************"}</p></td>
             </tr>
           </tbody>
 
