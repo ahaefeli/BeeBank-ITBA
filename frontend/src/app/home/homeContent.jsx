@@ -99,8 +99,8 @@ export default function HomeContent() {
     }
   )
 
-  const [nombres, setNombres] = useState(["---","---","---"])
-  const [alias, setAlias] = useState(["---","---","---"])
+  const [nombres, setNombres] = useState([])
+  const [alias, setAlias] = useState([])
   //toma de datos del cliente y sus trajetas
   useEffect(() => {
 
@@ -188,9 +188,6 @@ export default function HomeContent() {
           // Crear un array de promesas para las llamadas asíncronas
           const promises = responseData.map(async (Data) => {
             let destinyId;
-            console.log("ToAccount"+Data.to_account_id)
-            console.log("FromAccount"+Data.from_account_id)
-            console.log("///////////")
             if (Data.to_account_id != cId) {
               destinyId = Data.to_account_id;
             } else {

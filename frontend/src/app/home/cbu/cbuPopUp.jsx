@@ -2,8 +2,10 @@ import styleCBU from './cbu.module.css'
 
 export default function CbuPopUp(props) {
 
-  let {userData, accountData, accountType} = props
-  
+  let userData = props.userData
+  let accountData = props.accountransfersData
+  let accountType = props.accountType
+
   return (
     <div className={props.show ? "popUp" : "popUp-hide"}>
       <section className={styleCBU.mainSection}>
@@ -24,11 +26,11 @@ export default function CbuPopUp(props) {
             </tr>
             <tr>
               <td><p className={styleCBU.dataText}>CBU</p></td>
-              <td><p className={`${styleCBU.dataValue} number_format`}>{accountData?accountData.cbu:"**************"}</p></td>
+              <td><p className={`${styleCBU.dataValue} number_format`}>{accountData?accountData.account_cbu:"**************"}</p></td>
             </tr>
             <tr>
               <td><p className={styleCBU.dataText}>Alias</p></td>
-              <td><p className={styleCBU.dataValue}>{accountData?accountData.alias:"**************"}</p></td>
+              <td><p className={styleCBU.dataValue}>{accountData?accountData.account_alias:"**************"}</p></td>
             </tr>
           </tbody>
 
