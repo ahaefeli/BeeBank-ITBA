@@ -23,4 +23,4 @@ class SucursalSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model=User
-        fields=["id","password","last_login","username","last_name","email","first_name"]
+        fields=["id","password","last_login","username","last_name","email","first_name",'dni']

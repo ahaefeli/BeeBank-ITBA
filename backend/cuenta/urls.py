@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CuentaView,CuentaViewDetail, CuentaViewDetailMain,TarjetaCreditoView, TarjetaDebitoView, TransferenciaView
+from .views import CuentaView,CuentaViewDetail, CuentaViewDetailMain,TarjetaCreditoView, TarjetaDebitoView, TransferenciaView, TransferenciaViewDetail
 
 urlpatterns = [
     path('data/', CuentaView.as_view(), name='cuenta_data'),
@@ -10,4 +10,5 @@ urlpatterns = [
     path('tarjeta/credito/', TarjetaCreditoView.as_view(), name='credito_data'),
     path('tarjeta/debito/', TarjetaDebitoView.as_view(), name='debito_data'),
     path('transferencia/', TransferenciaView.as_view(), name='transfer_data'),
+    path('transferencia/<int:customer_id>', TransferenciaViewDetail.as_view(), name='transfer_data_specific'),
 ]

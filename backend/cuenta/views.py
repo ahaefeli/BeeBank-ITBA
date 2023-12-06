@@ -3,9 +3,12 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView,RetrieveAPIView
-from .serializer import CuentaSerializer, TarjetaSerializer, TransferenciaSerializer
+
+from django.db.models import Q
 from django.shortcuts import get_object_or_404
+
 from .models import Cuenta, Cards, Transferencia
+from .serializer import CuentaSerializer, TarjetaSerializer, TransferenciaSerializer
 
 # 127.0.0.1/cuenta/data/
 class CuentaView(ListAPIView):
@@ -69,11 +72,28 @@ class TarjetaDebitoView(RetrieveAPIView):
 
 
 # 127.0.0.1/cuenta/transferencia
-class TransferenciaView(generics.ListCreateAPIView):
+"""class TransferenciaView(generics.ListCreateAPIView):
     queryset = Cuenta.objects.all()
     serializer_class = TransferenciaSerializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):
         #return Cuenta.objects.filter(customer_id=self.request.user.id)
-        return Cuenta.objects.filter(customer_id=6)
+        return Cuenta.objects.filter(customer_id=6)"""
+
+class TransferenciaView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Transferencia.objects.all()
+    serializer_class = TransferenciaSerializer
+
+class TransferenciaViewDetail(APIView):
+    serializer_class = TransferenciaSerializer
+    permission_classes = [IsAuthenticated]
+
+    lookup_field = 'customer_id'
+
+    def get(self, request, *args, **kwargs):
+        customer_id = self.kwargs.get('customer_id')
+        transferecias = Transferencia.objects.filter(Q(from_account=customer_id) | Q(to_account=customer_id))
+        serializer = TransferenciaSerializer(transferecias, many=True)
+        return Response(serializer.data)
