@@ -11,8 +11,10 @@ export default function HomeContent() {
   //eliminacion de cookies
   useEffect(()=>{
     const cExistence = Cookies.get("cId")
+    const cExistenceStaff = Cookies.get("cIsStaff")
     if(cExistence){
       Cookies.remove("cId")
+      Cookies.remove("cIsStaff")
     }
   },[])
 

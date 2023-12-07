@@ -23,12 +23,12 @@ export async function getData(usernameInput, passwordInput) {
     })
 
     if((response.data).length<=0){
-      return [false,-1]
+      return [false,-1,0]
     }
 
     for (const cliente of response.data) {
       if (cliente.username === usernameInput && cliente.password === passwordInput) {
-        return [true, cliente.id];
+        return [true, cliente.id, cliente.is_staff];
       }
     }
 
@@ -62,8 +62,8 @@ export default function LoginContent() {
     const isUserValid = await verifyLogin();
 
     if (isUserValid[0]) {
-      //setCId(isUserValid[1])
       Cookies.set("cId",`${isUserValid[1]}`)
+      Cookies.set("cIsStaff",`${isUserValid[2]}`)
       router.push("/home")
     } 
     else {

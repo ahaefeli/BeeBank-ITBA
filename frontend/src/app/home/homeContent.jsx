@@ -10,12 +10,14 @@ import CurrencyConverter from './conversor/conversorPopUp';
 import ContactsPopUp from './contacts/contactsPopUp';
 import CardsPopUp from './cards/cardsAdminPopUp'
 import AdminPopUp from './adminCards/adminPopUp'
+import StaffView from './staffView/staffView'
 
 import styleHome from './home.module.css';
 
 export default function HomeContent() {
   const cId = Cookies.get("cId")
-
+  const cIsStaff = Cookies.get("cIsStaff")
+  console.log(cIsStaff)
   const [expDate, setExpDate] = useState("---")
   const [endedWith, setEndedWith] = useState("----")
   const [accountType, setAccountType] = useState("---")
@@ -386,6 +388,8 @@ export default function HomeContent() {
           </table>
         </section>
       </div>
+
+      <StaffView/>
 
     </div>
   )
