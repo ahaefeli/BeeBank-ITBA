@@ -2,7 +2,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import generics
 from rest_framework.views import APIView
 from .serializer import PrestamoEmpleadoSerializer
-from .models import Prestamo
+from .models import Prestamo, PrestamosPermitidos
 from rest_framework.response import Response
 
 
@@ -41,6 +41,17 @@ class PrestamoEmpleadoView(generics.ListCreateAPIView):
     def get_queryset(self):
         customer_id = self.kwargs.get('customer_id')
         return Prestamo.objects.filter(customer_id=customer_id)
+    
+# 127.0.0.1/prestamo/cliente/permitidos/<int>
+class PrestamoPermitidoView(generics.ListAPIView):
+    queryset = PrestamosPermitidos.objects.all()
+    serializer_class = PrestamoEmpleadoSerializer
+    permission_classes = [AllowAny]
+
+    lookup_field = 'customer_id'
+    def get_queryset(self):
+        customer_id = self.kwargs.get('customer_id')
+        return PrestamosPermitidos.objects.filter(customer_id=customer_id)
 
 # 127.0.0.1/prestamo/cliente/delete/<int>
 class PrestamoEmpleadoDeleteView(generics.RetrieveUpdateDestroyAPIView):

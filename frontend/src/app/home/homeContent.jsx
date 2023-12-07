@@ -103,6 +103,7 @@ export default function HomeContent() {
   const [nombres, setNombres] = useState([])
   const [alias, setAlias] = useState([])
   //toma de datos del cliente y sus trajetas
+
   useEffect(() => {
 
     //datos de las tarjetas de debito
@@ -113,6 +114,8 @@ export default function HomeContent() {
       }
     }).then((response) => {
         setCardDebitransfersData(response.data);
+    }).catch((error)=>{
+      console.log('Sin tarjeta de débito asociada')
     });
 
     //datos de las tarjetas de credito
@@ -123,7 +126,9 @@ export default function HomeContent() {
       }
     }).then((response) => {
       setCardCreditransfersData(response.data);
-    })
+    }).catch((error)=>{
+      console.log('Sin tarjeta de crédito asociada')
+    });
   
     //datos del usuario
     axios.get(userDataUrl, {
@@ -224,9 +229,12 @@ export default function HomeContent() {
       } catch (error) {
         console.error('Error al obtener datos:', error);
       }
-    };
+
+
+
+    }
   
-    fetchData();
+    fetchData()
   }, [transfersUrl, cId]);
   
   

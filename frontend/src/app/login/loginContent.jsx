@@ -9,7 +9,7 @@ import ErrorPopUp from './errorPopUp'
 import axios from "axios";
 
 
-export async function getData(usernameInput, passwordInput) {
+/* export async function getData(usernameInput, passwordInput) {
   const PageLimit = 50
   let PageOffset = 0
 
@@ -32,10 +32,47 @@ export async function getData(usernameInput, passwordInput) {
       }
     }
 
+    
     PageOffset += PageLimit
   }
 }
+ */
 
+export async function getData(usernameInput, passwordInput) {
+  const PageLimit = 50;
+  let PageOffset = 0;
+
+  while (true) {
+    let dataUrl = `http://localhost:8000/cliente/api/users/?limit=${PageLimit}&offset=${PageOffset}`;
+    
+    try {
+      const response = await axios.get(dataUrl, {
+        auth: {
+          username: usernameInput,
+          password: passwordInput,
+        },
+      });
+
+      if (response.status === 200) {
+        const user = response.data.find((userData) => userData.username === usernameInput);
+
+        if (user) {
+          const clientId = user.id;
+          const isStaff = user.is_staff;
+          return [true, clientId, isStaff];
+        }
+      } else {
+        return [false, -1, -1];
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      return [false, -1, -1];
+    }
+
+   
+    PageOffset += PageLimit;
+  }
+}
 
 
 

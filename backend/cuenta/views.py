@@ -1,17 +1,14 @@
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework import generics, status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView,RetrieveAPIView
 
-from django.contrib.auth.models import User
 
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 
 from .models import Cuenta, Cards, Transferencia
 from .serializer import CuentaSerializer, TarjetaSerializer, TransferenciaSerializer
-from cliente.serializer import UserSerializer
 
 # 127.0.0.1/cuenta/data/
 class CuentaView(ListAPIView):
