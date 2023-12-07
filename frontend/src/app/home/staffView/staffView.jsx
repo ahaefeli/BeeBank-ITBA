@@ -30,7 +30,7 @@ export default function StaffView(){
                         <div>
                             <p>Sucursal: {sucursal.branch_name}</p>
                             <p>Direccion: {sucursal.direccion.street} {sucursal.direccion.address_number}</p>
-                            <p>-------------------------------------------------------------------------------</p>
+                            <p className={staffViewStyle.SeparationLines}>-------------------------------------------------------------------------------</p>
                         </div>
                     )
                 })
@@ -88,6 +88,7 @@ export default function StaffView(){
 
             return(
                 <div>
+                    <button className={staffViewStyle.BackButton} onClick={()=>ChangeView("MainMenu")}>&lt; VOLVER</button>
                     {LiItemsSucursales}
                 </div>
             )

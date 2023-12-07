@@ -3,3 +3,18 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.SeparationLines{
+    color: var(--light-color);
+}
+
+.BackButton{
+    border-radius: 10%;
+    background-color: var(--light-color);
+    color: black;
+    font-size: 36px;
+}
+.BackButton:hover{
+    background-color: black;
+    color: var(--light-color);
+}
