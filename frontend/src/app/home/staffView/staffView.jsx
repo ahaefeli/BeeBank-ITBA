@@ -59,6 +59,7 @@ export default function StaffView(){
         else if(view=="PrestamosSucursales"){
             return(
                 <div>
+                    <button className={staffViewStyle.BackButton} onClick={()=>ChangeView("MainMenu")}>&lt; VOLVER</button>
                     
                 </div>
             )
@@ -85,7 +86,6 @@ export default function StaffView(){
             )
         }
         else if(view=="ListadoSucursales"){
-
             return(
                 <div>
                     <button className={staffViewStyle.BackButton} onClick={()=>ChangeView("MainMenu")}>&lt; VOLVER</button>
