@@ -15,7 +15,7 @@ class SucursalesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sucursal
-        fields = ['branch_name', 'direccion']
+        fields = ['branch_name', 'direccion','branch_number']
 
     def get_direccion(self, instance):
         direccion_instance = Direccion.objects.get(address_id=instance.address_id)

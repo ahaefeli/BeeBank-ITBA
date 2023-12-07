@@ -69,7 +69,7 @@ export default function StaffView(){
             }).then((response)=>{
                 response.data.forEach((sucursal)=>{
                     LiItemSucursales.push(
-                        <div>
+                        <div key={sucursal.branch_number}>
                             <p>Sucursal: {sucursal.branch_name}</p>
                             <p>Direccion: {sucursal.direccion.street} {sucursal.direccion.address_number}</p>
                             <p className={staffViewStyle.SeparationLines}>-------------------------------------------------------------------------------</p>
