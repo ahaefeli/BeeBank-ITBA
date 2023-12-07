@@ -7,10 +7,52 @@ import staffViewStyle from './staffView.module.css'
 import Cookies from "js-cookie"
 
 export default function StaffView(){
+
     const cIsStaff = Cookies.get("cIsStaff") == "true"? true: false
     const [view, setView] = useState("MainMenu")
+    const [errorText, setErrorText] = useState("")
 
     const [LiItemsSucursales, setLiItemsSucursales] = useState()
+    const [LiItemsPrestamosBranch, setLiItemsPrestamosBranch] = useState()
+
+
+    function GetPrestamos(){
+        let PRInput = document.getElementById("PRInput").value
+        let LiItemPrestamoBranch = []
+        if(PRInput==""){
+            setErrorText("*POR FAVOR RELLENE TODOS LOS CAMPOS")
+        }
+        else{
+            setErrorText("")
+            PRInput = Number(PRInput)
+            if(PRInput<0 || isNaN(PRInput)){
+                setErrorText("*INGRESE UNA ID VALIDA")
+            }
+            else{
+                axios.get(`http://localhost:8000/prestamo/data/${PRInput}`,{
+                    auth:{
+                        username:'admin',
+                        password:'admin'
+                    }
+                }).then((response)=>{
+
+                    (response.data).forEach((prestamo)=>{
+                        LiItemPrestamoBranch.push(
+                            <div key={prestamo.loan_id}>
+                                <p>Prestamo numero {prestamo.loan_id}</p>
+                                <p>Tipo de prestamo: {prestamo.loan_type}</p>
+                                <p>Fecha de realizacion: {prestamo.loan_date}</p>
+                                <p>ID del cliente: {prestamo.customer_id}</p>
+                                <p className={staffViewStyle.SeparationLines}>-------------------------------------------------------------------------------</p>
+                            </div>
+                        )
+                    })
+                    setLiItemsPrestamosBranch(LiItemPrestamoBranch)
+                })
+            }
+        }
+    }
+
 
     function ChangeView(window){
         setView(window)
@@ -62,10 +104,12 @@ export default function StaffView(){
                     <button className={staffViewStyle.BackButton} onClick={()=>ChangeView("MainMenu")}>&lt; VOLVER</button>
                     <section>
                         <p>BUSCAR PRESTAMOS POR ID DE SUCURSAL</p>
-                        <input type='text' className={staffViewStyle.FormInput} placeholder='SUCURSAL ID'></input>
+                        <input type='text' className={staffViewStyle.FormInput} placeholder='SUCURSAL ID' id='PRInput'></input>
                         <br/>
-                        <button className='button--general'>BUSCAR</button>
+                        <button className='button--general' onClick={GetPrestamos}>BUSCAR</button>
                         <br/>
+                        <p>{errorText}</p>
+                        {LiItemsPrestamosBranch}
                     </section>
                 </div>
             )

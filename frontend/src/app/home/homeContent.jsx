@@ -17,7 +17,6 @@ import styleHome from './home.module.css';
 export default function HomeContent() {
   const cId = Cookies.get("cId")
   const cIsStaff = Cookies.get("cIsStaff")
-  console.log(cIsStaff)
   const [expDate, setExpDate] = useState("---")
   const [endedWith, setEndedWith] = useState("----")
   const [accountType, setAccountType] = useState("---")
