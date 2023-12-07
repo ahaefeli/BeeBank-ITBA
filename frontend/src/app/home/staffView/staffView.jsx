@@ -11,12 +11,12 @@ export default function StaffView(){
         return(
             <div>
                 STAFF MODE
-                <div className='Menu'>
-                    <button>PRESTAMOS DE SUCURSALES</button>
-                    <button>TARJETAS ASOCIADAS</button>
-                    <button>SOLICITUD PRESTAMO</button>
-                    <button>MODIFICAR DIRECCION CLIENTE</button>
-                    <button>LISTADO SUCURSALES</button>
+                <div className={staffViewStyle.Menu}>
+                    <button className='button--general'>PRESTAMOS DE SUCURSALES</button>
+                    <button className='button--general'>TARJETAS ASOCIADAS</button>
+                    <button className='button--general'>SOLICITUD PRESTAMO</button>
+                    <button className='button--general'>MODIFICAR DIRECCION CLIENTE</button>
+                    <button className='button--general'>LISTADO SUCURSALES</button>
                 </div>
             </div>
         )

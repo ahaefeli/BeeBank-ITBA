@@ -389,7 +389,9 @@ export default function HomeContent() {
         </section>
       </div>
 
-      <StaffView/>
+      <div className={styleHome.separatorContainer}>
+        <StaffView/>
+      </div>
 
     </div>
   )
