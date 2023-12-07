@@ -60,7 +60,13 @@ export default function StaffView(){
             return(
                 <div>
                     <button className={staffViewStyle.BackButton} onClick={()=>ChangeView("MainMenu")}>&lt; VOLVER</button>
-                    
+                    <section>
+                        <p>BUSCAR PRESTAMOS POR ID DE SUCURSAL</p>
+                        <input type='text' className={staffViewStyle.FormInput} placeholder='SUCURSAL ID'></input>
+                        <br/>
+                        <button className='button--general'>BUSCAR</button>
+                        <br/>
+                    </section>
                 </div>
             )
         }

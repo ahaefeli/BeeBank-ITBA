@@ -1,18 +1,34 @@
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import generics
-from .serializer import PrestamoSerializer, PrestamoEmpleadoSerializer
+from rest_framework.views import APIView
+from .serializer import PrestamoEmpleadoSerializer
 from .models import Prestamo
+from rest_framework.response import Response
 
 
 # 127.0.0.1/prestamo/data/
-class PrestamoView(generics.ListAPIView):
+"""class PrestamoView(generics.ListAPIView):
     queryset = Prestamo.objects.all()
-    serializer_class = PrestamoSerializer
+    serializer_class = PrestamoEmpleadoSerializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):
         #return User.objects.get(id=self.request.user.id)
-        return Prestamo.objects.filter(customer_id=6)
+        return Prestamo.objects.filter(customer_id=6)"""
+
+class PrestamoView(APIView):
+    serializer_class = PrestamoEmpleadoSerializer
+    permission_classes = [IsAuthenticated]
+
+    lookup_field = 'branch_id'
+
+    def get(self, request, *args, **kwargs):
+        branch_id = self.kwargs.get('branch_id')
+
+        prestamos = Prestamo.objects.filter(branch_id=branch_id)
+        serializer = PrestamoEmpleadoSerializer(prestamos, many=True)
+
+        return Response(serializer.data)
 
 
 # 127.0.0.1/prestamo/cliente/<int>
