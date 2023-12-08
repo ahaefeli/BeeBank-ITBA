@@ -141,14 +141,14 @@ class TransferenciaViewDetail(APIView):
     def get(self, request, *args, **kwargs):
         customer_id = self.kwargs.get('customer_id')
 
-        transferecias = Transferencia.objects.filter(Q(from_account=customer_id) | Q(to_account=customer_id))
+        transferecias = Transferencia.objects.filter(Q(from_account_id=customer_id) | Q(to_account_id=customer_id))
         serializer = TransferenciaSerializer(transferecias, many=True)
 
         return Response(serializer.data)
     def post(self, request, *args, **kwargs):
         customer_id = self.kwargs.get('customer_id')
 
-        transferecias = Transferencia.objects.filter(Q(from_account=customer_id) | Q(to_account=customer_id))
+        transferecias = Transferencia.objects.filter(Q(from_account_id=customer_id) | Q(to_account_id=customer_id))
         serializer = TransferenciaSerializer(transferecias, many=True)
 
         return Response(serializer.data)
