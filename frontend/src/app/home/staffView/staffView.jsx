@@ -24,6 +24,7 @@ export default function StaffView(){
     }
 
     function GetPrestamos(){
+        setErrorText("")
         let PRInput = document.getElementById("PRInput").value
         let LiItemPrestamoBranch = []
         if(PRInput==""){
@@ -68,6 +69,7 @@ export default function StaffView(){
     }
 
     function getTarjetas() {
+        setErrorText("")
         let tarjetaIdInput = document.getElementById("tarjetaIdInput").value;
         let LiItemTarjetaBranch = [];
       
@@ -117,6 +119,7 @@ export default function StaffView(){
 
 
       function modifyDireccionCliente() {
+        setErrorText("")
         let clienteId = document.getElementById("clienteIdInput").value;
         let streetInput = document.getElementById("streetInput").value;
         let numberInput = document.getElementById("numberInput").value;
@@ -149,6 +152,7 @@ export default function StaffView(){
 
 
     function solicitarPrestamo() {
+        setErrorText("")
         let loanTypeInput = document.getElementById("loanTypeInput").value.toUpperCase()
         let loanAmmountInput = Number(document.getElementById("loanAmmountInput").value)
         let loanIdClient = Number(document.getElementById("loanIdClient").value)
@@ -203,41 +207,47 @@ export default function StaffView(){
           }
         )
         .then((response) => {
-          console.log("Préstamo creado con éxito");
           setErrorText("Préstamo creado con éxito");
         })
         .catch((error) => {
-          console.error("Error en la solicitud:", error);
           setErrorText("*Error al crear el préstamo");
         });
       }
     
 
       function anularPrestamo() {
-        if (!loanIdInput) {
+        setErrorText("")
+
+        let loanIdInput = Number(document.getElementById("loanIdInput").value)
+
+        if (isNaN(loanIdInput) || loanIdInput<=0) {
           setErrorText("*Por favor, complete todos los campos");
           return;
         }
-        axios.delete(`http://localhost:8000/prestamo/anular/${loanIdInput}`, {
-            auth: {
-              username: "admin",
-              password: "admin",
-            },
-          })
-          .then((response) => {
-            console.log("Préstamo anulado con éxito");
-            setErrorText("Préstamo anulado con éxito");
-          })
-          .catch((error) => {
-            console.error("Error en la solicitud:", error);
-            setErrorText("*Error al anular el préstamo");
-          });
+        else{
+            setErrorText("");
+            axios.delete(`http://localhost:8000/prestamo/cliente/delete/${loanIdInput}`, {
+                auth: {
+                  username: "admin",
+                  password: "admin",
+                },
+              })
+              .then((response) => {
+                console.log("Préstamo anulado con éxito");
+                setErrorText("Préstamo anulado con éxito");
+              })
+              .catch((error) => {
+                console.error("Error en la solicitud:", error);
+                setErrorText("*Error al anular el préstamo");
+              });
+        }
       }
 
 
 
     useEffect(()=>{
         if(view=="ListadoSucursales"){
+            setErrorText("")
             let LiItemSucursales = []
             axios.get("http://localhost:8000/sucursal/show/",{
             auth:{
@@ -263,6 +273,7 @@ export default function StaffView(){
     
     useEffect(() => {
         if (view === 'TarjetasAsociadas') {
+            setErrorText("")
           let LiItemTarjetasBranch = [];
           axios.get('http://localhost:8000/tarjeta/show/', {
             auth: {
@@ -369,7 +380,8 @@ export default function StaffView(){
             
         }
         //'loan_id', 'loan_type', 'loan_date', 'loan_total', 'customer_id', 'branch_id'
-        else if(view=="AnulacionPrestamo"){ //Un empleado autenticado puede eliminar un préstamo para un cliente, registrado
+        else if(view=="AnulacionPrestamo"){ 
+            //Un empleado autenticado puede eliminar un préstamo para un cliente, registrado
             //el mismo y acreditando el saldo en su cuenta.
             return (
                 <div>
@@ -377,12 +389,7 @@ export default function StaffView(){
                   <section>
                     <p>ANULAR PRÉSTAMO</p>
                     <label>ID del préstamo: </label>
-                    <input
-                      type="text"
-                      className={staffViewStyle.FormInput}
-                      value={loanIdInput}
-                      onChange={(e) => setLoanIdInput(e.target.value)}
-                    />
+                    <input type="text" className={staffViewStyle.FormInput} placeholder='ID PRESTAMO' id="loanIdInput"/>
                     <br />
                     <button className="button--general" onClick={anularPrestamo}>ANULAR PRÉSTAMO</button>
                     <br />
