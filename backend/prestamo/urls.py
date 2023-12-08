@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import PrestamoView, PrestamoEmpleadoView, PrestamoEmpleadoDeleteView, PrestamoPermitidoView, PrestamoPermitidoDeleteView
+from .views import PrestamoView, PrestamoEmpleadoView, PrestamoEmpleadoDeleteView, PrestamoPermitidoView, PrestamoPermitidoDeleteView, PrestamoClienteView
 
 urlpatterns = [
     path('data/<int:branch_id>', PrestamoView.as_view(), name='prestamo_data'),
+    path('cliente/prestamos/<int:customer_id>', PrestamoClienteView.as_view(),name='prestamo_client_data'),
     path('cliente/<int:customer_id>', PrestamoEmpleadoView.as_view(), name='prestamo_empleado_data'),
     path('cliente/permitido/<int:customer_id>', PrestamoPermitidoView.as_view(), name='prestamo_empleado_data'),
     path('cliente/permitido/delete/<int:loan_id>', PrestamoPermitidoDeleteView.as_view(), name='prestamo_empleado_data'),

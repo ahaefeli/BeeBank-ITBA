@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class CuentaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cuenta
-        fields = ['customer_id','balance', 'tipo_cuenta','account_alias','account_cbu','iban']
+        fields = ['account_id','customer_id','balance', 'tipo_cuenta','account_alias','account_cbu','iban']
 
 
 # 127.0.0.1/cuenta/tarjeta/credito

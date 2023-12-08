@@ -28,6 +28,68 @@ class CuentaViewDetail(APIView):
         accounts = Cuenta.objects.filter(customer_id=customer_id)
         serializer = CuentaSerializer(accounts, many=True)
         return Response(serializer.data)
+    
+    def delete(self, request, *args, **kwargs):
+        customer_id = self.kwargs.get('customer_id')
+        
+        # Obtén y elimina todas las cuentas con account_id igual a None
+        accounts_to_delete = Cuenta.objects.filter(customer_id=customer_id, account_id__isnull=True)
+        accounts_to_delete.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    def post(self, request, *args, **kwargs):
+        customer_id = self.kwargs.get('customer_id')
+        request_data = request.data.copy()
+        request_data['customer_id'] = customer_id  # Asigna el customer_id antes de crear la cuenta
+        serializer = CuentaSerializer(data=request_data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class CuentaViewDetailUpdate(APIView):
+    serializer_class = CuentaSerializer
+    permission_classes = [IsAuthenticated]
+
+    lookup_fields = ('customer_id', 'account_id')
+
+    def get_object(self):
+        queryset = Cuenta.objects.all()
+
+        for field in self.lookup_fields:
+            value = self.kwargs.get(field)
+            if value is not None:
+                queryset = queryset.filter(**{field: value})
+
+        # Devuelve el objeto o lanza un error 404 si no se encuentra
+        return get_object_or_404(queryset)
+
+    def put(self, request, *args, **kwargs):
+        cuenta = self.get_object()
+        serializer = CuentaSerializer(cuenta, data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def post(self, request, *args, **kwargs):
+        serializer = CuentaSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, *args, **kwargs):
+        cuenta = self.get_object()
+        cuenta.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CuentaViewDetailCBU(APIView):
     serializer_class = CuentaSerializer
@@ -78,7 +140,6 @@ class CuentaViewDetailMain(APIView):
             accounts = Cuenta.objects.filter(customer_id=customer_id, tipo_cuenta="corriente").first()
             serializer = CuentaSerializer(accounts)
         return Response(serializer.data)
-    
 
 # 127.0.0.1/cuenta/tarjeta/credito
 class TarjetaCreditoView(RetrieveAPIView):
@@ -106,20 +167,6 @@ class TarjetaDebitoView(RetrieveAPIView):
 
 
 # 127.0.0.1/cuenta/transferencia
-"""class TransferenciaView(APIView):
-    def post(self, request, *args, **kwargs):
-        # Obtener los datos de la solicitud POST
-        transfer_data = request.data
-
-        # Serializar los datos
-        serializer = TransferenciaSerializer(data=transfer_data)
-        
-        # Validar y guardar la transferencia
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)"""
 class TransferenciaView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = TransferenciaSerializer(data=request.data)

@@ -7,15 +7,6 @@ from rest_framework.response import Response
 
 
 # 127.0.0.1/prestamo/data/
-"""class PrestamoView(generics.ListAPIView):
-    queryset = Prestamo.objects.all()
-    serializer_class = PrestamoEmpleadoSerializer
-    permission_classes = [AllowAny]
-
-    def get_queryset(self):
-        #return User.objects.get(id=self.request.user.id)
-        return Prestamo.objects.filter(customer_id=6)"""
-
 class PrestamoView(APIView):
     serializer_class = PrestamoEmpleadoSerializer
     permission_classes = [IsAuthenticated]
@@ -26,6 +17,20 @@ class PrestamoView(APIView):
         branch_id = self.kwargs.get('branch_id')
 
         prestamos = Prestamo.objects.filter(branch_id=branch_id)
+        serializer = PrestamoEmpleadoSerializer(prestamos, many=True)
+
+        return Response(serializer.data)
+    
+class PrestamoClienteView(APIView):
+    serializer_class = PrestamoEmpleadoSerializer
+    permission_classes = [IsAuthenticated]
+
+    lookup_field = 'customer_id'
+
+    def get(self, request, *args, **kwargs):
+        customer_id = self.kwargs.get('customer_id')
+
+        prestamos = Prestamo.objects.filter(customer_id=customer_id)
         serializer = PrestamoEmpleadoSerializer(prestamos, many=True)
 
         return Response(serializer.data)
