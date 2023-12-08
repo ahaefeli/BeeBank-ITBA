@@ -57,6 +57,13 @@
     transition: 0.3s;
 }
 
+.FormInput{
+    border-radius: 10px;
+    border-style: none;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
 
 /* LOANS CALCULATOR */
 

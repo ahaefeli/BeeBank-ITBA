@@ -27,6 +27,18 @@ class CuentaViewDetail(APIView):
         accounts = Cuenta.objects.filter(customer_id=customer_id)
         serializer = CuentaSerializer(accounts, many=True)
         return Response(serializer.data)
+
+class CuentaViewDetailCBU(APIView):
+    serializer_class = CuentaSerializer
+    permission_classes = [IsAuthenticated]
+
+    lookup_field = 'account_cbu'
+
+    def get(self, request, *args, **kwargs):
+        account_cbu = self.kwargs.get('account_cbu')
+        account = Cuenta.objects.filter(account_cbu=account_cbu)
+        serializer = CuentaSerializer(account)
+        return Response(serializer.data)
     
 class CuentaViewDetailMain(APIView):
     serializer_class = CuentaSerializer
@@ -72,10 +84,18 @@ class TarjetaDebitoView(RetrieveAPIView):
 
 
 # 127.0.0.1/cuenta/transferencia
-class TransferenciaView(ListAPIView):
+class TransferenciaView(APIView):
     permission_classes = [IsAuthenticated]
     queryset = Transferencia.objects.all()
     serializer_class = TransferenciaSerializer
+
+    def post(self, request, *args, **kwargs):
+        customer_id = self.kwargs.get('customer_id')
+
+        transferecias = Transferencia.objects.filter(Q(from_account=customer_id) | Q(to_account=customer_id))
+        serializer = TransferenciaSerializer(transferecias, many=True)
+
+        return Response(serializer.data)
 
 class TransferenciaViewDetail(APIView):
     serializer_class = TransferenciaSerializer
@@ -84,6 +104,13 @@ class TransferenciaViewDetail(APIView):
     lookup_field = 'customer_id'
 
     def get(self, request, *args, **kwargs):
+        customer_id = self.kwargs.get('customer_id')
+
+        transferecias = Transferencia.objects.filter(Q(from_account=customer_id) | Q(to_account=customer_id))
+        serializer = TransferenciaSerializer(transferecias, many=True)
+
+        return Response(serializer.data)
+    def post(self, request, *args, **kwargs):
         customer_id = self.kwargs.get('customer_id')
 
         transferecias = Transferencia.objects.filter(Q(from_account=customer_id) | Q(to_account=customer_id))

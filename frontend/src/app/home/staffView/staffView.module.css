@@ -28,3 +28,10 @@
     width: 100%;
     margin-bottom: 15px;
 }
+
+.NonUserDiv{
+    height: min-content;
+    display: flex;
+    justify-content: center;
+    color: var(--light-color)
+}

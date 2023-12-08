@@ -6,3 +6,10 @@ class PrestamoEmpleadoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prestamo
         fields = ['loan_id', 'loan_type', 'loan_date', 'loan_total', 'customer_id', 'branch_id']
+
+# 127.0.0.1/prestamo/cliente/permitido/<int>
+# 127.0.0.1/prestamo/cliente/permitido/delete/<int>
+class PrestamoPermitidoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PrestamosPermitidos
+        fields = ['loan_id', 'loan_type', 'loan_date', 'loan_total', 'customer_id']

@@ -2,11 +2,14 @@
 
 import styleLoans from './loans.module.css';
 import { useState, useEffect } from 'react';
+import axios from 'axios'
+import Cookies from "js-cookie"
 
 export default function LoansContent() {
+  const cId = Cookies.get('cId')
   const acpbtn = document.querySelector(".acceptBtn")
   const cancel = document.querySelector(".cancelBtn")
-
+  
   function loanCalculator() {
     // Gets the data from the input and converts it to float
     var valuep = Number(document.getElementById("loanamount").value);
@@ -41,44 +44,44 @@ export default function LoansContent() {
       setExecutEffect = false;
     }
   }, [executeEffect]);
+  const urlPrestamoPermitido = `http://localhost:8000/prestamo/cliente/permitido/${cId}`
+  const [LiPrestamosState, setLiPrestamosState] = useState([])
+  let LiPrestamos = []
+  axios.get(urlPrestamoPermitido, {
+    auth: {
+      username: 'admin',
+      password: 'admin',
+    }
+  }).then((response) => {
+        if (response.data) {
+            for (i=0;i<response.data.lenght;i++){
+            prestamo = response.data[i]
+            LiPrestamos.push(
+            <div key={response.data.loan_id}>
+                <p>Tipo de préstamo: {response.data.loan_type}</p>
+                <p>Total de préstamo: {response.data.loan_total}</p>
+            </div>
+            )
+            setLiPrestamosState(LiPrestamos)
+          }
 
+        }
+      }).catch((error)=>{
+        LiPrestamos.push(
+          <div key="not_found">
+              <p>No hay préstamos disponibles, por favor comunícate con tu asesor si quieres solicitar uno</p>
+          </div>
+        )
+        setLiPrestamosState(LiPrestamos)
+      })
 
   return (
     <div className='InsideContent'>
+
       <div className={styleLoans.mainContainer}>
         <div className={styleLoans.firstContainer}>
           <ul className={styleLoans.topBtns}>
-           <div className={styleLoans.title}>Pedí tu préstamo</div>
-            <li className={styleLoans.select}>
-              <select name='select' className={styleLoans.menuSelect} defaultValue={5}>
-                <option value={1}>PRESTAMO PERSONAL</option>
-                <option value={2}>PRESTAMO SALUD</option>
-                <option value={3}>PRESTAMO EDUCACIONAL</option>
-                <option value={4}>PRESTAMO JUBILATORIO 50%</option>
-                <option value={5}>Seleccione la linea de prestamo</option>
-              </select>
-            </li>
-            <li className={styleLoans.select}>
-              <select name='select' className={styleLoans.menuSelect} defaultValue={5}>
-                <option value={1}>$10.000</option>
-                <option value={2}>$50.000</option>
-                <option value={3}>$100.000</option>
-                <option value={4}>$500.000</option>
-                <option value={5}>Seleccione entre los importes disponibles</option>
-              </select>
-            </li>
-            <li className={styleLoans.select}>
-              <select name='select' className={styleLoans.menuSelect} defaultValue={5}>
-                <option value={1}>Pago de deudas</option>
-                <option value={2}>Educacion</option>
-                <option value={3}>Pago de alquiler</option>
-                <option value={4}>Pago de servicios</option>
-                <option value={5}>Seleccione Destino</option>
-              </select>
-            </li>
-            <li className={styleLoans.select}>
-              <button className={`${styleLoans.acceptBtn} button--general`}>Solicitar</button>
-            </li>
+            {LiPrestamosState}
           </ul>
         </div>
 

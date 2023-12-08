@@ -430,6 +430,10 @@ export default function StaffView(){
         }
     }
     else{
-        return(<></>)
+        return(
+            <div className={staffViewStyle.NonUserDiv}>
+                <p>--BeeBank--</p>
+            </div>
+        )
     }
 }

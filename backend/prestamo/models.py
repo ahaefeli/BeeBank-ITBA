@@ -14,7 +14,7 @@ class Prestamo(models.Model):
 
 
 class PrestamosPermitidos(models.Model):
-    loan_id = models.IntegerField(blank=True, null=True)
+    loan_id = models.IntegerField(primary_key=True, blank=True)
     loan_type = models.TextField(blank=True, null=True)
     loan_date = models.TextField(blank=True, null=True)
     loan_total = models.FloatField(blank=True, null=True)

@@ -97,14 +97,10 @@ export default function ConfigContent() {
 
   const personalInfoData = <div><br></br>Nombre: {userData.first_name} <br></br>Apellido: {userData.last_name} <br></br>DNI: {userClientData.dni} <br></br>Direccion: {userDirectionData.street} {userDirectionData.address_number} <br></br>Mail: {userData.email}</div>;
   const accountData = <div><br></br>Usuario: {userData.username} <br></br>Contraseña: {userData.password} <br></br>Alias: {userAccountData.account_alias} <br></br>CBU: {userAccountData.account_cbu}</div>;
-  const securityData = <div><br></br>#2FA <br></br>#Historial de inicio de sesion <br></br>#Limites de transaccion</div>;
-  const cardsData = <div><br></br>#Agregar o sacar tarjetas <br></br>#Bloqueo y desbloqueo de tarjetas <br></br>#Solicitar nueva tarjeta <br></br>#Asignas límite de uso</div>;
   
   const data = [
     { id: 'personal-info', title: 'Información personal', content:personalInfoData },
     { id: 'account', title: 'Datos de tu cuenta', content: accountData },
-    { id: 'security', title: 'Seguridad', content: securityData },
-    { id: 'cards', title: 'Tarjetas', content: cardsData },
   ];
 
 
