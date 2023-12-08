@@ -48,8 +48,8 @@ export async function getData(usernameInput, passwordInput) {
     try {
       const response = await axios.get(dataUrl, {
         auth: {
-          username: usernameInput,
-          password: passwordInput,
+          username: 'admin',
+          password: 'admin'
         },
       });
 

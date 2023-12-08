@@ -7,6 +7,11 @@ from .serializer import UserSerializer, DireccionSerializer, ClientSerializer
 from django.contrib.auth.models import User
 from .models import Direccion, Cliente
 
+
+
+
+
+
 # 127.0.0.1/cliente/api/users/
 class UserList(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
@@ -56,3 +61,29 @@ class ClienteViewDetail(APIView):
 
         return Response(serializer.data)
     
+
+class ClienteRegistroView(APIView):
+    serializer_class = UserSerializer 
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        user_data = {
+            'username': data.get('username'),
+            'password': data.get('password'),
+            'last_login': None,
+            'is_superuser': False,
+            'email': data.get('email'),
+            'is_staff': False,
+            'is_active': True,
+            'date_joined': None,
+            'first_name': data.get('first_name'),
+            'last_name': data.get('last_name'),
+            'dni': data.get('dni'),
+        }
+
+        serializer = self.get_serializer(data=user_data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

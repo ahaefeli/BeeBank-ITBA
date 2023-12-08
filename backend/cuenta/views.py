@@ -2,6 +2,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView,RetrieveAPIView
+from rest_framework import status
 
 
 from django.db.models import Q
@@ -36,9 +37,30 @@ class CuentaViewDetailCBU(APIView):
 
     def get(self, request, *args, **kwargs):
         account_cbu = self.kwargs.get('account_cbu')
-        account = Cuenta.objects.filter(account_cbu=account_cbu)
-        serializer = CuentaSerializer(account)
-        return Response(serializer.data)
+        
+        try:
+            account = Cuenta.objects.filter(account_cbu=account_cbu).first()
+            serializer = CuentaSerializer(account)
+            return Response(serializer.data)
+        except Cuenta.DoesNotExist:
+            return Response({"detail": "Cuenta no encontrada"}, status=status.HTTP_404_NOT_FOUND)
+        
+class CuentaViewDetailAlias(APIView):
+    serializer_class = CuentaSerializer
+    permission_classes = [IsAuthenticated]
+
+    lookup_field = 'account_alias'
+
+    def get(self, request, *args, **kwargs):
+        account_alias = self.kwargs.get('account_alias')
+        
+        try:
+            # Utiliza get() en lugar de filter() para obtener una única instancia
+            account = Cuenta.objects.filter(account_alias=account_alias).first()
+            serializer = CuentaSerializer(account)
+            return Response(serializer.data)
+        except Cuenta.DoesNotExist:
+            return Response({"detail": "Cuenta no encontrada"}, status=status.HTTP_404_NOT_FOUND)
     
 class CuentaViewDetailMain(APIView):
     serializer_class = CuentaSerializer

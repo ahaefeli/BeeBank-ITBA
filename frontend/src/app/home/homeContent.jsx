@@ -102,8 +102,8 @@ export default function HomeContent() {
 
   const [nombres, setNombres] = useState([])
   const [alias, setAlias] = useState([])
-  //toma de datos del cliente y sus trajetas
 
+  //toma de datos del cliente y sus trajetas
   useEffect(() => {
 
     //datos de las tarjetas de debito
@@ -305,7 +305,7 @@ export default function HomeContent() {
   return (
     <div className='mainContainer'>
       <CbuPopUp userData={userData} accountransfersData={accountransfersData} accountType={accountType} show={cbuPopUp} />
-      <TransferPopUp show={transferPopUp} />
+      <TransferPopUp show={transferPopUp}/>
       <CardsPopUp userData={userData} cardData={cardData} endedWith={endedWith} expDate={expDate} show={cardsPopUp} />
       <CurrencyConverter show={conversorPopUp} />
       <ContactsPopUp show={contactsPopUp} />

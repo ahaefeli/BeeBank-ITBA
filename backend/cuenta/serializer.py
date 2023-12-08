@@ -24,21 +24,6 @@ class ClienteSerializer(serializers.ModelSerializer):
         model = User
         fields = ['first_name','last_name']
 
-
-"""class TransferenciaSerializer(serializers.ModelSerializer):
-    from_user = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Cuenta
-        fields = ['account_id', 'from_user', 'transferencias_entrantes', 'transferencias_salientes']
-        depth = 2
-
-    def get_from_user(self, instance):
-        user_instance = User.objects.get(id=instance.customer_id)
-
-        user_serializer = ClienteSerializer(user_instance)
-        return user_serializer.data"""
-
 class TransferenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transferencia
