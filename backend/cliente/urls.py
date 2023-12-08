@@ -7,5 +7,5 @@ urlpatterns = [
     path("api/users/<int:pk>",UserListDetail.as_view(),name="user_detail"),
     path('api/cliente/',ClienteView.as_view(),name="cliente_view"),
     path('api/cliente/<int:customer_id>',ClienteViewDetail.as_view(),name="cliente_view_specific"),
-    path("cliente/api/cliente/registro",ClienteRegistroView.as_view(),name="cliente_registro"),
+    path("api/cliente/registro",ClienteRegistroView.as_view(),name="cliente_registro"),
 ]

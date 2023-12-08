@@ -9,18 +9,19 @@ import { useRouter } from 'next/navigation';
 export default function RegisterContent() {
   const router = useRouter();
 
-  const [documento, setDocumento] = useState('');
-  const [correoElectronico, setCorreoElectronico] = useState('');
-  const [confirmarCorreo, setConfirmarCorreo] = useState('');
-  const [contrasena, setContrasena] = useState('');
-  const [Nombre, setNombre] = useState('');
-  const [Apellido, setApellido] = useState('');
-  
-
   const handleRegistro = async (event) => {
     event.preventDefault();
   
-    if (!documento || !correoElectronico || !confirmarCorreo || !contrasena || correoElectronico !== confirmarCorreo) {
+    let inpt_dni = parseInt(document.getElementById("inpt_dni").value)
+    let inpt_mail = document.getElementById("inpt_mail").value
+    let inpt_mail2 = document.getElementById("inpt_mail2").value
+    let inpt_password = document.getElementById("inpt_password").value
+    let inpt_password2 = document.getElementById("inpt_password2").value
+    let inpt_first_name = document.getElementById("inpt_first_name").value
+    let inpt_last_name = document.getElementById("inpt_last_name").value
+    let inpt_username = document.getElementById("inpt_username").value
+
+    if (inpt_dni.length<=0 || inpt_mail.length<=0 || inpt_mail2.length<=0 || inpt_password.length<=0 || inpt_password2.length<=0 || inpt_first_name.length<=0 || inpt_last_name.length<=0 || inpt_mail != inpt_mail2 || inpt_password != inpt_password2) {
       alert('Por favor, complete todos los campos correctamente.');
       return;
     }
@@ -28,11 +29,12 @@ export default function RegisterContent() {
     // API
     try {
       const response = await axios.post('http://localhost:8000/api/cliente/registro', {
-        dni: documento,
-        email: correoElectronico,
-        password: contrasena,
-        first_name: Nombre,
-        last_name: Apellido,
+        "username": inpt_username,
+        "password": inpt_password,
+        "email": inpt_mail,
+        "first_name": inpt_first_name,
+        "last_name": inpt_last_name,
+        "dni": inpt_dni,
       }, {
         auth: {
           username: 'admin',
@@ -40,12 +42,11 @@ export default function RegisterContent() {
         },
       });
   
-      router.push('/home');
     } catch (error) {
       console.error('Error al registrar:', error);
       alert('Error al registrar. Por favor, inténtelo de nuevo.');
     }
-  };
+  }
   
 
   return (
@@ -53,19 +54,23 @@ export default function RegisterContent() {
       <form onSubmit={handleRegistro}>
         <div className={styleRegister.title}>Registrarse</div>
         <label className={styleRegister.loginText}>Documento:</label>
-        <input type="text" className={styleRegister.mail} value={documento} onChange={(e) => setDocumento(e.target.value)} placeholder="Documento" required />
+        <input type="text" className={styleRegister.mail} placeholder="Documento" required id="inpt_dni"/>
+        <label className={styleRegister.loginText}>Nombre de usuario:</label>
+        <input type="text" className={styleRegister.mail} placeholder="Username" required id="inpt_username"/>
         <label className={styleRegister.loginText}>Correo electrónico:</label>
-        <input type="text" className={styleRegister.mail} value={correoElectronico} onChange={(e) => setCorreoElectronico(e.target.value)} placeholder="Correo electrónico" required />
+        <input type="text" className={styleRegister.mail} placeholder="Correo electrónico" required id="inpt_mail"/>
         <label className={styleRegister.loginText}>Confirmar correo electrónico:</label>
-        <input type="text" className={styleRegister.mail} value={confirmarCorreo} onChange={(e) => setConfirmarCorreo(e.target.value)} placeholder="Confirmar correo electrónico" required />
+        <input type="text" className={styleRegister.mail} placeholder="Confirmar correo electrónico" required id="inpt_mail2"/>
         <label className={styleRegister.loginText}>Contraseña:</label>
-        <input type="password" className={styleRegister.password} value={contrasena} onChange={(e) => setContrasena(e.target.value)} placeholder="Contraseña" required />
+        <input type="password" className={styleRegister.password} placeholder="Contraseña" required id="inpt_password"/>
+        <label className={styleRegister.loginText}>Repita la contraseña:</label>
+        <input type="password" className={styleRegister.password} placeholder="Contraseña" required id="inpt_password2"/>
 
         <label className={styleRegister.loginText}>Nombre:</label>
-        <input type="text" className={styleRegister.mail} value={Nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Nombre" required />
+        <input type="text" className={styleRegister.mail} placeholder="Nombre" required id="inpt_first_name"/>
 
         <label className={styleRegister.loginText}>Apellido:</label>
-        <input type="text" className={styleRegister.mail} value={Apellido} onChange={(e) => setApellido(e.target.value)} placeholder="Apellido" required />
+        <input type="text" className={styleRegister.mail} placeholder="Apellido" required id="inpt_last_name"/>
       
         <button type="submit" className={`button--general ${styleRegister.login_btn}`}>Registrarse</button>
         <Link href="/login">Inicia sesión</Link>
