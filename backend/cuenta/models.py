@@ -62,8 +62,10 @@ from django.db import models
 
 class Transferencia(models.Model):
     transfer_id = models.AutoField(primary_key=True, blank=True)
-    from_account = models.ForeignKey(Cuenta, on_delete=models.CASCADE, related_name='transferencias_salientes')
-    to_account = models.ForeignKey(Cuenta, on_delete=models.CASCADE, related_name='transferencias_entrantes')
+    #from_account = models.ForeignKey(Cuenta, on_delete=models.CASCADE, related_name='transferencias_salientes')
+    #to_account = models.ForeignKey(Cuenta, on_delete=models.CASCADE, related_name='transferencias_entrantes')
+    from_account_id = models.IntegerField()
+    to_account_id = models.IntegerField()
     ammount = models.IntegerField(blank=True, null=True)
     executed_at = models.TextField(blank=True, null=True)
     motivo = models.TextField(max_length=20)

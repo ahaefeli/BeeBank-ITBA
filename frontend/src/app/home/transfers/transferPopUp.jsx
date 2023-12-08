@@ -15,6 +15,10 @@ export default function TransferPopUp(props) {
   const [checkState, setCheckState] = useState("on")
   const [stateTransferLabel, setStateTransferLabel] = useState("")
 
+  const [transferState, setTransferState] = useState(false)
+  const [fromId, setFromId] = useState(cId)
+  const [toId, setToId] = useState(-1)
+
   function changeCheckState() {
     if (checkState === "on") {
         setCheckState("off");
@@ -25,12 +29,10 @@ export default function TransferPopUp(props) {
     }
   }
 
-
+  //realizar busqueda de clientes
   function searchClient(){
-    let inpt_cbu_search_object = document.getElementById("inpt_cbu_search")
-    let inpt_cbu_search = inpt_cbu_search_object.value
-
-    async function getTransfersData(userData){
+    setStateTransferLabel("")
+    async function getTransfersData(inpt_cbu_search){
       //logica para tomar datos de cliente encontrado
       let destinyAccountData
       let inpt_destinatario = document.getElementById("inpt_destinatario")
@@ -59,6 +61,7 @@ export default function TransferPopUp(props) {
 
       //si encuentra al usuario ejecuta esto
       if(destinyAccountData.customer_id>0){
+        setToId(destinyAccountData.customer_id)
         let destinyUserData = (await axios.get(`http://localhost:8000/cliente/api/users/${destinyAccountData.customer_id}`,{
         auth:{
           username:'admin',
@@ -86,6 +89,8 @@ export default function TransferPopUp(props) {
         inpt_alias.value = destinyAccountData.account_alias
         inpt_banco.value = "BeeBank"
         inpt_dni.value = destinyClientData.dni
+
+        setTransferState(true)
       }
       else{
         setErrorLabelText("Cliente no encontrado")
@@ -97,53 +102,63 @@ export default function TransferPopUp(props) {
     }
     else{
       setErrorLabelText("")
-      getTransfersData()
+      let inpt_cbu_search_object = document.getElementById("inpt_cbu_search")
+      if (inpt_cbu_search_object) {
+        let inpt_cbu_search = inpt_cbu_search_object.value;
+        getTransfersData(inpt_cbu_search)
+      }
+      
     }
   }
 
+  //funcion para realizar las transferencias
   function makeTransfer(){
-    
+    if(transferState==true){
+      let ammount = Number(document.getElementById("inpt_monto").value)
+      let descripcion = document.getElementById("inpt_description").value
 
-    if (!ammount || !motivo || !descripcion|| !executed_at|| !to_account_id) {
-      alert('Por favor, complete todos los campos antes de transferir.');
-      return;
-    }
+      const currentDate = new Date();
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Ajustar el mes a dos dígitos
+      const day = String(currentDate.getDate()).padStart(2, '0'); // Ajustar el día a dos dígitos
+      const hours = String(currentDate.getHours()).padStart(2, '0');
+      const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+      const seconds = String(currentDate.getSeconds()).padStart(2, '0');
 
-      const from_account_id = cId
-      const to_account_id = document.getElementById("to_account_id")
-      const ammount = Number(document.getElementById("ammount").value)
-      const executed_at = document.getElementById("executed_at")
-      const motivo = document.getElementById("motivo")
-      const descripcion = document.getElementById("descripcion")
-      const state = "aceptado"
+      let executed_at = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      let fromIdNumber = parseInt(fromId)
+      let toIdNumber = parseInt(toId)
 
-      axios.post('http://127.0.0.1:8000/cuenta/transferencia/',
+      let dataForTransfer = {
+        from_account_id:fromIdNumber,
+        to_account_id:toIdNumber,
+        ammount:ammount,
+        executed_at:executed_at,
+        motivo:selectValue,
+        descripcion:descripcion,
+        state:"aceptado"
+      }
+
+      //console.log(dataForTransfer)
+      axios.post('http://localhost:8000/cuenta/transferencia/',dataForTransfer,
       {
-        
-        from_account_id,
-        to_account_id,
-        ammount,
-        executed_at,
-        motivo,
-        descripcion,
-        state
-      },
-      {
-       auth:{
+        auth:{
         username:'admin',
         password: 'admin'
-       }
+        }
       }
       )
-
       .then(response => {
         console.log('Transferencia exitosa', response.data)
         setStateTransferLabel("Transferencia exitosa")
+        setTransferState(false)
       })
 
       .catch(error => {
         console.error('error al realizar transferencia',error)
+        setStateTransferLabel("Error al realizar transferencia")
       })
+    }
 
   }
 
@@ -159,13 +174,22 @@ export default function TransferPopUp(props) {
             <input type="text" className={`${styleTransfer.inpt_text} number_format`} id="inpt_cbu_search" placeholder={searchType}/>
             <input type="button" value="Buscar" className={`button--general ${styleTransfer.searchButton}`} id="inpt_buscar" onClick={searchClient}/>
             <label className={styleTransfer.marginLabel}>Monto</label>
-            <input className={`${styleTransfer.inpt_text} number_format`} id="inpt_monto" type="number" onChange=""/>
+            <input className={`${styleTransfer.inpt_text} number_format`} id="inpt_monto" type="number"/>
             <label className={styleTransfer.errorLabel} id="errorLabel">{errorLabelText}</label>
             <input type="button" value="Transferir" className={`button--general ${styleTransfer.transferButton}`} id="inpt_transferir" onClick={makeTransfer}/>
             <label>{stateTransferLabel}</label>
           </div>
 
           <div className={styleTransfer.insideContent}>
+            <label>Concepto</label>
+            <select className={styleTransfer.inpt_concepto} id="inpt_motivo" onChange={(s)=>{const nValue = s.target.value;setSelectValue(s.target.value)}}>
+              <option className={styleTransfer.opt_text} value="Factura">Factura</option>
+              <option className={styleTransfer.opt_text} value="Comercio">Comercio</option>
+              <option className={styleTransfer.opt_text} value="Expensas">Expensas</option>
+              <option className={styleTransfer.opt_text} value="Cuota">Cuota</option>
+              <option className={styleTransfer.opt_text} value="Honorarios">Honorarios</option>
+              <option className={styleTransfer.opt_text} value="Varios">Varios</option>
+            </select>
             <label>Destinatario</label>
             <input className={styleTransfer.dataText} id="inpt_destinatario" type="text" readOnly value=""/>
             <label>Origen</label>
@@ -178,19 +202,8 @@ export default function TransferPopUp(props) {
             <input className={styleTransfer.dataText} id="inpt_banco" type="text" readOnly value=""/>
             <label>DNI</label>
             <input className={styleTransfer.dataText} id="inpt_dni" type="text" readOnly value=""/>
-            <label>Concepto</label>
-
-            <select className={styleTransfer.inpt_concepto} id="inpt_motivo" onChange={(s)=>{const nValue = s.target.value;setSelectValue(s.target.value)}}>
-              <option className={styleTransfer.opt_text} value="Factura">Factura</option>
-              <option className={styleTransfer.opt_text} value="Comercio">Comercio</option>
-              <option className={styleTransfer.opt_text} value="Expensas">Expensas</option>
-              <option className={styleTransfer.opt_text} value="Cuota">Cuota</option>
-              <option className={styleTransfer.opt_text} value="Honorarios">Honorarios</option>
-              <option className={styleTransfer.opt_text} value="Varios">Varios</option>
-            </select>
-
             <label>Descripcion</label>
-            <input className={styleTransfer.dataText} id="inpt_description" type="text" onChange=""/>
+            <input className={styleTransfer.dataText} id="inpt_description" type="text"/>
 
           </div>
         </form>

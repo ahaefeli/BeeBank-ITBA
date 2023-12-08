@@ -106,18 +106,31 @@ class TarjetaDebitoView(RetrieveAPIView):
 
 
 # 127.0.0.1/cuenta/transferencia
-class TransferenciaView(APIView):
-    permission_classes = [IsAuthenticated]
-    queryset = Transferencia.objects.all()
-    serializer_class = TransferenciaSerializer
-
+"""class TransferenciaView(APIView):
     def post(self, request, *args, **kwargs):
-        customer_id = self.kwargs.get('customer_id')
+        # Obtener los datos de la solicitud POST
+        transfer_data = request.data
 
-        transferecias = Transferencia.objects.filter(Q(from_account=customer_id) | Q(to_account=customer_id))
-        serializer = TransferenciaSerializer(transferecias, many=True)
+        # Serializar los datos
+        serializer = TransferenciaSerializer(data=transfer_data)
+        
+        # Validar y guardar la transferencia
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)"""
+class TransferenciaView(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = TransferenciaSerializer(data=request.data)
 
-        return Response(serializer.data)
+        if serializer.is_valid():
+            serializer.save()  # Guardar el objeto en la base de datos
+
+            # Devolver una respuesta exitosa
+            return Response({'mensaje': 'Datos recibidos correctamente'}, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class TransferenciaViewDetail(APIView):
     serializer_class = TransferenciaSerializer
