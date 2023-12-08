@@ -13,6 +13,10 @@ export default function RegisterContent() {
     event.preventDefault();
   
     let inpt_dni = parseInt(document.getElementById("inpt_dni").value)
+    if (isNaN(inpt_dni)) {
+      alert('Ingrese un DNI válido.');
+      return;
+    }
     let inpt_mail = document.getElementById("inpt_mail").value
     let inpt_mail2 = document.getElementById("inpt_mail2").value
     let inpt_password = document.getElementById("inpt_password").value
@@ -28,19 +32,23 @@ export default function RegisterContent() {
   
     // API
     try {
-      const response = await axios.post('http://localhost:8000/api/cliente/registro', {
+      const response = await axios.post('http://localhost:8000/cliente/api/cliente/registro', {
         "username": inpt_username,
         "password": inpt_password,
         "email": inpt_mail,
         "first_name": inpt_first_name,
         "last_name": inpt_last_name,
         "dni": inpt_dni,
+        "is_staff":0
       }, {
         auth: {
           username: 'admin',
           password: 'admin',
         },
       });
+
+      alert("Registro realizado con exito, volviendo a pagina principal...")
+      setTimeout(()=>{router.push("/home")},4000)
   
     } catch (error) {
       console.error('Error al registrar:', error);

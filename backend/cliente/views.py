@@ -66,7 +66,7 @@ class ClienteRegistroView(APIView):
     serializer_class = UserSerializer 
     permission_classes = [IsAuthenticated]
 
-    def post(self, request, *args, **kwargs):
+    """def post(self, request, *args, **kwargs):
         data = request.data
         user_data = {
             'username': data.get('username'),
@@ -86,4 +86,12 @@ class ClienteRegistroView(APIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)"""
+    def post(self, request, *args, **kwargs):
+        serializer = UserSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
